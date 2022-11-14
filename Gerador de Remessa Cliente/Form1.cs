@@ -22,6 +22,7 @@ namespace Gerador_de_Remessa_Cliente
             mskTextBoxContaCedente.Text = lista[7].ToString();
             mskTextBoxAgCedente.Text = lista[8].ToString();
             textBoxDiretorioDestino.Text = lista[9].ToString();
+            mskTextBoxNumDocCedente.Text = lista[10].ToString();
         }
 
         private void btnGerarArquivo_Click(object sender, EventArgs e)
@@ -37,7 +38,8 @@ namespace Gerador_de_Remessa_Cliente
                 mskTextBoxConvenio.Text.ToString(),
                 mskTextBoxContaCedente.Text.ToString(),
                 mskTextBoxAgCedente.Text.ToString(),
-                textBoxDiretorioDestino.Text.ToString());
+                textBoxDiretorioDestino.Text.ToString(),
+                Convert.ToInt64(mskTextBoxNumDocCedente.Text.ToString()));
 
             LeitorArquivoParametros leitor = new LeitorArquivoParametros();
             List<string> lista = new List<string>();
@@ -52,6 +54,7 @@ namespace Gerador_de_Remessa_Cliente
             mskTextBoxContaCedente.Text = lista[7].ToString();
             mskTextBoxAgCedente.Text = lista[8].ToString();
             textBoxDiretorioDestino.Text = lista[9].ToString();
+            mskTextBoxNumDocCedente.Text = lista[10].ToString();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -75,6 +78,16 @@ namespace Gerador_de_Remessa_Cliente
         }
 
         private void textBoxDiretorioDestino_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mskTextBoxNumDocCedente_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
         }

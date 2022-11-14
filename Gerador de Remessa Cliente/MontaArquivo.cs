@@ -12,14 +12,25 @@ namespace Gerador_de_Remessa_Cliente
 {
     internal class MontaArquivo
     {
-        public void GravaArquivoV2(int DataRecebimento, long SeuNUmero, int DataVencimento, int linhasPorArquivo, int numeroArquivo, int quantidadeDeArquivos, String Convenio, String Conta, String AgenciaCedente, String diretorio)
+        public void GravaArquivoV2(int DataRecebimento, long SeuNUmero, int DataVencimento, int linhasPorArquivo, int numeroArquivo, int quantidadeDeArquivos, String Convenio, String Conta, String AgenciaCedente, String diretorio, long numeroDocumentoCedente)
         {
-            Console.WriteLine("GravaArquivo");            
+            Console.WriteLine("GravaArquivo");
+            //long numeroDocumentoCedente = 59579284000165;
+            int identificadorTipoDocumento; // 1=cnpj; 2=cpf 
             BigInteger Valor; // 7525 = 75,25 Reais 
             int Linha = 2; //linha do arquivo            
             Random randNum = new Random();
-            Valor = randNum.Next(500,1000000);
-            //diretorio = diretorio + "\\";           
+            Valor = randNum.Next(500,1000000); // Boleto mínimo 5 reais; máximo 10.000 reais
+            //diretorio = diretorio + "\\";
+
+            if (numeroDocumentoCedente.ToString().Length > 11)
+            {
+                identificadorTipoDocumento = 1;
+            } else
+            {
+                identificadorTipoDocumento = 2;
+            }
+
 
             //System.Windows.Forms.MessageBox.Show("Diretorio recebe " + diretorio.Substring(diretorio.Length - 4, 4));
             if (diretorio.Substring(diretorio.Length - 2, 2) != "\\\\")
@@ -46,7 +57,7 @@ namespace Gerador_de_Remessa_Cliente
                     // while aqui 
                     for (int i = 0; i < linhasPorArquivo; i++)
                     {
-                        sw.WriteLine("10100006067139995" + AgenciaCedente + Conta + "                                         " + SeuNUmero.ToString().PadLeft(12, '0')
+                        sw.WriteLine("10"+ identificadorTipoDocumento.ToString() + numeroDocumentoCedente.ToString().PadLeft(14,'0') + AgenciaCedente + Conta + "                                         " + SeuNUmero.ToString().PadLeft(12, '0')
                         + "                         101" + SeuNUmero.ToString().PadLeft(10, '0') + DataVencimento + "000" + Valor.ToString().PadLeft(10, '0')
                         + "6300000001N" + DataRecebimento
                         + "000000000030000000000000000000000000000000000000000000000000100100006067139995Felipe de Liz Martins                   Rua Antonio Pietruza                                80610320Curitiba       PR                                        0010"
@@ -79,7 +90,8 @@ namespace Gerador_de_Remessa_Cliente
                 sw.WriteLine("CONVENIO=" + Convenio.ToString());
                 sw.WriteLine("CONTA_CEDENTE=" + Conta.ToString());
                 sw.WriteLine("AGENCIA_CEDENTE=" + AgenciaCedente.ToString());
-                sw.WriteLine("DIRETORIO_DESTINO=" + diretorio.ToString());               
+                sw.WriteLine("DIRETORIO_DESTINO=" + diretorio.ToString());
+                sw.WriteLine("DOCUMENTO_CEDENTE=" + numeroDocumentoCedente.ToString());
 
             }
             System.Windows.Forms.MessageBox.Show("Terminou!");

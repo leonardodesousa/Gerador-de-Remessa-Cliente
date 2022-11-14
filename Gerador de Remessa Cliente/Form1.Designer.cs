@@ -54,6 +54,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.mskTextBoxConvenio = new System.Windows.Forms.MaskedTextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.mskTextBoxNumDocCedente = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -223,6 +225,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.mskTextBoxNumDocCedente);
+            this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.mskTextBoxAgCedente);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.mskTextBoxContaCedente);
@@ -287,6 +291,25 @@
             this.label7.TabIndex = 3;
             this.label7.Text = "Identificação do Convênio ->";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(350, 71);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(138, 15);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "Número Doc Cedente ->";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
+            // 
+            // mskTextBoxNumDocCedente
+            // 
+            this.mskTextBoxNumDocCedente.Location = new System.Drawing.Point(518, 68);
+            this.mskTextBoxNumDocCedente.Mask = "00000000000000";
+            this.mskTextBoxNumDocCedente.Name = "mskTextBoxNumDocCedente";
+            this.mskTextBoxNumDocCedente.Size = new System.Drawing.Size(118, 23);
+            this.mskTextBoxNumDocCedente.TabIndex = 10;
+            this.mskTextBoxNumDocCedente.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTextBoxNumDocCedente_MaskInputRejected);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -333,5 +356,7 @@
         private Label label9;
         private TextBox textBoxDiretorioDestino;
         private Label label10;
+        private Label label11;
+        private MaskedTextBox mskTextBoxNumDocCedente;
     }
 }

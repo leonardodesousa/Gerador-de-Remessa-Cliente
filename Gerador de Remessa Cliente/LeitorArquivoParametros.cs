@@ -90,6 +90,12 @@ namespace Gerador_de_Remessa_Cliente
                             diretorioDestino = ln.Substring(18, ln.Length - 18);
                             ListaParametros.Add(diretorioDestino);
                         }
+                        if (ln.Length > 16 && ln.Substring(0, 17) == "DOCUMENTO_CEDENTE")
+                        {
+                            //System.Windows.Forms.MessageBox.Show("DIRETORIO_DESTINO recebe " + ln.Substring(18, ln.Length - 18));
+                            diretorioDestino = ln.Substring(18, ln.Length - 18);
+                            ListaParametros.Add(diretorioDestino);
+                        }
                     }
                 }
             }
