@@ -12,7 +12,7 @@ namespace Gerador_de_Remessa_Cliente
 {
     internal class MontaArquivo
     {
-        public void GravaArquivoV2(int DataRecebimento, int SeuNUmero, int DataVencimento, int linhasPorArquivo, int numeroArquivo, int quantidadeDeArquivos, String Convenio, String Conta, String AgenciaCedente, String diretorio)
+        public void GravaArquivoV2(int DataRecebimento, long SeuNUmero, int DataVencimento, int linhasPorArquivo, int numeroArquivo, int quantidadeDeArquivos, String Convenio, String Conta, String AgenciaCedente, String diretorio)
         {
             Console.WriteLine("GravaArquivo");            
             BigInteger Valor; // 7525 = 75,25 Reais 

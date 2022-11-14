@@ -27,9 +27,9 @@ namespace Gerador_de_Remessa_Cliente
         private void btnGerarArquivo_Click(object sender, EventArgs e)
         {
             MontaArquivo ma = new MontaArquivo();
-            //ma.GravaArquivo();
-            ma.GravaArquivoV2(Int32.Parse(mskTextBoxDataInclusao.Text.ToString()),
-                Int32.Parse(mskTextBoxSeuNumero.Text.ToString()),
+            //ma.GravaArquivo();            
+            ma.GravaArquivoV2(Int32.Parse(mskTextBoxDataInclusao.Text.ToString()),                
+                Convert.ToInt64(mskTextBoxSeuNumero.Text),
                 Int32.Parse(mskTextBoxDataVencimento.Text.ToString()),
                 Int32.Parse(mskTextBoxLinhasArquivo.Text.ToString()),
                 Int32.Parse(mskTextBoxSequencialArq.Text.ToString()),
