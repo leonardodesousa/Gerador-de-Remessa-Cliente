@@ -91,5 +91,20 @@ namespace Gerador_de_Remessa_Cliente
         {
 
         }
+
+        private void mskTextBoxConvenio_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void mskTextBoxContaCedente_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void mskTextBoxSequencialArq_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
     }
 }

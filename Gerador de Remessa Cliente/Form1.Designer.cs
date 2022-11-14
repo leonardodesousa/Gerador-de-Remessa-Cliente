@@ -48,14 +48,14 @@
             this.mskTextBoxSequencialArq = new System.Windows.Forms.MaskedTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.mskTextBoxNumDocCedente = new System.Windows.Forms.MaskedTextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.mskTextBoxAgCedente = new System.Windows.Forms.MaskedTextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.mskTextBoxContaCedente = new System.Windows.Forms.MaskedTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.mskTextBoxConvenio = new System.Windows.Forms.MaskedTextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.mskTextBoxNumDocCedente = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -65,7 +65,7 @@
             this.btnGerarArquivo.Location = new System.Drawing.Point(50, 511);
             this.btnGerarArquivo.Name = "btnGerarArquivo";
             this.btnGerarArquivo.Size = new System.Drawing.Size(137, 49);
-            this.btnGerarArquivo.TabIndex = 0;
+            this.btnGerarArquivo.TabIndex = 12;
             this.btnGerarArquivo.Text = "Gerar Arquivo";
             this.btnGerarArquivo.UseVisualStyleBackColor = true;
             this.btnGerarArquivo.Click += new System.EventHandler(this.btnGerarArquivo_Click);
@@ -109,8 +109,9 @@
             this.mskTextBoxSeuNumero.Location = new System.Drawing.Point(185, 47);
             this.mskTextBoxSeuNumero.Mask = "0000000000";
             this.mskTextBoxSeuNumero.Name = "mskTextBoxSeuNumero";
+            this.mskTextBoxSeuNumero.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.mskTextBoxSeuNumero.Size = new System.Drawing.Size(137, 23);
-            this.mskTextBoxSeuNumero.TabIndex = 7;
+            this.mskTextBoxSeuNumero.TabIndex = 1;
             this.mskTextBoxSeuNumero.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTextBoxSeuNumero_MaskInputRejected);
             // 
             // mskTextBoxLinhasArquivo
@@ -118,17 +119,18 @@
             this.mskTextBoxLinhasArquivo.Location = new System.Drawing.Point(185, 81);
             this.mskTextBoxLinhasArquivo.Mask = "00000";
             this.mskTextBoxLinhasArquivo.Name = "mskTextBoxLinhasArquivo";
+            this.mskTextBoxLinhasArquivo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.mskTextBoxLinhasArquivo.Size = new System.Drawing.Size(137, 23);
-            this.mskTextBoxLinhasArquivo.TabIndex = 8;
-            this.mskTextBoxLinhasArquivo.ValidatingType = typeof(int);
+            this.mskTextBoxLinhasArquivo.TabIndex = 3;
             // 
             // mskTextBoxQtdArquivos
             // 
             this.mskTextBoxQtdArquivos.Location = new System.Drawing.Point(185, 151);
             this.mskTextBoxQtdArquivos.Mask = "00000";
             this.mskTextBoxQtdArquivos.Name = "mskTextBoxQtdArquivos";
+            this.mskTextBoxQtdArquivos.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.mskTextBoxQtdArquivos.Size = new System.Drawing.Size(137, 23);
-            this.mskTextBoxQtdArquivos.TabIndex = 9;
+            this.mskTextBoxQtdArquivos.TabIndex = 6;
             this.mskTextBoxQtdArquivos.ValidatingType = typeof(int);
             // 
             // mskTextBoxDataInclusao
@@ -136,8 +138,9 @@
             this.mskTextBoxDataInclusao.Location = new System.Drawing.Point(576, 52);
             this.mskTextBoxDataInclusao.Mask = "000000";
             this.mskTextBoxDataInclusao.Name = "mskTextBoxDataInclusao";
+            this.mskTextBoxDataInclusao.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.mskTextBoxDataInclusao.Size = new System.Drawing.Size(113, 23);
-            this.mskTextBoxDataInclusao.TabIndex = 10;
+            this.mskTextBoxDataInclusao.TabIndex = 2;
             // 
             // label4
             // 
@@ -153,8 +156,9 @@
             this.mskTextBoxDataVencimento.Location = new System.Drawing.Point(576, 86);
             this.mskTextBoxDataVencimento.Mask = "000000";
             this.mskTextBoxDataVencimento.Name = "mskTextBoxDataVencimento";
+            this.mskTextBoxDataVencimento.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.mskTextBoxDataVencimento.Size = new System.Drawing.Size(113, 23);
-            this.mskTextBoxDataVencimento.TabIndex = 12;
+            this.mskTextBoxDataVencimento.TabIndex = 4;
             // 
             // label5
             // 
@@ -193,7 +197,7 @@
             this.textBoxDiretorioDestino.Location = new System.Drawing.Point(185, 203);
             this.textBoxDiretorioDestino.Name = "textBoxDiretorioDestino";
             this.textBoxDiretorioDestino.Size = new System.Drawing.Size(504, 23);
-            this.textBoxDiretorioDestino.TabIndex = 17;
+            this.textBoxDiretorioDestino.TabIndex = 7;
             this.textBoxDiretorioDestino.TextChanged += new System.EventHandler(this.textBoxDiretorioDestino_TextChanged);
             // 
             // label10
@@ -210,9 +214,11 @@
             this.mskTextBoxSequencialArq.Location = new System.Drawing.Point(185, 118);
             this.mskTextBoxSequencialArq.Mask = "00000";
             this.mskTextBoxSequencialArq.Name = "mskTextBoxSequencialArq";
+            this.mskTextBoxSequencialArq.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.mskTextBoxSequencialArq.Size = new System.Drawing.Size(137, 23);
-            this.mskTextBoxSequencialArq.TabIndex = 15;
+            this.mskTextBoxSequencialArq.TabIndex = 5;
             this.mskTextBoxSequencialArq.ValidatingType = typeof(int);
+            this.mskTextBoxSequencialArq.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTextBoxSequencialArq_MaskInputRejected);
             // 
             // label6
             // 
@@ -240,11 +246,32 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados do Cedente";
             // 
+            // mskTextBoxNumDocCedente
+            // 
+            this.mskTextBoxNumDocCedente.Location = new System.Drawing.Point(518, 68);
+            this.mskTextBoxNumDocCedente.Mask = "00000000000000";
+            this.mskTextBoxNumDocCedente.Name = "mskTextBoxNumDocCedente";
+            this.mskTextBoxNumDocCedente.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.mskTextBoxNumDocCedente.Size = new System.Drawing.Size(118, 23);
+            this.mskTextBoxNumDocCedente.TabIndex = 11;
+            this.mskTextBoxNumDocCedente.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTextBoxNumDocCedente_MaskInputRejected);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(350, 71);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(138, 15);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "Número Doc Cedente ->";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
+            // 
             // mskTextBoxAgCedente
             // 
             this.mskTextBoxAgCedente.Location = new System.Drawing.Point(185, 28);
             this.mskTextBoxAgCedente.Mask = "00";
             this.mskTextBoxAgCedente.Name = "mskTextBoxAgCedente";
+            this.mskTextBoxAgCedente.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.mskTextBoxAgCedente.Size = new System.Drawing.Size(100, 23);
             this.mskTextBoxAgCedente.TabIndex = 8;
             // 
@@ -262,8 +289,10 @@
             this.mskTextBoxContaCedente.Location = new System.Drawing.Point(185, 71);
             this.mskTextBoxContaCedente.Mask = "0000000000";
             this.mskTextBoxContaCedente.Name = "mskTextBoxContaCedente";
+            this.mskTextBoxContaCedente.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.mskTextBoxContaCedente.Size = new System.Drawing.Size(100, 23);
-            this.mskTextBoxContaCedente.TabIndex = 6;
+            this.mskTextBoxContaCedente.TabIndex = 10;
+            this.mskTextBoxContaCedente.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTextBoxContaCedente_MaskInputRejected);
             // 
             // label8
             // 
@@ -279,8 +308,10 @@
             this.mskTextBoxConvenio.Location = new System.Drawing.Point(518, 33);
             this.mskTextBoxConvenio.Mask = "000000000000";
             this.mskTextBoxConvenio.Name = "mskTextBoxConvenio";
+            this.mskTextBoxConvenio.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.mskTextBoxConvenio.Size = new System.Drawing.Size(118, 23);
-            this.mskTextBoxConvenio.TabIndex = 4;
+            this.mskTextBoxConvenio.TabIndex = 9;
+            this.mskTextBoxConvenio.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTextBoxConvenio_MaskInputRejected);
             // 
             // label7
             // 
@@ -290,25 +321,6 @@
             this.label7.Size = new System.Drawing.Size(162, 15);
             this.label7.TabIndex = 3;
             this.label7.Text = "Identificação do Convênio ->";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(350, 71);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(138, 15);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "Número Doc Cedente ->";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
-            // 
-            // mskTextBoxNumDocCedente
-            // 
-            this.mskTextBoxNumDocCedente.Location = new System.Drawing.Point(518, 68);
-            this.mskTextBoxNumDocCedente.Mask = "00000000000000";
-            this.mskTextBoxNumDocCedente.Name = "mskTextBoxNumDocCedente";
-            this.mskTextBoxNumDocCedente.Size = new System.Drawing.Size(118, 23);
-            this.mskTextBoxNumDocCedente.TabIndex = 10;
-            this.mskTextBoxNumDocCedente.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTextBoxNumDocCedente_MaskInputRejected);
             // 
             // Form1
             // 
