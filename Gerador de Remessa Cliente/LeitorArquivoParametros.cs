@@ -40,7 +40,7 @@ namespace Gerador_de_Remessa_Cliente
                         if (ln.Length > 14 && ln.Substring(0, 14) == "NUMERO_ARQUIVO")
                         {
                             //System.Windows.Forms.MessageBox.Show("NUMERO_ARQUIVO recebe " + ln.Substring(14, ln.Length - 14) +"espaço");
-                            numeroArquivo = ln.Substring(14,ln.Length-14);
+                            numeroArquivo = ln.Substring(15,ln.Length-15);
                             ListaParametros.Add(ln.Trim());
                         }
                         if (ln.Length > 10 && ln.Substring(0, 10) == "SEU_NUMERO")

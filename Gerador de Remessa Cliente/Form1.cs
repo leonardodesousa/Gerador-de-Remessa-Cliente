@@ -6,18 +6,18 @@ namespace Gerador_de_Remessa_Cliente
         {
             InitializeComponent();
             var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-            this.Text = String.Format("Gerador de Remessa Cliente - Letsbank (Versão {0})", version);
+            this.Text = String.Format("Gerador de Remessa Cliente (Versão {0})", version);
             
 
             LeitorArquivoParametros leitor = new LeitorArquivoParametros();
             List<string> lista = new List<string>();
             lista = leitor.BuscaParametros();
-            mskTextBoxSequencialArq.Text = lista[0].ToString();
+            mskTextBoxSequencialArq.Text = lista[0].Trim().ToString().PadLeft(5,'0');
             mskTextBoxSeuNumero.Text = lista[1].ToString();
             mskTextBoxDataInclusao.Text = lista[2].ToString();
             mskTextBoxDataVencimento.Text = lista[3].ToString();
-            mskTextBoxLinhasArquivo.Text = lista[4].ToString();
-            mskTextBoxQtdArquivos.Text = lista[5].ToString();            
+            mskTextBoxLinhasArquivo.Text = lista[4].ToString().Trim().PadLeft(6, '0');
+            mskTextBoxQtdArquivos.Text = lista[5].ToString().PadLeft(6, '0');            
             mskTextBoxConvenio.Text = lista[6].ToString();
             mskTextBoxContaCedente.Text = lista[7].ToString();
             mskTextBoxAgCedente.Text = lista[8].ToString();
@@ -27,34 +27,48 @@ namespace Gerador_de_Remessa_Cliente
 
         private void btnGerarArquivo_Click(object sender, EventArgs e)
         {
-            MontaArquivo ma = new MontaArquivo();
-            //ma.GravaArquivo();            
-            ma.GravaArquivoV2(Int32.Parse(mskTextBoxDataInclusao.Text.ToString()),                
-                Convert.ToInt64(mskTextBoxSeuNumero.Text),
-                Int32.Parse(mskTextBoxDataVencimento.Text.ToString()),
-                Int32.Parse(mskTextBoxLinhasArquivo.Text.ToString()),
-                Int32.Parse(mskTextBoxSequencialArq.Text.ToString()),
-                Int32.Parse(mskTextBoxQtdArquivos.Text.ToString()),
-                mskTextBoxConvenio.Text.ToString(),
-                mskTextBoxContaCedente.Text.ToString(),
-                mskTextBoxAgCedente.Text.ToString(),
-                textBoxDiretorioDestino.Text.ToString(),
-                Convert.ToInt64(mskTextBoxNumDocCedente.Text.ToString()));
+            if (String.IsNullOrEmpty(mskTextBoxSequencialArq.Text.Trim().ToString()) || String.IsNullOrEmpty(mskTextBoxSeuNumero.Text.Trim().ToString()) ||
+                String.IsNullOrEmpty(mskTextBoxDataInclusao.Text.Trim().ToString()) || String.IsNullOrEmpty(mskTextBoxDataVencimento.Text.ToString()) ||
+                 mskTextBoxDataVencimento.Text.ToString() == "  /  /" || mskTextBoxDataInclusao.Text.ToString() == "  /  /" ||
+                String.IsNullOrEmpty(mskTextBoxLinhasArquivo.Text.Trim().ToString()) || String.IsNullOrEmpty(mskTextBoxQtdArquivos.Text.Trim().ToString()) ||
+                String.IsNullOrEmpty(mskTextBoxConvenio.Text.Trim().ToString()) || String.IsNullOrEmpty(mskTextBoxContaCedente.Text.Trim().ToString()) ||
+                String.IsNullOrEmpty(mskTextBoxAgCedente.Text.Trim().ToString()) || String.IsNullOrEmpty(textBoxDiretorioDestino.Text.Trim().ToString()) ||
+                String.IsNullOrEmpty(mskTextBoxNumDocCedente.Text.Trim().ToString()))
+            {
+                DialogResult dialogResult = MessageBox.Show("Verifique se TODOS os campos foram preenchidos!",
+                   "Campos obrigatórios não preenchidos!", MessageBoxButtons.OK);
 
-            LeitorArquivoParametros leitor = new LeitorArquivoParametros();
-            List<string> lista = new List<string>();
-            lista = leitor.BuscaParametros();
-            mskTextBoxSequencialArq.Text = lista[0].ToString();
-            mskTextBoxSeuNumero.Text = lista[1].ToString();
-            mskTextBoxDataInclusao.Text = lista[2].ToString();
-            mskTextBoxDataVencimento.Text = lista[3].ToString();
-            mskTextBoxLinhasArquivo.Text = lista[4].ToString();
-            mskTextBoxQtdArquivos.Text = lista[5].ToString();
-            mskTextBoxConvenio.Text = lista[6].ToString();
-            mskTextBoxContaCedente.Text = lista[7].ToString();
-            mskTextBoxAgCedente.Text = lista[8].ToString();
-            textBoxDiretorioDestino.Text = lista[9].ToString();
-            mskTextBoxNumDocCedente.Text = lista[10].ToString();
+            } else
+            {
+                MontaArquivo ma = new MontaArquivo();
+                //ma.GravaArquivo();            
+                ma.GravaArquivoV2(/*Int32.Parse(mskTextBoxDataInclusao.Text.ToString())*/ DateTime.Parse(mskTextBoxDataInclusao.Text),
+                    Convert.ToInt64(mskTextBoxSeuNumero.Text),
+                    /*Int32.Parse(mskTextBoxDataVencimento.Text.ToString())*/ DateTime.Parse(mskTextBoxDataVencimento.Text),
+                    Int32.Parse(mskTextBoxLinhasArquivo.Text.ToString()),
+                    Int32.Parse(mskTextBoxSequencialArq.Text.ToString()),
+                    Int32.Parse(mskTextBoxQtdArquivos.Text.ToString()),
+                    mskTextBoxConvenio.Text.ToString(),
+                    mskTextBoxContaCedente.Text.ToString(),
+                    mskTextBoxAgCedente.Text.ToString(),
+                    textBoxDiretorioDestino.Text.ToString(),
+                    Convert.ToInt64(mskTextBoxNumDocCedente.Text.ToString()));
+
+                LeitorArquivoParametros leitor = new LeitorArquivoParametros();
+                List<string> lista = new List<string>();
+                lista = leitor.BuscaParametros();
+                mskTextBoxSequencialArq.Text = lista[0].Trim().ToString().PadLeft(5, '0');
+                mskTextBoxSeuNumero.Text = lista[1].ToString();
+                mskTextBoxDataInclusao.Text = lista[2].ToString();
+                mskTextBoxDataVencimento.Text = lista[3].ToString();
+                mskTextBoxLinhasArquivo.Text = lista[4].ToString().PadLeft(6, '0');
+                mskTextBoxQtdArquivos.Text = lista[5].ToString().PadLeft(6, '0');
+                mskTextBoxConvenio.Text = lista[6].ToString().PadLeft(6, '0');
+                mskTextBoxContaCedente.Text = lista[7].ToString();
+                mskTextBoxAgCedente.Text = lista[8].ToString();
+                textBoxDiretorioDestino.Text = lista[9].ToString();
+                mskTextBoxNumDocCedente.Text = lista[10].ToString();
+            }           
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -105,6 +119,11 @@ namespace Gerador_de_Remessa_Cliente
         private void mskTextBoxSequencialArq_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
