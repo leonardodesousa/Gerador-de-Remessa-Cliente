@@ -43,10 +43,10 @@
             this.mskTextBoxDataVencimento = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Leaute = new System.Windows.Forms.Label();
+            this.comboLeiaute = new System.Windows.Forms.ComboBox();
             this.textBoxDiretorioDestino = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.mskTextBoxSequencialArq = new System.Windows.Forms.MaskedTextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.mskTextBoxNumDocCedente = new System.Windows.Forms.MaskedTextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -57,13 +57,16 @@
             this.mskTextBoxConvenio = new System.Windows.Forms.MaskedTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnSair = new System.Windows.Forms.Button();
+            this.comboConvenios = new System.Windows.Forms.ComboBox();
+            this.labelConvenios = new System.Windows.Forms.Label();
+            this.bnBuscarDados = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnGerarArquivo
             // 
-            this.btnGerarArquivo.Location = new System.Drawing.Point(50, 511);
+            this.btnGerarArquivo.Location = new System.Drawing.Point(88, 592);
             this.btnGerarArquivo.Name = "btnGerarArquivo";
             this.btnGerarArquivo.Size = new System.Drawing.Size(137, 49);
             this.btnGerarArquivo.TabIndex = 16;
@@ -74,18 +77,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(30, 55);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 15);
+            this.label1.Size = new System.Drawing.Size(154, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Seu Número inicial ->";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(30, 89);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(121, 15);
+            this.label2.Size = new System.Drawing.Size(151, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "Linhas por arquivo ->";
             // 
@@ -98,52 +103,57 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 159);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(474, 130);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(149, 15);
+            this.label3.Size = new System.Drawing.Size(188, 20);
             this.label3.TabIndex = 6;
             this.label3.Text = "Quantidade de arquivos ->";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // mskTextBoxSeuNumero
             // 
+            this.mskTextBoxSeuNumero.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.mskTextBoxSeuNumero.Location = new System.Drawing.Point(185, 47);
             this.mskTextBoxSeuNumero.Mask = "0000000000";
             this.mskTextBoxSeuNumero.Name = "mskTextBoxSeuNumero";
             this.mskTextBoxSeuNumero.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mskTextBoxSeuNumero.Size = new System.Drawing.Size(137, 23);
+            this.mskTextBoxSeuNumero.Size = new System.Drawing.Size(137, 27);
             this.mskTextBoxSeuNumero.TabIndex = 1;
             this.mskTextBoxSeuNumero.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.mskTextBoxSeuNumero.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTextBoxSeuNumero_MaskInputRejected);
             // 
             // mskTextBoxLinhasArquivo
             // 
+            this.mskTextBoxLinhasArquivo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.mskTextBoxLinhasArquivo.Location = new System.Drawing.Point(185, 81);
             this.mskTextBoxLinhasArquivo.Mask = "00000";
             this.mskTextBoxLinhasArquivo.Name = "mskTextBoxLinhasArquivo";
             this.mskTextBoxLinhasArquivo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mskTextBoxLinhasArquivo.Size = new System.Drawing.Size(137, 23);
+            this.mskTextBoxLinhasArquivo.Size = new System.Drawing.Size(137, 27);
             this.mskTextBoxLinhasArquivo.TabIndex = 3;
             this.mskTextBoxLinhasArquivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // mskTextBoxQtdArquivos
             // 
-            this.mskTextBoxQtdArquivos.Location = new System.Drawing.Point(185, 151);
+            this.mskTextBoxQtdArquivos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.mskTextBoxQtdArquivos.Location = new System.Drawing.Point(668, 127);
             this.mskTextBoxQtdArquivos.Mask = "00000";
             this.mskTextBoxQtdArquivos.Name = "mskTextBoxQtdArquivos";
             this.mskTextBoxQtdArquivos.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mskTextBoxQtdArquivos.Size = new System.Drawing.Size(137, 23);
+            this.mskTextBoxQtdArquivos.Size = new System.Drawing.Size(113, 27);
             this.mskTextBoxQtdArquivos.TabIndex = 6;
             this.mskTextBoxQtdArquivos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.mskTextBoxQtdArquivos.ValidatingType = typeof(int);
             // 
             // mskTextBoxDataInclusao
             // 
-            this.mskTextBoxDataInclusao.Location = new System.Drawing.Point(576, 52);
+            this.mskTextBoxDataInclusao.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.mskTextBoxDataInclusao.Location = new System.Drawing.Point(668, 52);
             this.mskTextBoxDataInclusao.Mask = "00/00/0000";
             this.mskTextBoxDataInclusao.Name = "mskTextBoxDataInclusao";
             this.mskTextBoxDataInclusao.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mskTextBoxDataInclusao.Size = new System.Drawing.Size(113, 23);
+            this.mskTextBoxDataInclusao.Size = new System.Drawing.Size(113, 27);
             this.mskTextBoxDataInclusao.TabIndex = 2;
             this.mskTextBoxDataInclusao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.mskTextBoxDataInclusao.ValidatingType = typeof(System.DateTime);
@@ -151,19 +161,21 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(350, 55);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(448, 54);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(166, 15);
+            this.label4.Size = new System.Drawing.Size(214, 20);
             this.label4.TabIndex = 11;
-            this.label4.Text = "Data do arquivo (ddmmaa) ->";
+            this.label4.Text = "Data de emissão (ddmmaa) ->";
             // 
             // mskTextBoxDataVencimento
             // 
-            this.mskTextBoxDataVencimento.Location = new System.Drawing.Point(576, 86);
+            this.mskTextBoxDataVencimento.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.mskTextBoxDataVencimento.Location = new System.Drawing.Point(668, 90);
             this.mskTextBoxDataVencimento.Mask = "00/00/0000";
             this.mskTextBoxDataVencimento.Name = "mskTextBoxDataVencimento";
             this.mskTextBoxDataVencimento.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mskTextBoxDataVencimento.Size = new System.Drawing.Size(113, 23);
+            this.mskTextBoxDataVencimento.Size = new System.Drawing.Size(113, 27);
             this.mskTextBoxDataVencimento.TabIndex = 4;
             this.mskTextBoxDataVencimento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.mskTextBoxDataVencimento.ValidatingType = typeof(System.DateTime);
@@ -171,18 +183,19 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(350, 89);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(391, 93);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(214, 15);
+            this.label5.Size = new System.Drawing.Size(271, 20);
             this.label5.TabIndex = 13;
             this.label5.Text = "Data Vencimento Boletos (ddmmaa) ->";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Leaute);
+            this.groupBox1.Controls.Add(this.comboLeiaute);
             this.groupBox1.Controls.Add(this.textBoxDiretorioDestino);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.mskTextBoxSequencialArq);
-            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.mskTextBoxLinhasArquivo);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label1);
@@ -193,50 +206,54 @@
             this.groupBox1.Controls.Add(this.mskTextBoxDataInclusao);
             this.groupBox1.Controls.Add(this.mskTextBoxSeuNumero);
             this.groupBox1.Controls.Add(this.mskTextBoxQtdArquivos);
-            this.groupBox1.Location = new System.Drawing.Point(50, 49);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox1.Location = new System.Drawing.Point(90, 119);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(721, 263);
+            this.groupBox1.Size = new System.Drawing.Size(875, 263);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Parâmetros de entrada";
             // 
+            // Leaute
+            // 
+            this.Leaute.AutoSize = true;
+            this.Leaute.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Leaute.Location = new System.Drawing.Point(106, 126);
+            this.Leaute.Name = "Leaute";
+            this.Leaute.Size = new System.Drawing.Size(73, 20);
+            this.Leaute.TabIndex = 18;
+            this.Leaute.Text = "Layout ->";
+            // 
+            // comboLeiaute
+            // 
+            this.comboLeiaute.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboLeiaute.FormattingEnabled = true;
+            this.comboLeiaute.Items.AddRange(new object[] {
+            "Itaú",
+            "TotalBanco"});
+            this.comboLeiaute.Location = new System.Drawing.Point(185, 118);
+            this.comboLeiaute.Name = "comboLeiaute";
+            this.comboLeiaute.Size = new System.Drawing.Size(137, 28);
+            this.comboLeiaute.Sorted = true;
+            this.comboLeiaute.TabIndex = 17;
+            // 
             // textBoxDiretorioDestino
             // 
-            this.textBoxDiretorioDestino.Location = new System.Drawing.Point(185, 203);
+            this.textBoxDiretorioDestino.Location = new System.Drawing.Point(232, 203);
             this.textBoxDiretorioDestino.Name = "textBoxDiretorioDestino";
-            this.textBoxDiretorioDestino.Size = new System.Drawing.Size(504, 23);
+            this.textBoxDiretorioDestino.Size = new System.Drawing.Size(549, 27);
             this.textBoxDiretorioDestino.TabIndex = 7;
             this.textBoxDiretorioDestino.TextChanged += new System.EventHandler(this.textBoxDiretorioDestino_TextChanged);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(30, 206);
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(20, 206);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(154, 15);
+            this.label10.Size = new System.Drawing.Size(196, 20);
             this.label10.TabIndex = 16;
             this.label10.Text = "Diretório destino arquivo ->";
-            // 
-            // mskTextBoxSequencialArq
-            // 
-            this.mskTextBoxSequencialArq.Location = new System.Drawing.Point(185, 118);
-            this.mskTextBoxSequencialArq.Mask = "00000";
-            this.mskTextBoxSequencialArq.Name = "mskTextBoxSequencialArq";
-            this.mskTextBoxSequencialArq.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mskTextBoxSequencialArq.Size = new System.Drawing.Size(137, 23);
-            this.mskTextBoxSequencialArq.TabIndex = 5;
-            this.mskTextBoxSequencialArq.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.mskTextBoxSequencialArq.ValidatingType = typeof(int);
-            this.mskTextBoxSequencialArq.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTextBoxSequencialArq_MaskInputRejected);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(30, 126);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(159, 15);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Sequencial inicial Arquivo ->";
             // 
             // groupBox2
             // 
@@ -248,20 +265,21 @@
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.mskTextBoxConvenio);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Location = new System.Drawing.Point(50, 343);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox2.Location = new System.Drawing.Point(90, 420);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(721, 140);
+            this.groupBox2.Size = new System.Drawing.Size(875, 140);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados do Cedente";
             // 
             // mskTextBoxNumDocCedente
             // 
-            this.mskTextBoxNumDocCedente.Location = new System.Drawing.Point(518, 68);
+            this.mskTextBoxNumDocCedente.Location = new System.Drawing.Point(559, 68);
             this.mskTextBoxNumDocCedente.Mask = "00000000000000";
             this.mskTextBoxNumDocCedente.Name = "mskTextBoxNumDocCedente";
             this.mskTextBoxNumDocCedente.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mskTextBoxNumDocCedente.Size = new System.Drawing.Size(118, 23);
+            this.mskTextBoxNumDocCedente.Size = new System.Drawing.Size(154, 27);
             this.mskTextBoxNumDocCedente.TabIndex = 11;
             this.mskTextBoxNumDocCedente.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.mskTextBoxNumDocCedente.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTextBoxNumDocCedente_MaskInputRejected);
@@ -269,9 +287,9 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(350, 71);
+            this.label11.Location = new System.Drawing.Point(359, 74);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(138, 15);
+            this.label11.Size = new System.Drawing.Size(173, 20);
             this.label11.TabIndex = 9;
             this.label11.Text = "Número Doc Cedente ->";
             this.label11.Click += new System.EventHandler(this.label11_Click);
@@ -282,7 +300,7 @@
             this.mskTextBoxAgCedente.Mask = "00";
             this.mskTextBoxAgCedente.Name = "mskTextBoxAgCedente";
             this.mskTextBoxAgCedente.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mskTextBoxAgCedente.Size = new System.Drawing.Size(100, 23);
+            this.mskTextBoxAgCedente.Size = new System.Drawing.Size(100, 27);
             this.mskTextBoxAgCedente.TabIndex = 8;
             this.mskTextBoxAgCedente.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -291,7 +309,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(30, 36);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(113, 15);
+            this.label9.Size = new System.Drawing.Size(142, 20);
             this.label9.TabIndex = 7;
             this.label9.Text = "Agência Cedente ->";
             // 
@@ -301,7 +319,7 @@
             this.mskTextBoxContaCedente.Mask = "0000000000";
             this.mskTextBoxContaCedente.Name = "mskTextBoxContaCedente";
             this.mskTextBoxContaCedente.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mskTextBoxContaCedente.Size = new System.Drawing.Size(100, 23);
+            this.mskTextBoxContaCedente.Size = new System.Drawing.Size(100, 27);
             this.mskTextBoxContaCedente.TabIndex = 10;
             this.mskTextBoxContaCedente.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.mskTextBoxContaCedente.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTextBoxContaCedente_MaskInputRejected);
@@ -311,17 +329,17 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(30, 79);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(119, 15);
+            this.label8.Size = new System.Drawing.Size(149, 20);
             this.label8.TabIndex = 5;
             this.label8.Text = "Conta do Cedente ->";
             // 
             // mskTextBoxConvenio
             // 
-            this.mskTextBoxConvenio.Location = new System.Drawing.Point(518, 33);
+            this.mskTextBoxConvenio.Location = new System.Drawing.Point(559, 33);
             this.mskTextBoxConvenio.Mask = "000000000000";
             this.mskTextBoxConvenio.Name = "mskTextBoxConvenio";
             this.mskTextBoxConvenio.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mskTextBoxConvenio.Size = new System.Drawing.Size(118, 23);
+            this.mskTextBoxConvenio.Size = new System.Drawing.Size(154, 27);
             this.mskTextBoxConvenio.TabIndex = 9;
             this.mskTextBoxConvenio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.mskTextBoxConvenio.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTextBoxConvenio_MaskInputRejected);
@@ -331,7 +349,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(350, 36);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(162, 15);
+            this.label7.Size = new System.Drawing.Size(203, 20);
             this.label7.TabIndex = 3;
             this.label7.Text = "Identificação do Convênio ->";
             // 
@@ -339,7 +357,7 @@
             // 
             this.btnSair.BackColor = System.Drawing.Color.Red;
             this.btnSair.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSair.Location = new System.Drawing.Point(626, 511);
+            this.btnSair.Location = new System.Drawing.Point(828, 592);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(137, 49);
             this.btnSair.TabIndex = 17;
@@ -347,11 +365,44 @@
             this.btnSair.UseVisualStyleBackColor = false;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
+            // comboConvenios
+            // 
+            this.comboConvenios.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboConvenios.FormattingEnabled = true;
+            this.comboConvenios.Location = new System.Drawing.Point(315, 62);
+            this.comboConvenios.Name = "comboConvenios";
+            this.comboConvenios.Size = new System.Drawing.Size(488, 28);
+            this.comboConvenios.TabIndex = 18;
+            this.comboConvenios.SelectedIndexChanged += new System.EventHandler(this.comboConvenios_SelectedIndexChanged);
+            // 
+            // labelConvenios
+            // 
+            this.labelConvenios.AutoSize = true;
+            this.labelConvenios.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelConvenios.Location = new System.Drawing.Point(88, 62);
+            this.labelConvenios.Name = "labelConvenios";
+            this.labelConvenios.Size = new System.Drawing.Size(181, 20);
+            this.labelConvenios.TabIndex = 19;
+            this.labelConvenios.Text = "Convenios cadastrados ->";
+            // 
+            // bnBuscarDados
+            // 
+            this.bnBuscarDados.Location = new System.Drawing.Point(828, 49);
+            this.bnBuscarDados.Name = "bnBuscarDados";
+            this.bnBuscarDados.Size = new System.Drawing.Size(137, 49);
+            this.bnBuscarDados.TabIndex = 20;
+            this.bnBuscarDados.Text = "Buscar Dados";
+            this.bnBuscarDados.UseVisualStyleBackColor = true;
+            this.bnBuscarDados.Click += new System.EventHandler(this.bnBuscarDados_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(952, 633);
+            this.ClientSize = new System.Drawing.Size(1086, 749);
+            this.Controls.Add(this.bnBuscarDados);
+            this.Controls.Add(this.labelConvenios);
+            this.Controls.Add(this.comboConvenios);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -365,6 +416,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -383,8 +435,6 @@
         private MaskedTextBox mskTextBoxDataVencimento;
         private Label label5;
         private GroupBox groupBox1;
-        private MaskedTextBox mskTextBoxSequencialArq;
-        private Label label6;
         private GroupBox groupBox2;
         private MaskedTextBox mskTextBoxContaCedente;
         private Label label8;
@@ -397,5 +447,10 @@
         private Label label11;
         private MaskedTextBox mskTextBoxNumDocCedente;
         private Button btnSair;
+        private Label Leaute;
+        private ComboBox comboLeiaute;
+        private ComboBox comboConvenios;
+        private Label labelConvenios;
+        private Button bnBuscarDados;
     }
 }
