@@ -55,7 +55,7 @@ namespace Gerador_de_Remessa_Cliente
 
             } else
             {
-                if (comboLeiaute.Text == "TotalBanco" || check == 0)
+                if (comboLeiaute.Text == "TotalBanco" && check == 0)
                 {
                     MontaArquivo ma = new MontaArquivo();
                     //ma.GravaArquivo();            
@@ -92,7 +92,44 @@ namespace Gerador_de_Remessa_Cliente
                     
 
                 }
-                if (comboLeiaute.Text == "Itaú" || check == 0)
+                if (comboLeiaute.Text == "Bradesco" && check == 0)
+                {                   
+                    MontaArquivo ma = new MontaArquivo();
+                    //ma.GravaArquivo();            
+                    ma.GravaArquivoLtBradesco(/*Int32.Parse(mskTextBoxDataInclusao.Text.ToString())*/ DateTime.Parse(mskTextBoxDataInclusao.Text),
+                        Convert.ToInt64(mskTextBoxSeuNumero.Text),
+                        /*Int32.Parse(mskTextBoxDataVencimento.Text.ToString())*/ DateTime.Parse(mskTextBoxDataVencimento.Text),
+                        Int32.Parse(mskTextBoxLinhasArquivo.Text.ToString()),
+                        //Int32.Parse(mskTextBoxSequencialArq.Text.ToString()),
+                        Int32.Parse(mskTextBoxQtdArquivos.Text.ToString()),
+                        mskTextBoxConvenio.Text.ToString(),
+                        mskTextBoxContaCedente.Text.ToString(),
+                        mskTextBoxAgCedente.Text.ToString(),
+                        textBoxDiretorioDestino.Text.ToString(),
+                        Convert.ToInt64(mskTextBoxNumDocCedente.Text.ToString()));
+
+                    String conveniado = comboConvenios.Text.ToString().Substring(0, 12);
+                    LeitorArquivoParametros leitor = new LeitorArquivoParametros();
+                    List<string> lista = new List<string>();
+                    lista = leitor.BuscaParametroConveniado(conveniado);
+                    //mskTextBoxSequencialArq.Text = lista[0].Trim().ToString().PadLeft(5,'0');
+                    mskTextBoxSeuNumero.Text = lista[1].ToString();
+                    mskTextBoxDataInclusao.Text = lista[2].ToString();
+                    mskTextBoxDataVencimento.Text = lista[3].ToString();
+                    mskTextBoxLinhasArquivo.Text = lista[4].ToString().Trim().PadLeft(6, '0');
+                    mskTextBoxQtdArquivos.Text = lista[5].ToString().PadLeft(6, '0');
+                    mskTextBoxConvenio.Text = lista[6].ToString();
+                    mskTextBoxContaCedente.Text = lista[7].ToString();
+                    mskTextBoxAgCedente.Text = lista[8].ToString();
+                    textBoxDiretorioDestino.Text = lista[9].ToString();
+                    mskTextBoxNumDocCedente.Text = lista[10].ToString();
+
+                    comboLeiaute.SelectedIndex = -1;
+                    check = 1;
+
+
+                }
+                if (comboLeiaute.Text == "Itaú" && check == 0)
                 {
                     MontaArquivo ma = new MontaArquivo();
                     //ma.GravaArquivo();            
@@ -221,6 +258,7 @@ namespace Gerador_de_Remessa_Cliente
             mskTextBoxAgCedente.Text = lista[8].ToString();
             textBoxDiretorioDestino.Text = lista[9].ToString();
             mskTextBoxNumDocCedente.Text = lista[10].ToString();
+            comboLeiaute.SelectedIndex = -1;
 
 
 

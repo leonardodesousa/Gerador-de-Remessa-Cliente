@@ -229,6 +229,7 @@
             this.comboLeiaute.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboLeiaute.FormattingEnabled = true;
             this.comboLeiaute.Items.AddRange(new object[] {
+            "Bradesco",
             "Itaú",
             "TotalBanco"});
             this.comboLeiaute.Location = new System.Drawing.Point(185, 118);
@@ -287,7 +288,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(359, 74);
+            this.label11.Location = new System.Drawing.Point(380, 74);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(173, 20);
             this.label11.TabIndex = 9;
@@ -383,7 +384,7 @@
             this.labelConvenios.Name = "labelConvenios";
             this.labelConvenios.Size = new System.Drawing.Size(181, 20);
             this.labelConvenios.TabIndex = 19;
-            this.labelConvenios.Text = "Convenios cadastrados ->";
+            this.labelConvenios.Text = "Convênios cadastrados ->";
             // 
             // bnBuscarDados
             // 
