@@ -64,6 +64,8 @@ namespace Gerador_de_Remessa_Cliente
             String contaCedente;
             String agenciaCedente;
             String diretorioDestino;
+            String bancoCobrador;
+            String carteira;
             //String path = @"C:\TotalBanco\Crediblaster\GeraRem\GeraRem.ini";
             String path = @"C:\TotalBanco\Crediblaster\GeraRem\Clientes\Convenios\" +conveniado+ ".ini";
         
@@ -83,10 +85,7 @@ namespace Gerador_de_Remessa_Cliente
                             //System.Windows.Forms.MessageBox.Show("NUMERO_ARQUIVO recebe " + ln.Substring(14, ln.Length - 14) +"espaço");
                             numeroArquivo = ln.Substring(15, ln.Length - 15);
                             ListaParametros.Add(ln.Trim());
-                        } else
-                        {
-                            numeroArquivo = " ";
-                        }
+                        } 
                         if (ln.Length > 10 && ln.Substring(0, 10) == "SEU_NUMERO")
                         {
                             seuNumero = ln.Substring(10, ln.Length - 10);
@@ -139,8 +138,23 @@ namespace Gerador_de_Remessa_Cliente
                             //System.Windows.Forms.MessageBox.Show("DIRETORIO_DESTINO recebe " + ln.Substring(18, ln.Length - 18));
                             diretorioDestino = ln.Substring(18, ln.Length - 18);
                             ListaParametros.Add(diretorioDestino);
-                        }                         
+                        }
+                        if (ln.Length > 14 && ln.Substring(0, 14) == "BANCO_COBRADOR")
+                        {                            
+                            bancoCobrador = ln.Substring(15, ln.Length - 15).Trim();
+                            ListaParametros.Add(bancoCobrador);
+                        }
+                        if (ln.Length > 8 && ln.Substring(0, 8) == "CARTEIRA")
+                        {                            
+                            carteira = ln.Substring(9, ln.Length - 9).Trim();
+                            ListaParametros.Add(carteira);
+                        }
+                        
                     }
+                }
+                while (ListaParametros.Count < 13)
+                {
+                    ListaParametros.Add(" ");
                 }
             }
             return ListaParametros;

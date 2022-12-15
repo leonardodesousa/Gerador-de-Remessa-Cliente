@@ -48,6 +48,8 @@
             this.textBoxDiretorioDestino = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.labelBcoCobrador = new System.Windows.Forms.Label();
+            this.mskBancoCobrador = new System.Windows.Forms.MaskedTextBox();
             this.mskTextBoxNumDocCedente = new System.Windows.Forms.MaskedTextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.mskTextBoxAgCedente = new System.Windows.Forms.MaskedTextBox();
@@ -60,13 +62,15 @@
             this.comboConvenios = new System.Windows.Forms.ComboBox();
             this.labelConvenios = new System.Windows.Forms.Label();
             this.bnBuscarDados = new System.Windows.Forms.Button();
+            this.mskTextBoxCarteira = new System.Windows.Forms.MaskedTextBox();
+            this.labelCarteira = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnGerarArquivo
             // 
-            this.btnGerarArquivo.Location = new System.Drawing.Point(88, 592);
+            this.btnGerarArquivo.Location = new System.Drawing.Point(90, 656);
             this.btnGerarArquivo.Name = "btnGerarArquivo";
             this.btnGerarArquivo.Size = new System.Drawing.Size(137, 49);
             this.btnGerarArquivo.TabIndex = 16;
@@ -88,7 +92,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(30, 89);
+            this.label2.Location = new System.Drawing.Point(28, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(151, 20);
             this.label2.TabIndex = 4;
@@ -258,6 +262,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.labelCarteira);
+            this.groupBox2.Controls.Add(this.mskTextBoxCarteira);
+            this.groupBox2.Controls.Add(this.labelBcoCobrador);
+            this.groupBox2.Controls.Add(this.mskBancoCobrador);
             this.groupBox2.Controls.Add(this.mskTextBoxNumDocCedente);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.mskTextBoxAgCedente);
@@ -269,10 +277,30 @@
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBox2.Location = new System.Drawing.Point(90, 420);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(875, 140);
+            this.groupBox2.Size = new System.Drawing.Size(875, 190);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados do Cedente";
+            // 
+            // labelBcoCobrador
+            // 
+            this.labelBcoCobrador.AutoSize = true;
+            this.labelBcoCobrador.Location = new System.Drawing.Point(106, 123);
+            this.labelBcoCobrador.Name = "labelBcoCobrador";
+            this.labelBcoCobrador.Size = new System.Drawing.Size(70, 20);
+            this.labelBcoCobrador.TabIndex = 13;
+            this.labelBcoCobrador.Text = "Banco ->";
+            // 
+            // mskBancoCobrador
+            // 
+            this.mskBancoCobrador.Location = new System.Drawing.Point(185, 116);
+            this.mskBancoCobrador.Mask = "000";
+            this.mskBancoCobrador.Name = "mskBancoCobrador";
+            this.mskBancoCobrador.Size = new System.Drawing.Size(100, 27);
+            this.mskBancoCobrador.TabIndex = 12;
+            this.mskBancoCobrador.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.mskBancoCobrador.ValidatingType = typeof(int);
+            this.mskBancoCobrador.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskBancoCobrador_MaskInputRejected);
             // 
             // mskTextBoxNumDocCedente
             // 
@@ -308,7 +336,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(30, 36);
+            this.label9.Location = new System.Drawing.Point(37, 36);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(142, 20);
             this.label9.TabIndex = 7;
@@ -358,7 +386,7 @@
             // 
             this.btnSair.BackColor = System.Drawing.Color.Red;
             this.btnSair.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSair.Location = new System.Drawing.Point(828, 592);
+            this.btnSair.Location = new System.Drawing.Point(830, 656);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(137, 49);
             this.btnSair.TabIndex = 17;
@@ -395,6 +423,25 @@
             this.bnBuscarDados.Text = "Buscar Dados";
             this.bnBuscarDados.UseVisualStyleBackColor = true;
             this.bnBuscarDados.Click += new System.EventHandler(this.bnBuscarDados_Click);
+            // 
+            // mskTextBoxCarteira
+            // 
+            this.mskTextBoxCarteira.Location = new System.Drawing.Point(559, 120);
+            this.mskTextBoxCarteira.Mask = "000";
+            this.mskTextBoxCarteira.Name = "mskTextBoxCarteira";
+            this.mskTextBoxCarteira.Size = new System.Drawing.Size(100, 27);
+            this.mskTextBoxCarteira.TabIndex = 14;
+            this.mskTextBoxCarteira.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.mskTextBoxCarteira.ValidatingType = typeof(int);
+            // 
+            // labelCarteira
+            // 
+            this.labelCarteira.AutoSize = true;
+            this.labelCarteira.Location = new System.Drawing.Point(472, 123);
+            this.labelCarteira.Name = "labelCarteira";
+            this.labelCarteira.Size = new System.Drawing.Size(81, 20);
+            this.labelCarteira.TabIndex = 15;
+            this.labelCarteira.Text = "Carteira ->";
             // 
             // Form1
             // 
@@ -453,5 +500,9 @@
         private ComboBox comboConvenios;
         private Label labelConvenios;
         private Button bnBuscarDados;
+        private Label labelBcoCobrador;
+        private MaskedTextBox mskBancoCobrador;
+        private Label labelCarteira;
+        private MaskedTextBox mskTextBoxCarteira;
     }
 }

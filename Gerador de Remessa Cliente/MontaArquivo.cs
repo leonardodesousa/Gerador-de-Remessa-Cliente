@@ -14,7 +14,7 @@ namespace Gerador_de_Remessa_Cliente
 {
     internal class MontaArquivo
     {
-        public void GravaArquivoLtBradesco(DateTime DataRecebimento, long SeuNUmero, DateTime DataVencimento, int linhasPorArquivo, /*int numeroArquivo,*/ int quantidadeDeArquivos, String Convenio, String Conta, String AgenciaCedente, String diretorio, long numeroDocumentoCedente)
+        public void GravaArquivoLtBradesco(DateTime DataRecebimento, long SeuNUmero, DateTime DataVencimento, int linhasPorArquivo, /*int numeroArquivo,*/ int quantidadeDeArquivos, String Convenio, String Conta, String AgenciaCedente, String diretorio, long numeroDocumentoCedente, String bancoCobrador, String carteira)
         {
             // dataRecebimento ddmmaa
             // dataVencimento ddmmaa
@@ -57,7 +57,7 @@ namespace Gerador_de_Remessa_Cliente
                 String path = @diretorio + Conta.Substring(0, 6) + DateTime.Now.ToString("ddMMyyyyHHmmss") + numeroArquivo + ".rem";
 
 
-                String Header = "01REMESSA01COBRANCA       " + Convenio + "        Layout Bradesco               653BANCO SMARTBANK"
+                String Header = "01REMESSA01COBRANCA       " + Convenio + "        Layout Bradesco               " + bancoCobrador + "BANCO SMARTBANK"
                               + dataRecebimentoFormatada + "                                       " +
                               "                                                                    " +
                               "                                                                    " +                             
@@ -71,7 +71,7 @@ namespace Gerador_de_Remessa_Cliente
                     // while aqui 
                     for (int i = 0; i < linhasPorArquivo; i++)
                     {
-                        sw.WriteLine("10" + identificadorTipoDocumento.ToString() + numeroDocumentoCedente.ToString().PadLeft(14, '0') + "00001120" + AgenciaCedente + Conta + Conta.Substring(0, 6).PadLeft(8, '0') + "                 " + "0002020000000000000000000000001" + "               " + "01" + SeuNUmero.ToString().PadLeft(10, '0')
+                        sw.WriteLine("10" + identificadorTipoDocumento.ToString() + numeroDocumentoCedente.ToString().PadLeft(14, '0') + "0000" + carteira + "0" + AgenciaCedente + Conta + Conta.Substring(0, 6).PadLeft(8, '0') + "                 " + "0002020000000000000000000000001" + "               " + "01" + SeuNUmero.ToString().PadLeft(10, '0')
                         + dataVencimentoFormatada + "000" + Valor.ToString().PadLeft(10, '0')
                         + "0000000099N" + dataRecebimentoFormatada
                         //+ "000000000030000000000000000000000000000000000000000000000000100100006067139995Felipe de Liz Martins                   Rua Antonio Pietruza                                80610320Curitiba       PR                                        0010"
@@ -109,12 +109,15 @@ namespace Gerador_de_Remessa_Cliente
                 sw.WriteLine("AGENCIA_CEDENTE=" + AgenciaCedente.ToString());
                 sw.WriteLine("DIRETORIO_DESTINO=" + diretorio.ToString());
                 sw.WriteLine("DOCUMENTO_CEDENTE=" + numeroDocumentoCedente.ToString());
+                sw.WriteLine("BANCO_COBRADOR=" + bancoCobrador.ToString());
+                sw.WriteLine("CARTEIRA=" + carteira.ToString());
+
 
             }
             System.Windows.Forms.MessageBox.Show("Terminou!");
         }
 
-        public void GravaArquivoLtItau(DateTime DataRecebimento, long SeuNUmero, DateTime DataVencimento, int linhasPorArquivo, /*int numeroArquivo,*/ int quantidadeDeArquivos, String Convenio, String Conta, String AgenciaCedente, String diretorio, long numeroDocumentoCedente)
+        public void GravaArquivoLtItau(DateTime DataRecebimento, long SeuNUmero, DateTime DataVencimento, int linhasPorArquivo, /*int numeroArquivo,*/ int quantidadeDeArquivos, String Convenio, String Conta, String AgenciaCedente, String diretorio, long numeroDocumentoCedente, String bancoCobrador, String carteira)
         {
             // dataRecebimento ddmmaa
             // dataVencimento ddmmaa
@@ -157,11 +160,11 @@ namespace Gerador_de_Remessa_Cliente
                 String path = @diretorio + Conta.Substring(0, 6) + DateTime.Now.ToString("ddMMyyyyHHmmss") + numeroArquivo + ".rem";
 
 
-                String Header = "01REMESSA01COBRANCA       " + Convenio + "        Tech 2 Market T2m             653BANCO SMARTBANK"
-                              + dataRecebimentoFormatada + "                                      " +
-                              "                                                          " +
-                              "                                                          " +
-                              "                                                          " +
+                String Header = "01REMESSA01COBRANCA       " + Convenio + "        Layout Itau                   "+ bancoCobrador + "BANCO SMARTBANK"
+                              + dataRecebimentoFormatada + "                 " +
+                              "                                                                 " +
+                              "                                                                 " +
+                              "                                                                 " +
                               "                                                                             00000000001";
                 // if (!File.Exists(path))
                 //{
@@ -171,7 +174,7 @@ namespace Gerador_de_Remessa_Cliente
                     // while aqui 
                     for (int i = 0; i < linhasPorArquivo; i++)
                     {
-                        sw.WriteLine("10" + identificadorTipoDocumento.ToString() + numeroDocumentoCedente.ToString().PadLeft(14, '0')+ "01352036009700019000"  + Conta.Substring(0,6).PadLeft(7,'0') + "                  " + "000000000000000000000112" + "                     " + "001"  + SeuNUmero.ToString().PadLeft(7, '0')
+                        sw.WriteLine("10" + identificadorTipoDocumento.ToString() + numeroDocumentoCedente.ToString().PadLeft(14, '0')+ "01352036009700019000"  + Conta.Substring(0,6).PadLeft(7,'0') + "                  " + "000000000000000000000"+ carteira + "                     " + "001"  + SeuNUmero.ToString().PadLeft(7, '0')
                         + "   "  + dataVencimentoFormatada + "000" + Valor.ToString().PadLeft(10, '0')
                         + "6300000001N" + dataRecebimentoFormatada
                         + "000000000030000000000000000000000000000000000000000000000000100100006067139995Felipe de Liz Martins                   Rua Antonio Pietruza                                80610320Curitiba       PR                                        0010"
@@ -208,12 +211,14 @@ namespace Gerador_de_Remessa_Cliente
                 sw.WriteLine("AGENCIA_CEDENTE=" + AgenciaCedente.ToString());
                 sw.WriteLine("DIRETORIO_DESTINO=" + diretorio.ToString());
                 sw.WriteLine("DOCUMENTO_CEDENTE=" + numeroDocumentoCedente.ToString());
+                sw.WriteLine("BANCO_COBRADOR=" + bancoCobrador.ToString());
+                sw.WriteLine("CARTEIRA=" + carteira.ToString());
 
             }
             System.Windows.Forms.MessageBox.Show("Terminou!");
         }
 
-        public void GravaArquivoV2(DateTime DataRecebimento, long SeuNUmero, DateTime DataVencimento, int linhasPorArquivo, /*int numeroArquivo,*/ int quantidadeDeArquivos, String Convenio, String Conta, String AgenciaCedente, String diretorio, long numeroDocumentoCedente)
+        public void GravaArquivoV2(DateTime DataRecebimento, long SeuNUmero, DateTime DataVencimento, int linhasPorArquivo, /*int numeroArquivo,*/ int quantidadeDeArquivos, String Convenio, String Conta, String AgenciaCedente, String diretorio, long numeroDocumentoCedente, String bancoCobrador, String carteira)
         {
             // dataRecebimento ddmmaa
             // dataVencimento ddmmaa
@@ -229,7 +234,7 @@ namespace Gerador_de_Remessa_Cliente
             BigInteger Valor; // 7525 = 75,25 Reais 
             int Linha = 2; //linha do arquivo            
             Random randNum = new Random();
-            Valor = randNum.Next(500,1000000); // Boleto mínimo 5 reais; máximo 10.000 reais
+            Valor = randNum.Next(500, 300000); // Boleto mínimo 5 reais; máximo 3.000 reais
             //diretorio = diretorio + "\\";
 
             if (numeroDocumentoCedente.ToString().Length > 11)
@@ -253,7 +258,7 @@ namespace Gerador_de_Remessa_Cliente
                 //String path = @diretorio +"r00" + numeroArquivo + ".rem";
                 String path = @diretorio + Conta.Substring(0, 6) + DateTime.Now.ToString("ddMMyyyyHHmmss") + numeroArquivo + ".rem";
 
-                String Header = "01REMESSA01COBRANCA       " + Convenio + "        Tech 2 Market T2m             653BANCO SMARTBANK"
+                String Header = "01REMESSA01COBRANCA       " + Convenio + "        Layout TotalBanco             "+ bancoCobrador + "BANCO SMARTBANK"
                               + dataRecebimentoFormatada + "                                      " +
                               "                                                          " +
                               "                                                          " +
@@ -268,12 +273,12 @@ namespace Gerador_de_Remessa_Cliente
                     for (int i = 0; i < linhasPorArquivo; i++)
                     {
                         sw.WriteLine("10"+ identificadorTipoDocumento.ToString() + numeroDocumentoCedente.ToString().PadLeft(14,'0') + AgenciaCedente + Conta + "                                         " + SeuNUmero.ToString().PadLeft(12, '0')
-                        + "                         101" + SeuNUmero.ToString().PadLeft(10, '0') + dataVencimentoFormatada + "000" + Valor.ToString().PadLeft(10, '0')
+                        + "                         1"+ carteira.Substring(1,2) + SeuNUmero.ToString().PadLeft(10, '0') + dataVencimentoFormatada + "000" + Valor.ToString().PadLeft(10, '0')
                         + "6300000001N" + dataRecebimentoFormatada
                         + "000000000030000000000000000000000000000000000000000000000000100100006067139995Felipe de Liz Martins                   Rua Antonio Pietruza                                80610320Curitiba       PR                                        0010"
                         + Linha.ToString().PadLeft(5, '0'));
                         //Valor = Valor + 125; //2025
-                        Valor = randNum.Next(500, 1000000);
+                        Valor = randNum.Next(500, 300000);
                         Linha++;
                         SeuNUmero++;
                     }
@@ -303,6 +308,8 @@ namespace Gerador_de_Remessa_Cliente
                 sw.WriteLine("AGENCIA_CEDENTE=" + AgenciaCedente.ToString());
                 sw.WriteLine("DIRETORIO_DESTINO=" + diretorio.ToString());
                 sw.WriteLine("DOCUMENTO_CEDENTE=" + numeroDocumentoCedente.ToString());
+                sw.WriteLine("BANCO_COBRADOR=" + bancoCobrador.ToString());
+                sw.WriteLine("CARTEIRA=" + carteira.ToString());
 
             }
             System.Windows.Forms.MessageBox.Show("Terminou!");

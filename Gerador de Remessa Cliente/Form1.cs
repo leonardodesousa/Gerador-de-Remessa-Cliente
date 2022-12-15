@@ -33,6 +33,8 @@ namespace Gerador_de_Remessa_Cliente
                 mskTextBoxAgCedente.Text = lista[8].ToString();
                 textBoxDiretorioDestino.Text = lista[9].ToString();
                 mskTextBoxNumDocCedente.Text = lista[10].ToString();
+                mskBancoCobrador.Text = lista[11].ToString();
+                mskTextBoxCarteira.Text = lista[12].ToString();
             }
 
             //mskTextBoxSequencialArq.Text = lista[0].Trim().ToString().PadLeft(5,'0');
@@ -69,7 +71,9 @@ namespace Gerador_de_Remessa_Cliente
                         mskTextBoxContaCedente.Text.ToString(),
                         mskTextBoxAgCedente.Text.ToString(),
                         textBoxDiretorioDestino.Text.ToString(),
-                        Convert.ToInt64(mskTextBoxNumDocCedente.Text.ToString()));
+                        Convert.ToInt64(mskTextBoxNumDocCedente.Text.ToString()),
+                        mskBancoCobrador.Text.ToString(),
+                        mskTextBoxCarteira.Text.ToString());
 
                     String conveniado = comboConvenios.Text.ToString().Substring(0, 12);
                     LeitorArquivoParametros leitor = new LeitorArquivoParametros();
@@ -86,6 +90,8 @@ namespace Gerador_de_Remessa_Cliente
                     mskTextBoxAgCedente.Text = lista[8].ToString();
                     textBoxDiretorioDestino.Text = lista[9].ToString();
                     mskTextBoxNumDocCedente.Text = lista[10].ToString();
+                    mskBancoCobrador.Text = lista[11].ToString();
+                    mskTextBoxCarteira.Text = lista[12].ToString();
 
                     comboLeiaute.SelectedIndex = -1;
                     check = 1;
@@ -106,7 +112,9 @@ namespace Gerador_de_Remessa_Cliente
                         mskTextBoxContaCedente.Text.ToString(),
                         mskTextBoxAgCedente.Text.ToString(),
                         textBoxDiretorioDestino.Text.ToString(),
-                        Convert.ToInt64(mskTextBoxNumDocCedente.Text.ToString()));
+                        Convert.ToInt64(mskTextBoxNumDocCedente.Text.ToString()),
+                        mskBancoCobrador.Text.ToString(),
+                        mskTextBoxCarteira.Text.ToString());
 
                     String conveniado = comboConvenios.Text.ToString().Substring(0, 12);
                     LeitorArquivoParametros leitor = new LeitorArquivoParametros();
@@ -123,6 +131,7 @@ namespace Gerador_de_Remessa_Cliente
                     mskTextBoxAgCedente.Text = lista[8].ToString();
                     textBoxDiretorioDestino.Text = lista[9].ToString();
                     mskTextBoxNumDocCedente.Text = lista[10].ToString();
+                    mskBancoCobrador.Text = lista[11].ToString();
 
                     comboLeiaute.SelectedIndex = -1;
                     check = 1;
@@ -143,7 +152,9 @@ namespace Gerador_de_Remessa_Cliente
                         mskTextBoxContaCedente.Text.ToString(),
                         mskTextBoxAgCedente.Text.ToString(),
                         textBoxDiretorioDestino.Text.ToString(),
-                        Convert.ToInt64(mskTextBoxNumDocCedente.Text.ToString()));
+                        Convert.ToInt64(mskTextBoxNumDocCedente.Text.ToString()),
+                        mskBancoCobrador.Text.ToString(),
+                        mskTextBoxCarteira.Text.ToString());
 
                     String conveniado = comboConvenios.Text.ToString().Substring(0, 12);
                     LeitorArquivoParametros leitor = new LeitorArquivoParametros();
@@ -160,6 +171,8 @@ namespace Gerador_de_Remessa_Cliente
                     mskTextBoxAgCedente.Text = lista[8].ToString();
                     textBoxDiretorioDestino.Text = lista[9].ToString();
                     mskTextBoxNumDocCedente.Text = lista[10].ToString();
+                    mskBancoCobrador.Text = lista[11].ToString();
+                    mskTextBoxCarteira.Text = lista[12].ToString();
 
                     comboLeiaute.SelectedIndex = -1;
                     check = 1;
@@ -258,9 +271,17 @@ namespace Gerador_de_Remessa_Cliente
             mskTextBoxAgCedente.Text = lista[8].ToString();
             textBoxDiretorioDestino.Text = lista[9].ToString();
             mskTextBoxNumDocCedente.Text = lista[10].ToString();
+            mskBancoCobrador.Text = lista[11].ToString();
+            mskTextBoxCarteira.Text = lista[12].ToString();
+            
             comboLeiaute.SelectedIndex = -1;
 
 
+
+        }
+
+        private void mskBancoCobrador_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
 
         }
     }
