@@ -44,6 +44,17 @@ namespace Gerador_de_Remessa_Cliente
         private void btnGerarArquivo_Click(object sender, EventArgs e)
         {
             int check = 0;
+            Boolean informaSeuNumero;
+            if(checkBoxEnviaSeuNum.Checked)
+            {
+                //System.Windows.Forms.MessageBox.Show("Informa seu número está marcado");
+                informaSeuNumero=false;
+            } else
+            {
+                //System.Windows.Forms.MessageBox.Show("Informa seu número NÃO está marcado");
+                informaSeuNumero = true;
+            }
+
             if (/*String.IsNullOrEmpty(mskTextBoxSequencialArq.Text.Trim().ToString()) ||*/ String.IsNullOrEmpty(mskTextBoxSeuNumero.Text.Trim().ToString()) ||
                 String.IsNullOrEmpty(mskTextBoxDataInclusao.Text.Trim().ToString()) || String.IsNullOrEmpty(mskTextBoxDataVencimento.Text.ToString()) ||
                  mskTextBoxDataVencimento.Text.ToString() == "  /  /" || mskTextBoxDataInclusao.Text.ToString() == "  /  /" ||
@@ -114,7 +125,8 @@ namespace Gerador_de_Remessa_Cliente
                         textBoxDiretorioDestino.Text.ToString(),
                         Convert.ToInt64(mskTextBoxNumDocCedente.Text.ToString()),
                         mskBancoCobrador.Text.ToString(),
-                        mskTextBoxCarteira.Text.ToString());
+                        mskTextBoxCarteira.Text.ToString(),
+                        informaSeuNumero);
 
                     String conveniado = comboConvenios.Text.ToString().Substring(0, 12);
                     LeitorArquivoParametros leitor = new LeitorArquivoParametros();
@@ -281,6 +293,11 @@ namespace Gerador_de_Remessa_Cliente
         }
 
         private void mskBancoCobrador_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
         {
 
         }

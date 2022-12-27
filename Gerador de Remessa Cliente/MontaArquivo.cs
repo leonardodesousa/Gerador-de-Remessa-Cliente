@@ -14,12 +14,13 @@ namespace Gerador_de_Remessa_Cliente
 {
     internal class MontaArquivo
     {
-        public void GravaArquivoLtBradesco(DateTime DataRecebimento, long SeuNUmero, DateTime DataVencimento, int linhasPorArquivo, /*int numeroArquivo,*/ int quantidadeDeArquivos, String Convenio, String Conta, String AgenciaCedente, String diretorio, long numeroDocumentoCedente, String bancoCobrador, String carteira)
+        public void GravaArquivoLtBradesco(DateTime DataRecebimento, long SeuNumero, DateTime DataVencimento, int linhasPorArquivo, /*int numeroArquivo,*/ int quantidadeDeArquivos, String Convenio, String Conta, String AgenciaCedente, String diretorio, long numeroDocumentoCedente, String bancoCobrador, String carteira, Boolean informaSeuNumero)
         {
             // dataRecebimento ddmmaa
             // dataVencimento ddmmaa
 
             int numeroArquivo = 1;
+            String strSeuNumero;
 
             string dataRecebimentoFormatada = DateTime.Parse(DataRecebimento.ToString()).ToString("ddMMyy");
             string dataVencimentoFormatada = DateTime.Parse(DataVencimento.ToString()).ToString("ddMMyy");
@@ -71,9 +72,19 @@ namespace Gerador_de_Remessa_Cliente
                     // while aqui 
                     for (int i = 0; i < linhasPorArquivo; i++)
                     {
-                        sw.WriteLine("10" + identificadorTipoDocumento.ToString() + numeroDocumentoCedente.ToString().PadLeft(14, '0') + "0000" + carteira + "0" + AgenciaCedente + Conta + Conta.Substring(0, 6).PadLeft(8, '0') + "                 " + "0002020000000000000000000000001" + "               " + "01" + SeuNUmero.ToString().PadLeft(10, '0')
+                        if(informaSeuNumero == true)
+                        {
+                            strSeuNumero = SeuNumero.ToString().PadLeft(10, '0');
+                        }
+                        else
+                        {
+                            strSeuNumero = "          ";
+                        }
+                        sw.WriteLine("10" + identificadorTipoDocumento.ToString() + numeroDocumentoCedente.ToString().PadLeft(14, '0') + "0000" + carteira + "00" + AgenciaCedente.PadLeft(3,'0') + Conta.Substring(2, 8).PadLeft(6, '0') + Conta.Substring(0, 6).PadLeft(8, '0') + "                 " + "0002020000000000000000000000001" + "               " + "01" 
+                            /*+ SeuNumero.ToString().PadLeft(10, '0')*/
+                        + strSeuNumero
                         + dataVencimentoFormatada + "000" + Valor.ToString().PadLeft(10, '0')
-                        + "0000000099N" + dataRecebimentoFormatada
+                        + "0000000001N" + dataRecebimentoFormatada
                         //+ "000000000030000000000000000000000000000000000000000000000000100100006067139995Felipe de Liz Martins                   Rua Antonio Pietruza                                80610320Curitiba       PR                                        0010"
                         +"000000000000006220000000000000000000000000000000000000000000000100006067139995Felipe de Liz Martins                   Rua Antonio Pietruza                                80610320Curitiba       PR                                        0010"
                         + Linha.ToString().PadLeft(5, '0'));
@@ -81,7 +92,10 @@ namespace Gerador_de_Remessa_Cliente
                         //Valor = randNum.Next(500, 1000000);
                         Valor = randNum.Next(500, 300000);
                         Linha++;
-                        SeuNUmero++;
+                        if(informaSeuNumero == true)
+                        {
+                            SeuNumero++;
+                        }                        
                     }
                     sw.WriteLine("9                                                                                                                             " +
                         "                                                                                                                                      " +
@@ -99,7 +113,7 @@ namespace Gerador_de_Remessa_Cliente
             using (StreamWriter sw = File.CreateText(path2))
             {
                 sw.WriteLine("NUMERO_ARQUIVO=" + numeroArquivo);
-                sw.WriteLine("SEU_NUMERO=" + SeuNUmero.ToString().PadLeft(10, '0'));
+                sw.WriteLine("SEU_NUMERO=" + SeuNumero.ToString().PadLeft(10, '0'));
                 sw.WriteLine("DATA_RECEBIMENTO=" + DateTime.Parse(DataRecebimento.ToString()).ToString("dd/MM/yyyy"));
                 sw.WriteLine("DATA_VENCIMENTO=" + DateTime.Parse(DataVencimento.ToString()).ToString("dd/MM/yyyy"));
                 sw.WriteLine("LINHAS_POR_ARQUIVO=" + linhasPorArquivo.ToString());
