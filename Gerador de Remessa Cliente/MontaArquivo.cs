@@ -32,7 +32,7 @@ namespace Gerador_de_Remessa_Cliente
             BigInteger Valor; // 7525 = 75,25 Reais 
             int Linha = 2; //linha do arquivo            
             Random randNum = new Random();
-            Valor = randNum.Next(500, 300000); // Boleto mínimo 5 reais; máximo 3.000 reais
+            Valor = randNum.Next(1000, 300000); // Boleto mínimo 10 reais; máximo 3.000 reais
             //diretorio = diretorio + "\\";
 
             if (numeroDocumentoCedente.ToString().Length > 11)
@@ -90,7 +90,7 @@ namespace Gerador_de_Remessa_Cliente
                         + Linha.ToString().PadLeft(5, '0'));
                         //Valor = Valor + 125; //2025
                         //Valor = randNum.Next(500, 1000000);
-                        Valor = randNum.Next(500, 300000);
+                        Valor = randNum.Next(1000, 300000);
                         Linha++;
                         if(informaSeuNumero == true)
                         {
@@ -148,7 +148,7 @@ namespace Gerador_de_Remessa_Cliente
             BigInteger Valor; // 7525 = 75,25 Reais 
             int Linha = 2; //linha do arquivo            
             Random randNum = new Random();
-            Valor = randNum.Next(500, 300000); // Boleto mínimo 5 reais; máximo 3.000 reais
+            Valor = randNum.Next(1000, 300000); // Boleto mínimo 10 reais; máximo 3.000 reais
             //diretorio = diretorio + "\\";
 
             if (numeroDocumentoCedente.ToString().Length > 11)
@@ -195,7 +195,7 @@ namespace Gerador_de_Remessa_Cliente
                         + Linha.ToString().PadLeft(5, '0'));
                         //Valor = Valor + 125; //2025
                         //Valor = randNum.Next(500, 1000000);
-                        Valor = randNum.Next(500, 300000);
+                        Valor = randNum.Next(1000, 300000);
                         Linha++;
                         SeuNUmero++;
                     }
@@ -248,7 +248,7 @@ namespace Gerador_de_Remessa_Cliente
             BigInteger Valor; // 7525 = 75,25 Reais 
             int Linha = 2; //linha do arquivo            
             Random randNum = new Random();
-            Valor = randNum.Next(500, 300000); // Boleto mínimo 5 reais; máximo 3.000 reais
+            Valor = randNum.Next(1000, 300000); // Boleto mínimo 5 reais; máximo 3.000 reais
             //diretorio = diretorio + "\\";
 
             if (numeroDocumentoCedente.ToString().Length > 11)
@@ -292,7 +292,7 @@ namespace Gerador_de_Remessa_Cliente
                         + "000000000030000000000000000000000000000000000000000000000000100100006067139995Felipe de Liz Martins                   Rua Antonio Pietruza                                80610320Curitiba       PR                                        0010"
                         + Linha.ToString().PadLeft(5, '0'));
                         //Valor = Valor + 125; //2025
-                        Valor = randNum.Next(500, 300000);
+                        Valor = randNum.Next(1000, 300000);
                         Linha++;
                         SeuNUmero++;
                     }
