@@ -264,32 +264,36 @@ namespace Gerador_de_Remessa_Cliente
             //System.Windows.Forms.MessageBox.Show(comboConvenios.SelectedIndex.ToString());
             //System.Windows.Forms.MessageBox.Show(comboConvenios.Text.ToString());
 
-            DialogResult dialogResult = MessageBox.Show(comboConvenios.Text.ToString(),
-                   "Convênio Selecionado", MessageBoxButtons.OK);
+            if (String.IsNullOrEmpty(comboConvenios.Text.Trim().ToString()))
+            {
+                DialogResult dialogo = MessageBox.Show("Selecione um Convênio", "Verifique o campo Convênios Cadastrados", MessageBoxButtons.OK);
+            } else
+            {
+                DialogResult dialogResult = MessageBox.Show(comboConvenios.Text.ToString(),
+                  "Convênio Selecionado", MessageBoxButtons.OK);
 
-            String conveniado = comboConvenios.Text.ToString().Substring(0,12);
-            LeitorArquivoParametros leitor = new LeitorArquivoParametros();
+                String conveniado = comboConvenios.Text.ToString().Substring(0, 12);
+                LeitorArquivoParametros leitor = new LeitorArquivoParametros();
 
-            List<string> lista = new List<string>();
-            lista = leitor.BuscaParametroConveniado(conveniado);
-            //mskTextBoxSequencialArq.Text = lista[0].Trim().ToString().PadLeft(5,'0');
-            mskTextBoxSeuNumero.Text = lista[1].ToString();
-            mskTextBoxDataInclusao.Text = lista[2].ToString();
-            mskTextBoxDataVencimento.Text = lista[3].ToString();
-            mskTextBoxLinhasArquivo.Text = lista[4].ToString().Trim().PadLeft(6, '0');
-            mskTextBoxQtdArquivos.Text = lista[5].ToString().PadLeft(6, '0');
-            mskTextBoxConvenio.Text = lista[6].ToString();
-            mskTextBoxContaCedente.Text = lista[7].ToString();
-            mskTextBoxAgCedente.Text = lista[8].ToString();
-            textBoxDiretorioDestino.Text = lista[9].ToString();
-            mskTextBoxNumDocCedente.Text = lista[10].ToString();
-            mskBancoCobrador.Text = lista[11].ToString();
-            mskTextBoxCarteira.Text = lista[12].ToString();
-            
-            comboLeiaute.SelectedIndex = -1;
+                List<string> lista = new List<string>();
+                lista = leitor.BuscaParametroConveniado(conveniado);
+                //mskTextBoxSequencialArq.Text = lista[0].Trim().ToString().PadLeft(5,'0');
+                mskTextBoxSeuNumero.Text = lista[1].ToString();
+                mskTextBoxDataInclusao.Text = lista[2].ToString();
+                mskTextBoxDataVencimento.Text = lista[3].ToString();
+                mskTextBoxLinhasArquivo.Text = lista[4].ToString().Trim().PadLeft(6, '0');
+                mskTextBoxQtdArquivos.Text = lista[5].ToString().PadLeft(6, '0');
+                mskTextBoxConvenio.Text = lista[6].ToString();
+                mskTextBoxContaCedente.Text = lista[7].ToString();
+                mskTextBoxAgCedente.Text = lista[8].ToString();
+                textBoxDiretorioDestino.Text = lista[9].ToString();
+                mskTextBoxNumDocCedente.Text = lista[10].ToString();
+                mskBancoCobrador.Text = lista[11].ToString();
+                mskTextBoxCarteira.Text = lista[12].ToString();
 
+                comboLeiaute.SelectedIndex = -1;
 
-
+            }
         }
 
         private void mskBancoCobrador_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
