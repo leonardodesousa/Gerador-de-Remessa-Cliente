@@ -461,6 +461,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1086, 749);
             this.Controls.Add(this.bnBuscarDados);
             this.Controls.Add(this.labelConvenios);
