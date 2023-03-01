@@ -472,7 +472,7 @@
             this.Controls.Add(this.btnGerarArquivo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Gerador de Remessa Cliente - LetsBank version";
+            this.Text = "Gerador de Remessa Cliente ";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
