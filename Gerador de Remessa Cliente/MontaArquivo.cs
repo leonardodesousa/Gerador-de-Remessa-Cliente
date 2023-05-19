@@ -191,7 +191,7 @@ namespace Gerador_de_Remessa_Cliente
                         sw.WriteLine("10" + identificadorTipoDocumento.ToString() + numeroDocumentoCedente.ToString().PadLeft(14, '0') + AgenciaCedente.PadLeft(4, '0') + Conta.PadRight(16, ' ') + Conta.Substring(0,6).PadLeft(7,'0') + "                  " + "000000000000000000000"+ carteira + "                     " + "001"  + SeuNUmero.ToString().PadLeft(7, '0')
                         + "   "  + dataVencimentoFormatada + "000" + Valor.ToString().PadLeft(10, '0')
                         + "6300000001N" + dataRecebimentoFormatada
-                        + "000000000030000000000000000000000000000000000000000000000000100100006067139995Felipe de Liz Martins                   Rua Antonio Pietruza                                80610320Curitiba       PR                                        0010"
+                        + "000000000000000000000000000000000000000000000000000000000000100100006067139995Felipe de Liz Martins                   Rua Antonio Pietruza                                80610320Curitiba       PR                                        0010"
                         + Linha.ToString().PadLeft(5, '0'));
                         //Valor = Valor + 125; //2025
                         //Valor = randNum.Next(500, 1000000);
