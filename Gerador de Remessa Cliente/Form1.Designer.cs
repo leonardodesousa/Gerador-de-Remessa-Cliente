@@ -49,6 +49,8 @@
             this.textBoxDiretorioDestino = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.labelCodCliente = new System.Windows.Forms.Label();
+            this.textBoxCodCliente = new System.Windows.Forms.TextBox();
             this.labelCarteira = new System.Windows.Forms.Label();
             this.mskTextBoxCarteira = new System.Windows.Forms.MaskedTextBox();
             this.labelBcoCobrador = new System.Windows.Forms.Label();
@@ -65,18 +67,20 @@
             this.comboConvenios = new System.Windows.Forms.ComboBox();
             this.labelConvenios = new System.Windows.Forms.Label();
             this.bnBuscarDados = new System.Windows.Forms.Button();
+            this.Soap = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnGerarArquivo
             // 
+            this.btnGerarArquivo.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnGerarArquivo.Location = new System.Drawing.Point(90, 656);
             this.btnGerarArquivo.Name = "btnGerarArquivo";
             this.btnGerarArquivo.Size = new System.Drawing.Size(137, 49);
-            this.btnGerarArquivo.TabIndex = 16;
-            this.btnGerarArquivo.Text = "Gerar Arquivo";
-            this.btnGerarArquivo.UseVisualStyleBackColor = true;
+            this.btnGerarArquivo.TabIndex = 20;
+            this.btnGerarArquivo.Text = "Gerar Arquivo CNAB";
+            this.btnGerarArquivo.UseVisualStyleBackColor = false;
             this.btnGerarArquivo.Click += new System.EventHandler(this.btnGerarArquivo_Click);
             // 
             // label1
@@ -276,6 +280,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.labelCodCliente);
+            this.groupBox2.Controls.Add(this.textBoxCodCliente);
             this.groupBox2.Controls.Add(this.labelCarteira);
             this.groupBox2.Controls.Add(this.mskTextBoxCarteira);
             this.groupBox2.Controls.Add(this.labelBcoCobrador);
@@ -295,11 +301,31 @@
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados do Cedente";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // labelCodCliente
+            // 
+            this.labelCodCliente.AutoSize = true;
+            this.labelCodCliente.Location = new System.Drawing.Point(30, 33);
+            this.labelCodCliente.Name = "labelCodCliente";
+            this.labelCodCliente.Size = new System.Drawing.Size(150, 20);
+            this.labelCodCliente.TabIndex = 16;
+            this.labelCodCliente.Text = "Código do Cliente ->";
+            // 
+            // textBoxCodCliente
+            // 
+            this.textBoxCodCliente.Location = new System.Drawing.Point(182, 30);
+            this.textBoxCodCliente.MaxLength = 8;
+            this.textBoxCodCliente.Name = "textBoxCodCliente";
+            this.textBoxCodCliente.Size = new System.Drawing.Size(100, 27);
+            this.textBoxCodCliente.TabIndex = 13;
+            this.textBoxCodCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxCodCliente.TextChanged += new System.EventHandler(this.textBoxCodCliente_TextChanged);
             // 
             // labelCarteira
             // 
             this.labelCarteira.AutoSize = true;
-            this.labelCarteira.Location = new System.Drawing.Point(636, 120);
+            this.labelCarteira.Location = new System.Drawing.Point(636, 113);
             this.labelCarteira.Name = "labelCarteira";
             this.labelCarteira.Size = new System.Drawing.Size(81, 20);
             this.labelCarteira.TabIndex = 15;
@@ -307,18 +333,18 @@
             // 
             // mskTextBoxCarteira
             // 
-            this.mskTextBoxCarteira.Location = new System.Drawing.Point(723, 117);
+            this.mskTextBoxCarteira.Location = new System.Drawing.Point(723, 110);
             this.mskTextBoxCarteira.Mask = "000";
             this.mskTextBoxCarteira.Name = "mskTextBoxCarteira";
             this.mskTextBoxCarteira.Size = new System.Drawing.Size(100, 27);
-            this.mskTextBoxCarteira.TabIndex = 14;
+            this.mskTextBoxCarteira.TabIndex = 13;
             this.mskTextBoxCarteira.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.mskTextBoxCarteira.ValidatingType = typeof(int);
             // 
             // labelBcoCobrador
             // 
             this.labelBcoCobrador.AutoSize = true;
-            this.labelBcoCobrador.Location = new System.Drawing.Point(106, 123);
+            this.labelBcoCobrador.Location = new System.Drawing.Point(106, 117);
             this.labelBcoCobrador.Name = "labelBcoCobrador";
             this.labelBcoCobrador.Size = new System.Drawing.Size(70, 20);
             this.labelBcoCobrador.TabIndex = 13;
@@ -326,7 +352,7 @@
             // 
             // mskBancoCobrador
             // 
-            this.mskBancoCobrador.Location = new System.Drawing.Point(185, 116);
+            this.mskBancoCobrador.Location = new System.Drawing.Point(182, 110);
             this.mskBancoCobrador.Mask = "000";
             this.mskBancoCobrador.Name = "mskBancoCobrador";
             this.mskBancoCobrador.Size = new System.Drawing.Size(100, 27);
@@ -358,18 +384,18 @@
             // 
             // mskTextBoxAgCedente
             // 
-            this.mskTextBoxAgCedente.Location = new System.Drawing.Point(185, 28);
+            this.mskTextBoxAgCedente.Location = new System.Drawing.Point(182, 150);
             this.mskTextBoxAgCedente.Mask = "00";
             this.mskTextBoxAgCedente.Name = "mskTextBoxAgCedente";
             this.mskTextBoxAgCedente.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.mskTextBoxAgCedente.Size = new System.Drawing.Size(100, 27);
-            this.mskTextBoxAgCedente.TabIndex = 8;
+            this.mskTextBoxAgCedente.TabIndex = 14;
             this.mskTextBoxAgCedente.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(37, 36);
+            this.label9.Location = new System.Drawing.Point(34, 158);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(142, 20);
             this.label9.TabIndex = 7;
@@ -377,7 +403,7 @@
             // 
             // mskTextBoxContaCedente
             // 
-            this.mskTextBoxContaCedente.Location = new System.Drawing.Point(185, 71);
+            this.mskTextBoxContaCedente.Location = new System.Drawing.Point(182, 71);
             this.mskTextBoxContaCedente.Mask = "0000000000";
             this.mskTextBoxContaCedente.Name = "mskTextBoxContaCedente";
             this.mskTextBoxContaCedente.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -422,7 +448,7 @@
             this.btnSair.Location = new System.Drawing.Point(830, 656);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(137, 49);
-            this.btnSair.TabIndex = 17;
+            this.btnSair.TabIndex = 22;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = false;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
@@ -457,12 +483,24 @@
             this.bnBuscarDados.UseVisualStyleBackColor = true;
             this.bnBuscarDados.Click += new System.EventHandler(this.bnBuscarDados_Click);
             // 
+            // Soap
+            // 
+            this.Soap.BackColor = System.Drawing.Color.LightGreen;
+            this.Soap.Location = new System.Drawing.Point(254, 656);
+            this.Soap.Name = "Soap";
+            this.Soap.Size = new System.Drawing.Size(137, 49);
+            this.Soap.TabIndex = 21;
+            this.Soap.Text = "Criar lote via Soap";
+            this.Soap.UseVisualStyleBackColor = false;
+            this.Soap.Click += new System.EventHandler(this.Soap_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1086, 749);
+            this.Controls.Add(this.Soap);
             this.Controls.Add(this.bnBuscarDados);
             this.Controls.Add(this.labelConvenios);
             this.Controls.Add(this.comboConvenios);
@@ -520,5 +558,8 @@
         private Label labelCarteira;
         private MaskedTextBox mskTextBoxCarteira;
         private CheckBox checkBoxEnviaSeuNum;
+        private Button Soap;
+        private TextBox textBoxCodCliente;
+        private Label labelCodCliente;
     }
 }

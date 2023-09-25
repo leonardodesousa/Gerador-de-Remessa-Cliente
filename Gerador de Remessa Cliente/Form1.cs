@@ -84,7 +84,8 @@ namespace Gerador_de_Remessa_Cliente
                         textBoxDiretorioDestino.Text.ToString(),
                         Convert.ToInt64(mskTextBoxNumDocCedente.Text.ToString()),
                         mskBancoCobrador.Text.ToString(),
-                        mskTextBoxCarteira.Text.ToString());
+                        mskTextBoxCarteira.Text.ToString(),
+                        textBoxCodCliente.Text.ToString());
 
                     String conveniado = comboConvenios.Text.ToString().Substring(0, 12);
                     LeitorArquivoParametros leitor = new LeitorArquivoParametros();
@@ -126,7 +127,8 @@ namespace Gerador_de_Remessa_Cliente
                         Convert.ToInt64(mskTextBoxNumDocCedente.Text.ToString()),
                         mskBancoCobrador.Text.ToString(),
                         mskTextBoxCarteira.Text.ToString(),
-                        informaSeuNumero);
+                        informaSeuNumero,
+                        textBoxCodCliente.Text.ToString());
 
                     String conveniado = comboConvenios.Text.ToString().Substring(0, 12);
                     LeitorArquivoParametros leitor = new LeitorArquivoParametros();
@@ -166,7 +168,8 @@ namespace Gerador_de_Remessa_Cliente
                         textBoxDiretorioDestino.Text.ToString(),
                         Convert.ToInt64(mskTextBoxNumDocCedente.Text.ToString()),
                         mskBancoCobrador.Text.ToString(),
-                        mskTextBoxCarteira.Text.ToString());
+                        mskTextBoxCarteira.Text.ToString(),
+                        textBoxCodCliente.Text.ToString());
 
                     String conveniado = comboConvenios.Text.ToString().Substring(0, 12);
                     LeitorArquivoParametros leitor = new LeitorArquivoParametros();
@@ -290,6 +293,7 @@ namespace Gerador_de_Remessa_Cliente
                 mskTextBoxNumDocCedente.Text = lista[10].ToString();
                 mskBancoCobrador.Text = lista[11].ToString();
                 mskTextBoxCarteira.Text = lista[12].ToString();
+                textBoxCodCliente.Text = lista[13].ToString();
 
                 comboLeiaute.SelectedIndex = -1;
 
@@ -302,6 +306,30 @@ namespace Gerador_de_Remessa_Cliente
         }
 
         private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Soap_Click(object sender, EventArgs e)
+        {
+            ChamadaWs cws = new ChamadaWs();
+            //cws.CallWebService();
+            cws.CreateSoapEnvelopeBorderoCapaLote(DateTime.Parse(mskTextBoxDataInclusao.Text), 
+                textBoxCodCliente.Text.ToString()
+                , Int32.Parse(mskTextBoxLinhasArquivo.Text.ToString())
+                ,/*900.5,*/ Int32.Parse(mskTextBoxSeuNumero.Text.ToString()),DateTime.Parse(mskTextBoxDataVencimento.Text));
+
+            //(DateTime dataEmissao, String codigoCedente, int quantidadeTitulos, float valorTotalDoLote)
+
+
+        }
+
+        private void textBoxCodCliente_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
         {
 
         }

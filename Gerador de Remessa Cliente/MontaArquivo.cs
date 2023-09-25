@@ -14,7 +14,7 @@ namespace Gerador_de_Remessa_Cliente
 {
     internal class MontaArquivo
     {
-        public void GravaArquivoLtBradesco(DateTime DataRecebimento, long SeuNumero, DateTime DataVencimento, int linhasPorArquivo, /*int numeroArquivo,*/ int quantidadeDeArquivos, String Convenio, String Conta, String AgenciaCedente, String diretorio, long numeroDocumentoCedente, String bancoCobrador, String carteira, Boolean informaSeuNumero)
+        public void GravaArquivoLtBradesco(DateTime DataRecebimento, long SeuNumero, DateTime DataVencimento, int linhasPorArquivo, /*int numeroArquivo,*/ int quantidadeDeArquivos, String Convenio, String Conta, String AgenciaCedente, String diretorio, long numeroDocumentoCedente, String bancoCobrador, String carteira, Boolean informaSeuNumero, string codigoCliente)
         {
             // dataRecebimento ddmmaa
             // dataVencimento ddmmaa
@@ -125,13 +125,14 @@ namespace Gerador_de_Remessa_Cliente
                 sw.WriteLine("DOCUMENTO_CEDENTE=" + numeroDocumentoCedente.ToString());
                 sw.WriteLine("BANCO_COBRADOR=" + bancoCobrador.ToString());
                 sw.WriteLine("CARTEIRA=" + carteira.ToString());
+                sw.WriteLine("COD_CLIENTE=" + codigoCliente.ToString());
 
 
             }
             System.Windows.Forms.MessageBox.Show("Terminou!");
         }
 
-        public void GravaArquivoLtItau(DateTime DataRecebimento, long SeuNUmero, DateTime DataVencimento, int linhasPorArquivo, /*int numeroArquivo,*/ int quantidadeDeArquivos, String Convenio, String Conta, String AgenciaCedente, String diretorio, long numeroDocumentoCedente, String bancoCobrador, String carteira)
+        public void GravaArquivoLtItau(DateTime DataRecebimento, long SeuNUmero, DateTime DataVencimento, int linhasPorArquivo, /*int numeroArquivo,*/ int quantidadeDeArquivos, String Convenio, String Conta, String AgenciaCedente, String diretorio, long numeroDocumentoCedente, String bancoCobrador, String carteira, string codigoCliente)
         {
             // dataRecebimento ddmmaa
             // dataVencimento ddmmaa
@@ -227,12 +228,13 @@ namespace Gerador_de_Remessa_Cliente
                 sw.WriteLine("DOCUMENTO_CEDENTE=" + numeroDocumentoCedente.ToString());
                 sw.WriteLine("BANCO_COBRADOR=" + bancoCobrador.ToString());
                 sw.WriteLine("CARTEIRA=" + carteira.ToString());
+                sw.WriteLine("COD_CLIENTE=" + codigoCliente.ToString());
 
             }
             System.Windows.Forms.MessageBox.Show("Terminou!");
         }
 
-        public void GravaArquivoV2(DateTime DataRecebimento, long SeuNUmero, DateTime DataVencimento, int linhasPorArquivo, /*int numeroArquivo,*/ int quantidadeDeArquivos, String Convenio, String Conta, String AgenciaCedente, String diretorio, long numeroDocumentoCedente, String bancoCobrador, String carteira)
+        public void GravaArquivoV2(DateTime DataRecebimento, long SeuNUmero, DateTime DataVencimento, int linhasPorArquivo, /*int numeroArquivo,*/ int quantidadeDeArquivos, String Convenio, String Conta, String AgenciaCedente, String diretorio, long numeroDocumentoCedente, String bancoCobrador, String carteira, string codigoCliente)
         {
             // dataRecebimento ddmmaa
             // dataVencimento ddmmaa
@@ -324,6 +326,7 @@ namespace Gerador_de_Remessa_Cliente
                 sw.WriteLine("DOCUMENTO_CEDENTE=" + numeroDocumentoCedente.ToString());
                 sw.WriteLine("BANCO_COBRADOR=" + bancoCobrador.ToString());
                 sw.WriteLine("CARTEIRA=" + carteira.ToString());
+                sw.WriteLine("COD_CLIENTE=" + codigoCliente.ToString());                
 
             }
             System.Windows.Forms.MessageBox.Show("Terminou!");
