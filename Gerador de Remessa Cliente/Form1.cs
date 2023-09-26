@@ -312,16 +312,63 @@ namespace Gerador_de_Remessa_Cliente
 
         private void Soap_Click(object sender, EventArgs e)
         {
-            ChamadaWs cws = new ChamadaWs();
-            //cws.CallWebService();
-            cws.CreateSoapEnvelopeBorderoCapaLote(DateTime.Parse(mskTextBoxDataInclusao.Text), 
-                textBoxCodCliente.Text.ToString()
-                , Int32.Parse(mskTextBoxLinhasArquivo.Text.ToString())
-                ,/*900.5,*/ Int32.Parse(mskTextBoxSeuNumero.Text.ToString()),DateTime.Parse(mskTextBoxDataVencimento.Text));
+            if (/*String.IsNullOrEmpty(mskTextBoxSequencialArq.Text.Trim().ToString()) ||*/ String.IsNullOrEmpty(mskTextBoxSeuNumero.Text.Trim().ToString()) ||
+                String.IsNullOrEmpty(mskTextBoxDataInclusao.Text.Trim().ToString()) || String.IsNullOrEmpty(mskTextBoxDataVencimento.Text.ToString()) ||
+                 mskTextBoxDataVencimento.Text.ToString() == "  /  /" || mskTextBoxDataInclusao.Text.ToString() == "  /  /" ||
+                String.IsNullOrEmpty(mskTextBoxLinhasArquivo.Text.Trim().ToString()) || String.IsNullOrEmpty(mskTextBoxQtdArquivos.Text.Trim().ToString()) ||
+                String.IsNullOrEmpty(mskTextBoxConvenio.Text.Trim().ToString()) || String.IsNullOrEmpty(mskTextBoxContaCedente.Text.Trim().ToString()) ||
+                String.IsNullOrEmpty(mskTextBoxAgCedente.Text.Trim().ToString()) || String.IsNullOrEmpty(textBoxDiretorioDestino.Text.Trim().ToString()) ||
+                String.IsNullOrEmpty(mskTextBoxNumDocCedente.Text.Trim().ToString()))
+            {
+                DialogResult dialogResult = MessageBox.Show("Verifique se TODOS os campos foram preenchidos!",
+                   "Campos obrigatórios não preenchidos!", MessageBoxButtons.OK);
+            }else
+            {
+                ChamadaWs cws = new ChamadaWs();
+                //cws.CallWebService();
+                cws.CreateSoapEnvelopeBorderoCapaLote(DateTime.Parse(mskTextBoxDataInclusao.Text),
+                    textBoxCodCliente.Text.ToString()
+                    , Int32.Parse(mskTextBoxLinhasArquivo.Text.ToString())
+                    ,/*900.5,*/ Int32.Parse(mskTextBoxSeuNumero.Text.ToString()), DateTime.Parse(mskTextBoxDataVencimento.Text));
+                MontaArquivo mv = new MontaArquivo();
+                mv.GravaArquivo(DateTime.Parse(mskTextBoxDataInclusao.Text),
+                            Convert.ToInt64(mskTextBoxSeuNumero.Text),
+                            DateTime.Parse(mskTextBoxDataVencimento.Text),
+                            Int32.Parse(mskTextBoxLinhasArquivo.Text.ToString()),
+                            Int32.Parse(mskTextBoxQtdArquivos.Text.ToString()),
+                            mskTextBoxConvenio.Text.ToString(),
+                            mskTextBoxContaCedente.Text.ToString(),
+                            mskTextBoxAgCedente.Text.ToString(),
+                            textBoxDiretorioDestino.Text.ToString(),
+                            Convert.ToInt64(mskTextBoxNumDocCedente.Text.ToString()),
+                            mskBancoCobrador.Text.ToString(),
+                            mskTextBoxCarteira.Text.ToString(),
+                            textBoxCodCliente.Text.ToString());
 
-            //(DateTime dataEmissao, String codigoCedente, int quantidadeTitulos, float valorTotalDoLote)
 
+                String conveniado = comboConvenios.Text.ToString().Substring(0, 12);
+                LeitorArquivoParametros leitor = new LeitorArquivoParametros();
 
+                List<string> lista = new List<string>();
+                lista = leitor.BuscaParametroConveniado(conveniado);
+                //mskTextBoxSequencialArq.Text = lista[0].Trim().ToString().PadLeft(5,'0');
+                mskTextBoxSeuNumero.Text = lista[1].ToString();
+                mskTextBoxDataInclusao.Text = lista[2].ToString();
+                mskTextBoxDataVencimento.Text = lista[3].ToString();
+                mskTextBoxLinhasArquivo.Text = lista[4].ToString().Trim().PadLeft(6, '0');
+                mskTextBoxQtdArquivos.Text = lista[5].ToString().PadLeft(6, '0');
+                mskTextBoxConvenio.Text = lista[6].ToString();
+                mskTextBoxContaCedente.Text = lista[7].ToString();
+                mskTextBoxAgCedente.Text = lista[8].ToString();
+                textBoxDiretorioDestino.Text = lista[9].ToString();
+                mskTextBoxNumDocCedente.Text = lista[10].ToString();
+                mskBancoCobrador.Text = lista[11].ToString();
+                mskTextBoxCarteira.Text = lista[12].ToString();
+                textBoxCodCliente.Text = lista[13].ToString();
+
+                comboLeiaute.SelectedIndex = -1;           
+
+            }
         }
 
         private void textBoxCodCliente_TextChanged(object sender, EventArgs e)

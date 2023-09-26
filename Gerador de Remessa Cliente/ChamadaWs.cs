@@ -27,6 +27,7 @@ namespace Gerador_de_Remessa_Cliente
             string mensagem;
             string numeroLote = "0";
             string numeroContrato = "0";
+            string valorTotalCalculado = "0";
 
             //XmlDocument soapEnvelopeXml = CreateSoapEnvelope();            
             //XmlDocument soapEnvelopeXml = CreateSoapEnvelope();            
@@ -71,6 +72,7 @@ namespace Gerador_de_Remessa_Cliente
                     doc.Load(diretorio);
                     String dataProcessamento;
                     DateTime dataFormatada;
+                    
 
                     XmlNodeList elemList = doc.GetElementsByTagName("numeroLote");
                     for (int i = 0; i < elemList.Count; i++)
@@ -85,6 +87,15 @@ namespace Gerador_de_Remessa_Cliente
                         numeroContrato = (elemList2[i].InnerXml);
 
                     }
+
+                    XmlNodeList elemList3 = doc.GetElementsByTagName("valorTotalCalculado");
+                    for (int i = 0; i < elemList3.Count; i++)
+                    {
+                        valorTotalCalculado = (elemList3[i].InnerXml);
+
+                    }
+
+                    //valorTotalCalculado
 
                     Bordero bordero = new Bordero(Int32.Parse(numeroLote), Int32.Parse(numeroContrato));
                     //DialogResult dialogo2 = MessageBox.Show(text: "Data Processamento atual: " + dataFormatada, caption: "Retorno", buttons: MessageBoxButtons.OK);
@@ -102,8 +113,7 @@ namespace Gerador_de_Remessa_Cliente
             if(sucesso == 1)
             {
                 //DialogResult dialogo3 = MessageBox.Show("Capa de lote cadastrada com sucesso", "Sucesso!", MessageBoxButtons.OK);
-                mensagem = "Lote de borderô enviado com sucesso. Número do lote: " + numeroLote +"\n " +
-                    "Titulo 1  no valor de 1625".ToString();
+                mensagem = "Lote de borderô enviado com sucesso. Número do lote: " + numeroLote + ". Valor total: " + valorTotalCalculado;                
 
             } else
             {
