@@ -19,7 +19,7 @@ namespace Gerador_de_Remessa_Cliente
         public string CallWebService_(XmlDocument soapEnvelopeXml, string webService)
         {
             var _url = "http://poa-cb-dev40.poa01.local:7070/tfs-credito-service/OperacaoService/Operacao?wsdl";
-            var _token = "bearer 58836036-82ae-4d7a-ab0b-df52afc3f6f9";
+            var _token = "bearer 1b63e37e-cef9-48bf-8718-4dc80f6dabc6";
 
             XmlDocument soapEnvelopeDocument = new XmlDocument();
 
@@ -134,7 +134,7 @@ namespace Gerador_de_Remessa_Cliente
             double valorTotalDoLote, int seuNumeroInicial, DateTime dataVencimento, List<String> titulosXml)
         {
             var _url = "http://poa-cb-dev40.poa01.local:7070/tfs-credito-service/OperacaoService/Operacao?wsdl";
-            var _token = "bearer 58836036-82ae-4d7a-ab0b-df52afc3f6f9";
+            var _token = "bearer 1b63e37e-cef9-48bf-8718-4dc80f6dabc6";
 
             XmlDocument soapEnvelopeDocument = new XmlDocument();
 
