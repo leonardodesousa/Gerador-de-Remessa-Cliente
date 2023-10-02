@@ -68,6 +68,7 @@
             this.labelConvenios = new System.Windows.Forms.Label();
             this.bnBuscarDados = new System.Windows.Forms.Button();
             this.Soap = new System.Windows.Forms.Button();
+            this.btnConfigServerWs = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -494,12 +495,23 @@
             this.Soap.UseVisualStyleBackColor = false;
             this.Soap.Click += new System.EventHandler(this.Soap_Click);
             // 
+            // btnConfigServerWs
+            // 
+            this.btnConfigServerWs.Location = new System.Drawing.Point(418, 656);
+            this.btnConfigServerWs.Name = "btnConfigServerWs";
+            this.btnConfigServerWs.Size = new System.Drawing.Size(137, 49);
+            this.btnConfigServerWs.TabIndex = 23;
+            this.btnConfigServerWs.Text = "Configurações Servidor WS";
+            this.btnConfigServerWs.UseVisualStyleBackColor = true;
+            this.btnConfigServerWs.Click += new System.EventHandler(this.btnConfigServerWs_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1086, 749);
+            this.Controls.Add(this.btnConfigServerWs);
             this.Controls.Add(this.Soap);
             this.Controls.Add(this.bnBuscarDados);
             this.Controls.Add(this.labelConvenios);
@@ -561,5 +573,6 @@
         private Button Soap;
         private TextBox textBoxCodCliente;
         private Label labelCodCliente;
+        private Button btnConfigServerWs;
     }
 }

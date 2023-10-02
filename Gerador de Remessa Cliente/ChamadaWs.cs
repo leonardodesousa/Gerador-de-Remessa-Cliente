@@ -18,8 +18,19 @@ namespace Gerador_de_Remessa_Cliente
     {
         public string CallWebService_(XmlDocument soapEnvelopeXml, string webService)
         {
-            var _url = "http://poa-cb-dev40.poa01.local:7070/tfs-credito-service/OperacaoService/Operacao?wsdl";
-            var _token = "bearer 1b63e37e-cef9-48bf-8718-4dc80f6dabc6";
+            ServidorAcesso servidorAcesso = new ServidorAcesso();
+
+            List<String> ListaParametros = new List<string>();
+
+            ListaParametros = servidorAcesso.getServidorEToken();
+
+
+            //var _url = "http://poa-cb-dev40.poa01.local:7070/tfs-credito-service/OperacaoService/Operacao?wsdl";
+            //var _token = "bearer 1b63e37e-cef9-48bf-8718-4dc80f6dabc6";
+
+            var _url = ListaParametros[0] + "/tfs-credito-service/OperacaoService/Operacao?wsdl";
+            var _token = "bearer " + ListaParametros[1];
+
 
             XmlDocument soapEnvelopeDocument = new XmlDocument();
 
@@ -133,8 +144,18 @@ namespace Gerador_de_Remessa_Cliente
         public void PersistirBordero(XmlDocument soapEnvelopeXml, string webService, DateTime dataEmissao, String codigoCedente, int quantidadeTitulos, 
             double valorTotalDoLote, int seuNumeroInicial, DateTime dataVencimento, List<String> titulosXml)
         {
-            var _url = "http://poa-cb-dev40.poa01.local:7070/tfs-credito-service/OperacaoService/Operacao?wsdl";
-            var _token = "bearer 1b63e37e-cef9-48bf-8718-4dc80f6dabc6";
+            ServidorAcesso servidorAcesso = new ServidorAcesso();
+
+            List<String> ListaParametros = new List<string>();
+
+            ListaParametros = servidorAcesso.getServidorEToken();
+
+
+            //var _url = "http://poa-cb-dev40.poa01.local:7070/tfs-credito-service/OperacaoService/Operacao?wsdl";
+            //var _token = "bearer 1b63e37e-cef9-48bf-8718-4dc80f6dabc6";
+
+            var _url = ListaParametros[0] + "/tfs-credito-service/OperacaoService/Operacao?wsdl";
+            var _token = "bearer " + ListaParametros[1];
 
             XmlDocument soapEnvelopeDocument = new XmlDocument();
 
@@ -218,7 +239,7 @@ namespace Gerador_de_Remessa_Cliente
                 mensagem = "Ocorreu um erro ao acessar o servidor remoto. Verifique os logs";
             }
 
-            DialogResult dialogo3 = MessageBox.Show(mensagem, "Informação", MessageBoxButtons.OK);
+            //DialogResult dialogo3 = MessageBox.Show(mensagem, "Informação", MessageBoxButtons.OK);
 
             //DialogResult dialogo4 = MessageBox.Show(soapEnvelopeDocument.ToString(), "Informação", MessageBoxButtons.OK);
 

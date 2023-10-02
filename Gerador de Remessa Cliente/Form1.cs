@@ -18,7 +18,7 @@ namespace Gerador_de_Remessa_Cliente
                 comboConvenios.Items.Add(comboCvns[i]);                
             }            
 
-          
+            /*          
             List<string> lista = new List<string>();
             lista = leitor.BuscaParametros();
             if (lista.Count > 0)
@@ -36,7 +36,7 @@ namespace Gerador_de_Remessa_Cliente
                 mskBancoCobrador.Text = lista[11].ToString();
                 mskTextBoxCarteira.Text = lista[12].ToString();
             }
-
+            */
             //mskTextBoxSequencialArq.Text = lista[0].Trim().ToString().PadLeft(5,'0');
            
         }
@@ -379,6 +379,12 @@ namespace Gerador_de_Remessa_Cliente
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnConfigServerWs_Click(object sender, EventArgs e)
+        {
+            FormConfigServidorWS formConfigServidorWS = new FormConfigServidorWS();
+            formConfigServidorWS.ShowDialog();
         }
     }
 }
