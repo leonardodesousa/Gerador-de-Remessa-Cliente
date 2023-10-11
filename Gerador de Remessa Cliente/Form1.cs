@@ -6,17 +6,17 @@ namespace Gerador_de_Remessa_Cliente
         {
             InitializeComponent();
             var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-            this.Text = String.Format("Gerador de Remessa Cliente (Versão {0})", version);           
+            this.Text = String.Format("Gerador de Remessa Cliente (Versão {0})", version);
 
             LeitorArquivoParametros leitor = new LeitorArquivoParametros();
 
             List<String> comboCvns = new List<String>();
-            comboCvns = leitor.buscaConvenios();            
+            comboCvns = leitor.buscaConvenios();
 
             for (int i = 0; i < comboCvns.Count; i++)
             {
-                comboConvenios.Items.Add(comboCvns[i]);                
-            }            
+                comboConvenios.Items.Add(comboCvns[i]);
+            }
 
             /*          
             List<string> lista = new List<string>();
@@ -38,18 +38,19 @@ namespace Gerador_de_Remessa_Cliente
             }
             */
             //mskTextBoxSequencialArq.Text = lista[0].Trim().ToString().PadLeft(5,'0');
-           
+
         }
 
         private void btnGerarArquivo_Click(object sender, EventArgs e)
         {
             int check = 0;
             Boolean informaSeuNumero;
-            if(checkBoxEnviaSeuNum.Checked)
+            if (checkBoxEnviaSeuNum.Checked)
             {
                 //System.Windows.Forms.MessageBox.Show("Informa seu número está marcado");
-                informaSeuNumero=false;
-            } else
+                informaSeuNumero = false;
+            }
+            else
             {
                 //System.Windows.Forms.MessageBox.Show("Informa seu número NÃO está marcado");
                 informaSeuNumero = true;
@@ -66,7 +67,8 @@ namespace Gerador_de_Remessa_Cliente
                 DialogResult dialogResult = MessageBox.Show("Verifique se TODOS os campos foram preenchidos!",
                    "Campos obrigatórios não preenchidos!", MessageBoxButtons.OK);
 
-            } else
+            }
+            else
             {
                 if (comboLeiaute.Text == "TotalBanco" && check == 0)
                 {
@@ -107,11 +109,11 @@ namespace Gerador_de_Remessa_Cliente
 
                     comboLeiaute.SelectedIndex = -1;
                     check = 1;
-                    
+
 
                 }
                 if (comboLeiaute.Text == "Bradesco" && check == 0)
-                {                   
+                {
                     MontaArquivo ma = new MontaArquivo();
                     //ma.GravaArquivo();            
                     ma.GravaArquivoLtBradesco(/*Int32.Parse(mskTextBoxDataInclusao.Text.ToString())*/ DateTime.Parse(mskTextBoxDataInclusao.Text),
@@ -191,15 +193,16 @@ namespace Gerador_de_Remessa_Cliente
 
                     comboLeiaute.SelectedIndex = -1;
                     check = 1;
-                    
 
-                } else if(check == 0)
+
+                }
+                else if (check == 0)
                 {
-                    DialogResult dialogResult = MessageBox.Show("Selecione um Layout" ,
+                    DialogResult dialogResult = MessageBox.Show("Selecione um Layout",
                    "Campos obrigatórios não preenchidos!", MessageBoxButtons.OK);
                 }
-                
-            }           
+
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -270,7 +273,8 @@ namespace Gerador_de_Remessa_Cliente
             if (String.IsNullOrEmpty(comboConvenios.Text.Trim().ToString()))
             {
                 DialogResult dialogo = MessageBox.Show("Selecione um Convênio", "Verifique o campo Convênios Cadastrados", MessageBoxButtons.OK);
-            } else
+            }
+            else
             {
                 DialogResult dialogResult = MessageBox.Show(comboConvenios.Text.ToString(),
                   "Convênio Selecionado", MessageBoxButtons.OK);
@@ -322,7 +326,8 @@ namespace Gerador_de_Remessa_Cliente
             {
                 DialogResult dialogResult = MessageBox.Show("Verifique se TODOS os campos foram preenchidos!",
                    "Campos obrigatórios não preenchidos!", MessageBoxButtons.OK);
-            }else
+            }
+            else
             {
                 ChamadaWs cws = new ChamadaWs();
                 //cws.CallWebService();
@@ -366,7 +371,7 @@ namespace Gerador_de_Remessa_Cliente
                 mskTextBoxCarteira.Text = lista[12].ToString();
                 textBoxCodCliente.Text = lista[13].ToString();
 
-                comboLeiaute.SelectedIndex = -1;           
+                comboLeiaute.SelectedIndex = -1;
 
             }
         }

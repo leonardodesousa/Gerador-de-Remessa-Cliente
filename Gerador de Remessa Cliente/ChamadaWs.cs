@@ -11,11 +11,126 @@ using System.Xml.Serialization;
 using System.Globalization;
 using Gerador_de_Remessa_Cliente.Model;
 using System.Numerics;
+using Gerador_de_Remessa_Cliente.Repository;
 
 namespace Gerador_de_Remessa_Cliente
 {
     public class ChamadaWs
     {
+        public string BuscarTitularAgenciaWs(XmlDocument soapEnvelopeXmlBuscarTitularAgencia)
+        {
+            ServidorAcesso servidorAcesso = new ServidorAcesso();
+
+            List<String> ListaParametros = new List<string>();
+
+            ListaParametros = servidorAcesso.getServidorEToken();
+
+
+            //var _url = "http://poa-cb-dev40.poa01.local:7070/tfs-credito-service/OperacaoService/Operacao?wsdl";
+            //var _token = "bearer 1b63e37e-cef9-48bf-8718-4dc80f6dabc6";
+
+            var _url = ListaParametros[0] + "/tfs-credito-service/BackOfficeService/BackOffice?wsdl";
+            var _token = "bearer " + ListaParametros[1];
+
+
+            XmlDocument soapEnvelopeDocument = new XmlDocument();
+
+            var sucesso = 1;
+            string mensagem;
+            string numeroLote = "0";
+            string numeroContrato = "0";
+            string valorTotalCalculado = "0";
+
+            //XmlDocument soapEnvelopeXml = CreateSoapEnvelope();            
+            //XmlDocument soapEnvelopeXml = CreateSoapEnvelope();            
+            HttpWebRequest webRequest = CreateWebRequest(_url, _token);
+            InsertSoapEnvelopeIntoWebRequest(soapEnvelopeXmlBuscarTitularAgencia, webRequest);
+
+            // Começa a chamada assincrona da requisição
+            IAsyncResult asyncResult = webRequest.BeginGetResponse(null, null);
+
+            //Suspende a thread até a chamada estar completa.
+            asyncResult.AsyncWaitHandle.WaitOne();
+
+            // get the response from the completed web request.
+            // Armazenar a resposta da requisição
+            string soapResult;
+
+            /*
+            string nomeArquivoRequest = "BuscarTitularAgencia" + DateTime.Now.ToString("ddMMyyyyHHmmss");
+            string diretorioRequest = @"C:\\TotalBanco\\Crediblaster\\GeraRem\\xml\\" + nomeArquivoRequest + "_request.xml";
+
+            using (StreamWriter sw = File.CreateText(diretorioRequest))
+            {
+                sw.WriteLine(soapEnvelopeXmlBuscarTitularAgencia.ToString());
+            }
+            */
+
+            string nomeArquivo = "BuscarTitularAgencia" + DateTime.Now.ToString("ddMMyyyyHHmmss");
+            string diretorio = @"C:\\TotalBanco\\Crediblaster\\GeraRem\\xml\\" + nomeArquivo + "_response.xml";
+
+            try
+            {
+                using (WebResponse webResponse = webRequest.EndGetResponse(asyncResult))
+                {
+                    using (StreamReader rd = new StreamReader(webResponse.GetResponseStream()))
+                    {
+
+                        soapResult = rd.ReadToEnd();
+                        soapEnvelopeDocument.LoadXml(soapResult);
+                    }
+                    Console.Write(soapResult);
+                    //DialogResult dialogo2 = MessageBox.Show(soapResult, "Retorno", MessageBoxButtons.OK);
+
+                    //string nomeArquivo = "incluirBorderoCapaLote"+ DateTime.Now.ToString("ddMMyyyyHHmmss");
+                    //string diretorio = @"C:\\TotalBanco\\Crediblaster\\GeraRem\\xml\\" + nomeArquivo + "_response.xml";
+
+                    using (StreamWriter sw = File.CreateText(diretorio))
+                    {
+                        sw.WriteLine(soapResult.ToString());
+                    }
+
+                    XmlDocument doc = new XmlDocument();
+                    doc.Load(diretorio);
+                    String dataProcessamento;
+                    DateTime dataFormatada;
+
+
+                    XmlNodeList elemList = doc.GetElementsByTagName("dataProximoProcessamento");
+                    for (int i = 0; i < elemList.Count; i++)
+                    {
+                        numeroLote = (elemList[i].InnerXml);
+
+                    }                    
+
+                    //valorTotalCalculado
+
+                    //Bordero bordero = new Bordero(Int32.Parse(numeroLote), Int32.Parse(numeroContrato));
+                    //DialogResult dialogo2 = MessageBox.Show(text: "Data Processamento atual: " + dataFormatada, caption: "Retorno", buttons: MessageBoxButtons.OK);
+
+
+
+
+                }
+            }
+            catch (System.Net.WebException ex)
+            {
+                Console.WriteLine(ex.Message);
+                DialogResult dialogo = MessageBox.Show(ex.Message, "Ocorreu um erro ao acessar webservice remoto", MessageBoxButtons.OK);
+                sucesso = 0;
+            }
+
+            if (sucesso == 0)
+            {
+                mensagem = "Ocorreu um erro ao acessar o servidor remoto BuscarTitularAgencia. Verifique os logs";
+            }
+            
+
+            
+            return diretorio;
+
+        }
+
         public string CallWebService_(XmlDocument soapEnvelopeXml, string webService)
         {
             ServidorAcesso servidorAcesso = new ServidorAcesso();
@@ -142,7 +257,7 @@ namespace Gerador_de_Remessa_Cliente
         }
 
         public void PersistirBordero(XmlDocument soapEnvelopeXml, string webService, DateTime dataEmissao, String codigoCedente, int quantidadeTitulos, 
-            double valorTotalDoLote, int seuNumeroInicial, DateTime dataVencimento, List<String> titulosXml)
+            double valorTotalDoLote, int seuNumeroInicial, DateTime dataVencimento, List<String> titulosXml, string dataProcessamentoFormatado)
         {
             ServidorAcesso servidorAcesso = new ServidorAcesso();
 
@@ -249,7 +364,7 @@ namespace Gerador_de_Remessa_Cliente
 
             //this.CreateSoapEnvelopeCalcularBordero(dataEmissao, codigoCedente, quantidadeTitulos, valorTotalDoLote, numeroLote, numeroContrato);
             CreateSoapEnvelopeCalcularBordero(dataEmissao, codigoCedente, quantidadeTitulos, valorTotalDoLote
-                , Int32.Parse(numeroLote), Int32.Parse(numeroContrato), seuNumeroInicial, dataVencimento, titulosXml);
+                , Int32.Parse(numeroLote), Int32.Parse(numeroContrato), seuNumeroInicial, dataVencimento, titulosXml, dataProcessamentoFormatado);
 
         }
 
@@ -311,6 +426,32 @@ namespace Gerador_de_Remessa_Cliente
             Random randNum = new Random();
             int numeroLancamento = 1;
             //valorTitulo = randNum.Next(10, 3000); // Boleto mínimo 10 reais; máximo 3.000 reais
+
+            //montando o xml para buscar o titular agencia
+            MontaXml montaXml = new MontaXml();
+
+            XmlDocument buscarTitularAgenciaXml = new XmlDocument();
+            buscarTitularAgenciaXml = montaXml.buscarTituarAgencia(36, 36);
+
+            String diretorioBuscarTitularAgenciaRequest = BuscarTitularAgenciaWs(buscarTitularAgenciaXml);
+
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(diretorioBuscarTitularAgenciaRequest);
+            //String dataProcessamento;
+            DateTime dataProcessamento = dataEmissao;
+
+            XmlNodeList elemList = doc.GetElementsByTagName("dataProximoProcessamento");
+            for (int i = 0; i < elemList.Count; i++)
+            {
+                dataProcessamento = (DateTime.Parse(elemList[i].InnerXml));
+
+            }
+
+            string dataProcessamentoFormatado = DateTime.Parse(dataProcessamento.ToString()).ToString("yyyy-MM-dd");
+
+
+
 
             for (int i = 0; i< quantidadeTitulos; i++)
             {
@@ -404,7 +545,7 @@ namespace Gerador_de_Remessa_Cliente
             envelopeSoapBorderoCapaLote.Append("<siglaModalidade>CBSJ</siglaModalidade>");
             envelopeSoapBorderoCapaLote.Append("<codigoCobrador>653</codigoCobrador>");
             envelopeSoapBorderoCapaLote.Append("<siglaLinhaOperacao>COB</siglaLinhaOperacao>");
-            envelopeSoapBorderoCapaLote.Append("<dataProcessamentoEfetivo>" + dataEmissaoFormatada + "-03:00</dataProcessamentoEfetivo>");
+            envelopeSoapBorderoCapaLote.Append("<dataProcessamentoEfetivo>" + dataProcessamentoFormatado + "-03:00</dataProcessamentoEfetivo>");
             envelopeSoapBorderoCapaLote.Append("<loteComplementar>false</loteComplementar>");
             envelopeSoapBorderoCapaLote.Append("<tipoTitulo>");
             envelopeSoapBorderoCapaLote.Append("<codigoUsuarioAtualizador>TB</codigoUsuarioAtualizador>");
@@ -474,7 +615,7 @@ namespace Gerador_de_Remessa_Cliente
             }
 
             //PersistirBordero(soapEnvelopeDocument, "incluirBorderoCapaLote");
-            PersistirBordero(soapEnvelopeDocument, "incluirBorderoCapalote", dataEmissao, codigoCedente, quantidadeTitulos, valorTotalDoLote, seuNumeroIncial, dataVencimento, listaTitulosXml) ;
+            PersistirBordero(soapEnvelopeDocument, "incluirBorderoCapalote", dataEmissao, codigoCedente, quantidadeTitulos, valorTotalDoLote, seuNumeroIncial, dataVencimento, listaTitulosXml, dataProcessamentoFormatado) ;
 
             //CreateSoapEnvelopeCalcularBordero(dataEmissao,codigoCedente,quantidadeTitulos,valorTotalDoLote,)
 
@@ -485,7 +626,7 @@ namespace Gerador_de_Remessa_Cliente
 
 
         public XmlDocument CreateSoapEnvelopeCalcularBordero(DateTime dataEmissao, String codigoCedente, int quantidadeTitulos, double valorTotalDoLote
-            , int numeroLote, int numeroContrato, int seuNumeroInicial, DateTime dataVencimento, List <String> listaTitulosXml)
+            , int numeroLote, int numeroContrato, int seuNumeroInicial, DateTime dataVencimento, List <String> listaTitulosXml, string dataProcessamentoFormatado)
         {
             
 
@@ -504,6 +645,8 @@ namespace Gerador_de_Remessa_Cliente
             string dataEmissaoFormatada = DateTime.Parse(dataEmissao.ToString()).ToString("yyyy-MM-dd");
             string dataVencimentoFormatada = DateTime.Parse(dataVencimento.ToString()).ToString("yyyy-MM-dd");
             
+
+
 
 
             //DateTime.Now.ToString("dd-MM-yyyyHH:mm:ss")
@@ -529,7 +672,7 @@ namespace Gerador_de_Remessa_Cliente
             envelopeSoapCalcularBordero.Append("<siglaOrigemInterface>MANUAL</siglaOrigemInterface>");
             envelopeSoapCalcularBordero.Append("<codigoCobrador>653</codigoCobrador>");
             envelopeSoapCalcularBordero.Append("<siglaLinhaOperacao>COB</siglaLinhaOperacao>");
-            envelopeSoapCalcularBordero.Append("<dataProcessamentoEfetivo>" + dataEmissaoFormatada + "-03:00</dataProcessamentoEfetivo>"); 
+            envelopeSoapCalcularBordero.Append("<dataProcessamentoEfetivo>" + dataProcessamentoFormatado + "-03:00</dataProcessamentoEfetivo>"); 
             envelopeSoapCalcularBordero.Append("<loteComplementar>false</loteComplementar>");
             envelopeSoapCalcularBordero.Append("<tipoTitulo>");
             envelopeSoapCalcularBordero.Append("<codigoUsuarioAtualizador>TB</codigoUsuarioAtualizador>");
@@ -607,56 +750,8 @@ namespace Gerador_de_Remessa_Cliente
 
                 envelopeSoapCalcularBordero.Append(listaTitulosXml[i]);
                 //DialogResult dialogo5 = MessageBox.Show(listaTitulosXml[i].ToString(), "Informação", MessageBoxButtons.OK);
-            }
-            
-            /*
-            envelopeSoapCalcularBordero.Append("<titulos>");
-            envelopeSoapCalcularBordero.Append("<codigoUsuarioAtualizador>GERADOR COB</codigoUsuarioAtualizador>");
-            envelopeSoapCalcularBordero.Append("<dataHoraAtualizacao>" + DateTime.Now.ToString("yyyy-MM-dd") + "T" + DateTime.Now.ToString("HH:mm:ss") + "</dataHoraAtualizacao>");//////
-            envelopeSoapCalcularBordero.Append("<numeroLancamento>1</numeroLancamento>");
-            envelopeSoapCalcularBordero.Append("<tipoTitulo>");
-            envelopeSoapCalcularBordero.Append("<codigoUsuarioAtualizador>TB</codigoUsuarioAtualizador>");
-            envelopeSoapCalcularBordero.Append("<dataHoraAtualizacao>2007-05-18T11:10:29-03:00</dataHoraAtualizacao>");
-            envelopeSoapCalcularBordero.Append("<siglaTipoTitulo>DUP</siglaTipoTitulo>");
-            envelopeSoapCalcularBordero.Append("<descricaoTitulo>CAUCAO - DUPLICATAS</descricaoTitulo>");
-            envelopeSoapCalcularBordero.Append("</tipoTitulo>");
-            envelopeSoapCalcularBordero.Append("<seuNumero>" + seuNumeroInicial.ToString().PadLeft(12, '0') + "</seuNumero>");   ///
-            envelopeSoapCalcularBordero.Append("<codigoCliente>" + codigoCedenteConvertido + "</codigoCliente>");
-            envelopeSoapCalcularBordero.Append("<tipoDocumentoSacado>CPF</tipoDocumentoSacado>");
-            envelopeSoapCalcularBordero.Append("<numeroDocumentoSacado>06067139995</numeroDocumentoSacado>");
-            envelopeSoapCalcularBordero.Append("<dataEmissaoTitulo>" + dataEmissaoFormatada + "-03:00</dataEmissaoTitulo>");   //
-            envelopeSoapCalcularBordero.Append("<dataVencimento>" + dataVencimentoFormatada + "-03:00</dataVencimento>");
-            envelopeSoapCalcularBordero.Append("<aceite>NAO</aceite>");
-            envelopeSoapCalcularBordero.Append("<codigoCobrador>653</codigoCobrador>");
-            envelopeSoapCalcularBordero.Append("<endereco>false</endereco>");
-            envelopeSoapCalcularBordero.Append("<numeroDocumentoEfetivo>06067139995</numeroDocumentoEfetivo>");
-            envelopeSoapCalcularBordero.Append("<tipoPessoa>FISICA</tipoPessoa>");
-            envelopeSoapCalcularBordero.Append("<valorTitulo>" + valorDoTitulo.ToString(nfi) + "</valorTitulo>"); //
-            envelopeSoapCalcularBordero.Append("<saldoDevedor>" + valorDoTitulo.ToString(nfi) + "</saldoDevedor>"); //
-            envelopeSoapCalcularBordero.Append("<identificadorCriterioPermanencia>CONFIGURACAO</identificadorCriterioPermanencia>");
-            envelopeSoapCalcularBordero.Append("<identificadorCriterioLiquidacao>SEM_LIQUIDACAO</identificadorCriterioLiquidacao>");
-            envelopeSoapCalcularBordero.Append("<identificadorCriterioMulta>TITULO</identificadorCriterioMulta>");
-            envelopeSoapCalcularBordero.Append("<percentualMulta>2</percentualMulta>");
-            envelopeSoapCalcularBordero.Append("<quantidadeDiasMulta>0</quantidadeDiasMulta>");
-            envelopeSoapCalcularBordero.Append("<valorTaxaSpread>0</valorTaxaSpread>");
-            envelopeSoapCalcularBordero.Append("<baseSpread>DEVEDOR</baseSpread>");
-            envelopeSoapCalcularBordero.Append("<identificadorFormatoSpread>CONFIGURACAO</identificadorFormatoSpread>");
-            envelopeSoapCalcularBordero.Append("<identificadorCriterioOperacao>NAO_UTILIZA</identificadorCriterioOperacao>");
-            envelopeSoapCalcularBordero.Append("<baseCalculoMulta>DEVEDOR</baseCalculoMulta>");
-            envelopeSoapCalcularBordero.Append("<taxaLimiteMora>0</taxaLimiteMora>");
-            envelopeSoapCalcularBordero.Append("<identificadorTipoLimite>SEM_LIMITE</identificadorTipoLimite>");
-            envelopeSoapCalcularBordero.Append("<criterioReembolso>C</criterioReembolso>");
-            envelopeSoapCalcularBordero.Append("<criterioProtesto>C</criterioProtesto>");
-            envelopeSoapCalcularBordero.Append("<criterioDevolucao>C</criterioDevolucao>");
-            envelopeSoapCalcularBordero.Append("<devolucaoAutomatica>NAO_DEVOLVER</devolucaoAutomatica>");
-            envelopeSoapCalcularBordero.Append("<situacaoCobranca>EM_DIA</situacaoCobranca>");
-            envelopeSoapCalcularBordero.Append("<identificadorConvenioCnab>false</identificadorConvenioCnab>");
-            envelopeSoapCalcularBordero.Append("<nomeSacado>FELIPE DE LIZ MARTINS</nomeSacado>");
-            envelopeSoapCalcularBordero.Append("<valorJurosADescontar>0</valorJurosADescontar>");
-            envelopeSoapCalcularBordero.Append("<valorIOCADescontar>0</valorIOCADescontar>");
-            envelopeSoapCalcularBordero.Append("</titulos>");
-            */
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            }          
+       
             envelopeSoapCalcularBordero.Append("</movimentoContrato>");
             envelopeSoapCalcularBordero.Append("<persistirBordero>true</persistirBordero>");
             envelopeSoapCalcularBordero.Append("</ns2:calcularBordero>");

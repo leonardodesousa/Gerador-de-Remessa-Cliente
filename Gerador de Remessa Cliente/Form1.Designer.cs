@@ -28,509 +28,510 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.btnGerarArquivo = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.label3 = new System.Windows.Forms.Label();
-            this.mskTextBoxSeuNumero = new System.Windows.Forms.MaskedTextBox();
-            this.mskTextBoxLinhasArquivo = new System.Windows.Forms.MaskedTextBox();
-            this.mskTextBoxQtdArquivos = new System.Windows.Forms.MaskedTextBox();
-            this.mskTextBoxDataInclusao = new System.Windows.Forms.MaskedTextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.mskTextBoxDataVencimento = new System.Windows.Forms.MaskedTextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBoxEnviaSeuNum = new System.Windows.Forms.CheckBox();
-            this.Leaute = new System.Windows.Forms.Label();
-            this.comboLeiaute = new System.Windows.Forms.ComboBox();
-            this.textBoxDiretorioDestino = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.labelCodCliente = new System.Windows.Forms.Label();
-            this.textBoxCodCliente = new System.Windows.Forms.TextBox();
-            this.labelCarteira = new System.Windows.Forms.Label();
-            this.mskTextBoxCarteira = new System.Windows.Forms.MaskedTextBox();
-            this.labelBcoCobrador = new System.Windows.Forms.Label();
-            this.mskBancoCobrador = new System.Windows.Forms.MaskedTextBox();
-            this.mskTextBoxNumDocCedente = new System.Windows.Forms.MaskedTextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.mskTextBoxAgCedente = new System.Windows.Forms.MaskedTextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.mskTextBoxContaCedente = new System.Windows.Forms.MaskedTextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.mskTextBoxConvenio = new System.Windows.Forms.MaskedTextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.btnSair = new System.Windows.Forms.Button();
-            this.comboConvenios = new System.Windows.Forms.ComboBox();
-            this.labelConvenios = new System.Windows.Forms.Label();
-            this.bnBuscarDados = new System.Windows.Forms.Button();
-            this.Soap = new System.Windows.Forms.Button();
-            this.btnConfigServerWs = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.SuspendLayout();
+            btnGerarArquivo = new Button();
+            label1 = new Label();
+            label2 = new Label();
+            imageList1 = new ImageList(components);
+            label3 = new Label();
+            mskTextBoxSeuNumero = new MaskedTextBox();
+            mskTextBoxLinhasArquivo = new MaskedTextBox();
+            mskTextBoxQtdArquivos = new MaskedTextBox();
+            mskTextBoxDataInclusao = new MaskedTextBox();
+            label4 = new Label();
+            mskTextBoxDataVencimento = new MaskedTextBox();
+            label5 = new Label();
+            groupBox1 = new GroupBox();
+            checkBoxEnviaSeuNum = new CheckBox();
+            Leaute = new Label();
+            comboLeiaute = new ComboBox();
+            textBoxDiretorioDestino = new TextBox();
+            label10 = new Label();
+            groupBox2 = new GroupBox();
+            labelCodCliente = new Label();
+            textBoxCodCliente = new TextBox();
+            labelCarteira = new Label();
+            mskTextBoxCarteira = new MaskedTextBox();
+            labelBcoCobrador = new Label();
+            mskBancoCobrador = new MaskedTextBox();
+            mskTextBoxNumDocCedente = new MaskedTextBox();
+            label11 = new Label();
+            mskTextBoxAgCedente = new MaskedTextBox();
+            label9 = new Label();
+            mskTextBoxContaCedente = new MaskedTextBox();
+            label8 = new Label();
+            mskTextBoxConvenio = new MaskedTextBox();
+            label7 = new Label();
+            btnSair = new Button();
+            comboConvenios = new ComboBox();
+            labelConvenios = new Label();
+            bnBuscarDados = new Button();
+            Soap = new Button();
+            btnConfigServerWs = new Button();
+            groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
+            SuspendLayout();
             // 
             // btnGerarArquivo
             // 
-            this.btnGerarArquivo.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnGerarArquivo.Location = new System.Drawing.Point(90, 656);
-            this.btnGerarArquivo.Name = "btnGerarArquivo";
-            this.btnGerarArquivo.Size = new System.Drawing.Size(137, 49);
-            this.btnGerarArquivo.TabIndex = 20;
-            this.btnGerarArquivo.Text = "Gerar Arquivo CNAB";
-            this.btnGerarArquivo.UseVisualStyleBackColor = false;
-            this.btnGerarArquivo.Click += new System.EventHandler(this.btnGerarArquivo_Click);
+            btnGerarArquivo.BackColor = Color.DodgerBlue;
+            btnGerarArquivo.FlatStyle = FlatStyle.Popup;
+            btnGerarArquivo.Location = new Point(90, 640);
+            btnGerarArquivo.Name = "btnGerarArquivo";
+            btnGerarArquivo.Size = new Size(137, 49);
+            btnGerarArquivo.TabIndex = 20;
+            btnGerarArquivo.Text = "Gerar Arquivo CNAB";
+            btnGerarArquivo.UseVisualStyleBackColor = false;
+            btnGerarArquivo.Click += btnGerarArquivo_Click;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(30, 55);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Seu Número inicial ->";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(6, 52);
+            label1.Name = "label1";
+            label1.Size = new Size(154, 20);
+            label1.TabIndex = 2;
+            label1.Text = "Seu Número inicial ->";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(28, 88);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(151, 20);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Linhas por arquivo ->";
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(6, 85);
+            label2.Name = "label2";
+            label2.Size = new Size(160, 20);
+            label2.TabIndex = 4;
+            label2.Text = "Boletos por arquivo ->";
             // 
             // imageList1
             // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            imageList1.ColorDepth = ColorDepth.Depth8Bit;
+            imageList1.ImageSize = new Size(16, 16);
+            imageList1.TransparentColor = Color.Transparent;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(570, 131);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(188, 20);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Quantidade de arquivos ->";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(546, 131);
+            label3.Name = "label3";
+            label3.Size = new Size(188, 20);
+            label3.TabIndex = 6;
+            label3.Text = "Quantidade de arquivos ->";
+            label3.Click += label3_Click;
             // 
             // mskTextBoxSeuNumero
             // 
-            this.mskTextBoxSeuNumero.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.mskTextBoxSeuNumero.Location = new System.Drawing.Point(185, 47);
-            this.mskTextBoxSeuNumero.Mask = "0000000000";
-            this.mskTextBoxSeuNumero.Name = "mskTextBoxSeuNumero";
-            this.mskTextBoxSeuNumero.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mskTextBoxSeuNumero.Size = new System.Drawing.Size(137, 27);
-            this.mskTextBoxSeuNumero.TabIndex = 1;
-            this.mskTextBoxSeuNumero.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.mskTextBoxSeuNumero.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTextBoxSeuNumero_MaskInputRejected);
+            mskTextBoxSeuNumero.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            mskTextBoxSeuNumero.Location = new Point(185, 47);
+            mskTextBoxSeuNumero.Mask = "0000000000";
+            mskTextBoxSeuNumero.Name = "mskTextBoxSeuNumero";
+            mskTextBoxSeuNumero.RightToLeft = RightToLeft.No;
+            mskTextBoxSeuNumero.Size = new Size(137, 27);
+            mskTextBoxSeuNumero.TabIndex = 1;
+            mskTextBoxSeuNumero.TextAlign = HorizontalAlignment.Right;
+            mskTextBoxSeuNumero.MaskInputRejected += mskTextBoxSeuNumero_MaskInputRejected;
             // 
             // mskTextBoxLinhasArquivo
             // 
-            this.mskTextBoxLinhasArquivo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.mskTextBoxLinhasArquivo.Location = new System.Drawing.Point(185, 81);
-            this.mskTextBoxLinhasArquivo.Mask = "00000";
-            this.mskTextBoxLinhasArquivo.Name = "mskTextBoxLinhasArquivo";
-            this.mskTextBoxLinhasArquivo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mskTextBoxLinhasArquivo.Size = new System.Drawing.Size(137, 27);
-            this.mskTextBoxLinhasArquivo.TabIndex = 3;
-            this.mskTextBoxLinhasArquivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            mskTextBoxLinhasArquivo.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            mskTextBoxLinhasArquivo.Location = new Point(185, 81);
+            mskTextBoxLinhasArquivo.Mask = "00000";
+            mskTextBoxLinhasArquivo.Name = "mskTextBoxLinhasArquivo";
+            mskTextBoxLinhasArquivo.RightToLeft = RightToLeft.No;
+            mskTextBoxLinhasArquivo.Size = new Size(137, 27);
+            mskTextBoxLinhasArquivo.TabIndex = 3;
+            mskTextBoxLinhasArquivo.TextAlign = HorizontalAlignment.Right;
             // 
             // mskTextBoxQtdArquivos
             // 
-            this.mskTextBoxQtdArquivos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.mskTextBoxQtdArquivos.Location = new System.Drawing.Point(764, 128);
-            this.mskTextBoxQtdArquivos.Mask = "00000";
-            this.mskTextBoxQtdArquivos.Name = "mskTextBoxQtdArquivos";
-            this.mskTextBoxQtdArquivos.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mskTextBoxQtdArquivos.Size = new System.Drawing.Size(113, 27);
-            this.mskTextBoxQtdArquivos.TabIndex = 6;
-            this.mskTextBoxQtdArquivos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.mskTextBoxQtdArquivos.ValidatingType = typeof(int);
+            mskTextBoxQtdArquivos.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            mskTextBoxQtdArquivos.Location = new Point(764, 128);
+            mskTextBoxQtdArquivos.Mask = "00000";
+            mskTextBoxQtdArquivos.Name = "mskTextBoxQtdArquivos";
+            mskTextBoxQtdArquivos.RightToLeft = RightToLeft.No;
+            mskTextBoxQtdArquivos.Size = new Size(113, 27);
+            mskTextBoxQtdArquivos.TabIndex = 6;
+            mskTextBoxQtdArquivos.TextAlign = HorizontalAlignment.Right;
+            mskTextBoxQtdArquivos.ValidatingType = typeof(int);
             // 
             // mskTextBoxDataInclusao
             // 
-            this.mskTextBoxDataInclusao.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.mskTextBoxDataInclusao.Location = new System.Drawing.Point(764, 53);
-            this.mskTextBoxDataInclusao.Mask = "00/00/0000";
-            this.mskTextBoxDataInclusao.Name = "mskTextBoxDataInclusao";
-            this.mskTextBoxDataInclusao.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mskTextBoxDataInclusao.Size = new System.Drawing.Size(113, 27);
-            this.mskTextBoxDataInclusao.TabIndex = 2;
-            this.mskTextBoxDataInclusao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.mskTextBoxDataInclusao.ValidatingType = typeof(System.DateTime);
+            mskTextBoxDataInclusao.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            mskTextBoxDataInclusao.Location = new Point(764, 53);
+            mskTextBoxDataInclusao.Mask = "00/00/0000";
+            mskTextBoxDataInclusao.Name = "mskTextBoxDataInclusao";
+            mskTextBoxDataInclusao.RightToLeft = RightToLeft.No;
+            mskTextBoxDataInclusao.Size = new Size(113, 27);
+            mskTextBoxDataInclusao.TabIndex = 2;
+            mskTextBoxDataInclusao.TextAlign = HorizontalAlignment.Right;
+            mskTextBoxDataInclusao.ValidatingType = typeof(DateTime);
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(544, 55);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(214, 20);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Data de emissão (ddmmaa) ->";
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(522, 55);
+            label4.Name = "label4";
+            label4.Size = new Size(214, 20);
+            label4.TabIndex = 11;
+            label4.Text = "Data de emissão (ddmmaa) ->";
             // 
             // mskTextBoxDataVencimento
             // 
-            this.mskTextBoxDataVencimento.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.mskTextBoxDataVencimento.Location = new System.Drawing.Point(764, 91);
-            this.mskTextBoxDataVencimento.Mask = "00/00/0000";
-            this.mskTextBoxDataVencimento.Name = "mskTextBoxDataVencimento";
-            this.mskTextBoxDataVencimento.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mskTextBoxDataVencimento.Size = new System.Drawing.Size(113, 27);
-            this.mskTextBoxDataVencimento.TabIndex = 4;
-            this.mskTextBoxDataVencimento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.mskTextBoxDataVencimento.ValidatingType = typeof(System.DateTime);
+            mskTextBoxDataVencimento.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            mskTextBoxDataVencimento.Location = new Point(764, 91);
+            mskTextBoxDataVencimento.Mask = "00/00/0000";
+            mskTextBoxDataVencimento.Name = "mskTextBoxDataVencimento";
+            mskTextBoxDataVencimento.RightToLeft = RightToLeft.No;
+            mskTextBoxDataVencimento.Size = new Size(113, 27);
+            mskTextBoxDataVencimento.TabIndex = 4;
+            mskTextBoxDataVencimento.TextAlign = HorizontalAlignment.Right;
+            mskTextBoxDataVencimento.ValidatingType = typeof(DateTime);
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(487, 94);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(271, 20);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Data Vencimento Boletos (ddmmaa) ->";
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(461, 95);
+            label5.Name = "label5";
+            label5.Size = new Size(271, 20);
+            label5.TabIndex = 13;
+            label5.Text = "Data Vencimento Boletos (ddmmaa) ->";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.checkBoxEnviaSeuNum);
-            this.groupBox1.Controls.Add(this.Leaute);
-            this.groupBox1.Controls.Add(this.comboLeiaute);
-            this.groupBox1.Controls.Add(this.textBoxDiretorioDestino);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.mskTextBoxLinhasArquivo);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.mskTextBoxDataVencimento);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.mskTextBoxDataInclusao);
-            this.groupBox1.Controls.Add(this.mskTextBoxSeuNumero);
-            this.groupBox1.Controls.Add(this.mskTextBoxQtdArquivos);
-            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox1.Location = new System.Drawing.Point(90, 119);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(965, 263);
-            this.groupBox1.TabIndex = 14;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Parâmetros de entrada";
+            groupBox1.Controls.Add(checkBoxEnviaSeuNum);
+            groupBox1.Controls.Add(Leaute);
+            groupBox1.Controls.Add(comboLeiaute);
+            groupBox1.Controls.Add(textBoxDiretorioDestino);
+            groupBox1.Controls.Add(label10);
+            groupBox1.Controls.Add(mskTextBoxLinhasArquivo);
+            groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(mskTextBoxDataVencimento);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(mskTextBoxDataInclusao);
+            groupBox1.Controls.Add(mskTextBoxSeuNumero);
+            groupBox1.Controls.Add(mskTextBoxQtdArquivos);
+            groupBox1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            groupBox1.Location = new Point(90, 119);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(965, 263);
+            groupBox1.TabIndex = 14;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Parâmetros de entrada";
             // 
             // checkBoxEnviaSeuNum
             // 
-            this.checkBoxEnviaSeuNum.AutoSize = true;
-            this.checkBoxEnviaSeuNum.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxEnviaSeuNum.Location = new System.Drawing.Point(328, 51);
-            this.checkBoxEnviaSeuNum.Name = "checkBoxEnviaSeuNum";
-            this.checkBoxEnviaSeuNum.Size = new System.Drawing.Size(186, 24);
-            this.checkBoxEnviaSeuNum.TabIndex = 19;
-            this.checkBoxEnviaSeuNum.Text = "Não enviar Seu Número";
-            this.checkBoxEnviaSeuNum.UseVisualStyleBackColor = true;
-            this.checkBoxEnviaSeuNum.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged_1);
+            checkBoxEnviaSeuNum.AutoSize = true;
+            checkBoxEnviaSeuNum.ForeColor = Color.Red;
+            checkBoxEnviaSeuNum.Location = new Point(328, 51);
+            checkBoxEnviaSeuNum.Name = "checkBoxEnviaSeuNum";
+            checkBoxEnviaSeuNum.Size = new Size(186, 24);
+            checkBoxEnviaSeuNum.TabIndex = 19;
+            checkBoxEnviaSeuNum.Text = "Não enviar Seu Número";
+            checkBoxEnviaSeuNum.UseVisualStyleBackColor = true;
+            checkBoxEnviaSeuNum.CheckedChanged += checkBox1_CheckedChanged_1;
             // 
             // Leaute
             // 
-            this.Leaute.AutoSize = true;
-            this.Leaute.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Leaute.Location = new System.Drawing.Point(106, 126);
-            this.Leaute.Name = "Leaute";
-            this.Leaute.Size = new System.Drawing.Size(73, 20);
-            this.Leaute.TabIndex = 18;
-            this.Leaute.Text = "Layout ->";
+            Leaute.AutoSize = true;
+            Leaute.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Leaute.Location = new Point(92, 123);
+            Leaute.Name = "Leaute";
+            Leaute.Size = new Size(73, 20);
+            Leaute.TabIndex = 18;
+            Leaute.Text = "Layout ->";
             // 
             // comboLeiaute
             // 
-            this.comboLeiaute.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboLeiaute.FormattingEnabled = true;
-            this.comboLeiaute.Items.AddRange(new object[] {
-            "Bradesco",
-            "Itaú",
-            "TotalBanco"});
-            this.comboLeiaute.Location = new System.Drawing.Point(185, 118);
-            this.comboLeiaute.Name = "comboLeiaute";
-            this.comboLeiaute.Size = new System.Drawing.Size(137, 28);
-            this.comboLeiaute.Sorted = true;
-            this.comboLeiaute.TabIndex = 17;
+            comboLeiaute.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            comboLeiaute.FormattingEnabled = true;
+            comboLeiaute.Items.AddRange(new object[] { "Bradesco", "Itaú", "TotalBanco" });
+            comboLeiaute.Location = new Point(185, 118);
+            comboLeiaute.Name = "comboLeiaute";
+            comboLeiaute.Size = new Size(137, 28);
+            comboLeiaute.Sorted = true;
+            comboLeiaute.TabIndex = 17;
             // 
             // textBoxDiretorioDestino
             // 
-            this.textBoxDiretorioDestino.Location = new System.Drawing.Point(232, 203);
-            this.textBoxDiretorioDestino.Name = "textBoxDiretorioDestino";
-            this.textBoxDiretorioDestino.Size = new System.Drawing.Size(549, 27);
-            this.textBoxDiretorioDestino.TabIndex = 7;
-            this.textBoxDiretorioDestino.TextChanged += new System.EventHandler(this.textBoxDiretorioDestino_TextChanged);
+            textBoxDiretorioDestino.Location = new Point(232, 203);
+            textBoxDiretorioDestino.Name = "textBoxDiretorioDestino";
+            textBoxDiretorioDestino.Size = new Size(549, 27);
+            textBoxDiretorioDestino.TabIndex = 7;
+            textBoxDiretorioDestino.TextChanged += textBoxDiretorioDestino_TextChanged;
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(20, 206);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(196, 20);
-            this.label10.TabIndex = 16;
-            this.label10.Text = "Diretório destino arquivo ->";
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Location = new Point(20, 206);
+            label10.Name = "label10";
+            label10.Size = new Size(196, 20);
+            label10.TabIndex = 16;
+            label10.Text = "Diretório destino arquivo ->";
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.labelCodCliente);
-            this.groupBox2.Controls.Add(this.textBoxCodCliente);
-            this.groupBox2.Controls.Add(this.labelCarteira);
-            this.groupBox2.Controls.Add(this.mskTextBoxCarteira);
-            this.groupBox2.Controls.Add(this.labelBcoCobrador);
-            this.groupBox2.Controls.Add(this.mskBancoCobrador);
-            this.groupBox2.Controls.Add(this.mskTextBoxNumDocCedente);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.mskTextBoxAgCedente);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.mskTextBoxContaCedente);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.mskTextBoxConvenio);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.Location = new System.Drawing.Point(90, 420);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(965, 190);
-            this.groupBox2.TabIndex = 15;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Dados do Cedente";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            groupBox2.Controls.Add(labelCodCliente);
+            groupBox2.Controls.Add(textBoxCodCliente);
+            groupBox2.Controls.Add(labelCarteira);
+            groupBox2.Controls.Add(mskTextBoxCarteira);
+            groupBox2.Controls.Add(labelBcoCobrador);
+            groupBox2.Controls.Add(mskBancoCobrador);
+            groupBox2.Controls.Add(mskTextBoxNumDocCedente);
+            groupBox2.Controls.Add(label11);
+            groupBox2.Controls.Add(mskTextBoxAgCedente);
+            groupBox2.Controls.Add(label9);
+            groupBox2.Controls.Add(mskTextBoxContaCedente);
+            groupBox2.Controls.Add(label8);
+            groupBox2.Controls.Add(mskTextBoxConvenio);
+            groupBox2.Controls.Add(label7);
+            groupBox2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            groupBox2.Location = new Point(90, 420);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(965, 190);
+            groupBox2.TabIndex = 15;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Dados do Cedente";
+            groupBox2.Enter += groupBox2_Enter;
             // 
             // labelCodCliente
             // 
-            this.labelCodCliente.AutoSize = true;
-            this.labelCodCliente.Location = new System.Drawing.Point(30, 33);
-            this.labelCodCliente.Name = "labelCodCliente";
-            this.labelCodCliente.Size = new System.Drawing.Size(150, 20);
-            this.labelCodCliente.TabIndex = 16;
-            this.labelCodCliente.Text = "Código do Cliente ->";
+            labelCodCliente.AutoSize = true;
+            labelCodCliente.Location = new Point(11, 32);
+            labelCodCliente.Name = "labelCodCliente";
+            labelCodCliente.Size = new Size(150, 20);
+            labelCodCliente.TabIndex = 16;
+            labelCodCliente.Text = "Código do Cliente ->";
             // 
             // textBoxCodCliente
             // 
-            this.textBoxCodCliente.Location = new System.Drawing.Point(182, 30);
-            this.textBoxCodCliente.MaxLength = 8;
-            this.textBoxCodCliente.Name = "textBoxCodCliente";
-            this.textBoxCodCliente.Size = new System.Drawing.Size(100, 27);
-            this.textBoxCodCliente.TabIndex = 13;
-            this.textBoxCodCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBoxCodCliente.TextChanged += new System.EventHandler(this.textBoxCodCliente_TextChanged);
+            textBoxCodCliente.Location = new Point(182, 30);
+            textBoxCodCliente.MaxLength = 8;
+            textBoxCodCliente.Name = "textBoxCodCliente";
+            textBoxCodCliente.Size = new Size(100, 27);
+            textBoxCodCliente.TabIndex = 13;
+            textBoxCodCliente.TextAlign = HorizontalAlignment.Right;
+            textBoxCodCliente.TextChanged += textBoxCodCliente_TextChanged;
             // 
             // labelCarteira
             // 
-            this.labelCarteira.AutoSize = true;
-            this.labelCarteira.Location = new System.Drawing.Point(636, 113);
-            this.labelCarteira.Name = "labelCarteira";
-            this.labelCarteira.Size = new System.Drawing.Size(81, 20);
-            this.labelCarteira.TabIndex = 15;
-            this.labelCarteira.Text = "Carteira ->";
+            labelCarteira.AutoSize = true;
+            labelCarteira.Location = new Point(624, 110);
+            labelCarteira.Name = "labelCarteira";
+            labelCarteira.Size = new Size(81, 20);
+            labelCarteira.TabIndex = 15;
+            labelCarteira.Text = "Carteira ->";
             // 
             // mskTextBoxCarteira
             // 
-            this.mskTextBoxCarteira.Location = new System.Drawing.Point(723, 110);
-            this.mskTextBoxCarteira.Mask = "000";
-            this.mskTextBoxCarteira.Name = "mskTextBoxCarteira";
-            this.mskTextBoxCarteira.Size = new System.Drawing.Size(100, 27);
-            this.mskTextBoxCarteira.TabIndex = 13;
-            this.mskTextBoxCarteira.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.mskTextBoxCarteira.ValidatingType = typeof(int);
+            mskTextBoxCarteira.Location = new Point(723, 110);
+            mskTextBoxCarteira.Mask = "000";
+            mskTextBoxCarteira.Name = "mskTextBoxCarteira";
+            mskTextBoxCarteira.Size = new Size(100, 27);
+            mskTextBoxCarteira.TabIndex = 13;
+            mskTextBoxCarteira.TextAlign = HorizontalAlignment.Right;
+            mskTextBoxCarteira.ValidatingType = typeof(int);
             // 
             // labelBcoCobrador
             // 
-            this.labelBcoCobrador.AutoSize = true;
-            this.labelBcoCobrador.Location = new System.Drawing.Point(106, 117);
-            this.labelBcoCobrador.Name = "labelBcoCobrador";
-            this.labelBcoCobrador.Size = new System.Drawing.Size(70, 20);
-            this.labelBcoCobrador.TabIndex = 13;
-            this.labelBcoCobrador.Text = "Banco ->";
+            labelBcoCobrador.AutoSize = true;
+            labelBcoCobrador.Location = new Point(97, 113);
+            labelBcoCobrador.Name = "labelBcoCobrador";
+            labelBcoCobrador.Size = new Size(70, 20);
+            labelBcoCobrador.TabIndex = 13;
+            labelBcoCobrador.Text = "Banco ->";
             // 
             // mskBancoCobrador
             // 
-            this.mskBancoCobrador.Location = new System.Drawing.Point(182, 110);
-            this.mskBancoCobrador.Mask = "000";
-            this.mskBancoCobrador.Name = "mskBancoCobrador";
-            this.mskBancoCobrador.Size = new System.Drawing.Size(100, 27);
-            this.mskBancoCobrador.TabIndex = 12;
-            this.mskBancoCobrador.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.mskBancoCobrador.ValidatingType = typeof(int);
-            this.mskBancoCobrador.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskBancoCobrador_MaskInputRejected);
+            mskBancoCobrador.Location = new Point(182, 110);
+            mskBancoCobrador.Mask = "000";
+            mskBancoCobrador.Name = "mskBancoCobrador";
+            mskBancoCobrador.Size = new Size(100, 27);
+            mskBancoCobrador.TabIndex = 12;
+            mskBancoCobrador.TextAlign = HorizontalAlignment.Right;
+            mskBancoCobrador.ValidatingType = typeof(int);
+            mskBancoCobrador.MaskInputRejected += mskBancoCobrador_MaskInputRejected;
             // 
             // mskTextBoxNumDocCedente
             // 
-            this.mskTextBoxNumDocCedente.Location = new System.Drawing.Point(723, 65);
-            this.mskTextBoxNumDocCedente.Mask = "00000000000000";
-            this.mskTextBoxNumDocCedente.Name = "mskTextBoxNumDocCedente";
-            this.mskTextBoxNumDocCedente.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mskTextBoxNumDocCedente.Size = new System.Drawing.Size(154, 27);
-            this.mskTextBoxNumDocCedente.TabIndex = 11;
-            this.mskTextBoxNumDocCedente.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.mskTextBoxNumDocCedente.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTextBoxNumDocCedente_MaskInputRejected);
+            mskTextBoxNumDocCedente.Location = new Point(723, 65);
+            mskTextBoxNumDocCedente.Mask = "00000000000000";
+            mskTextBoxNumDocCedente.Name = "mskTextBoxNumDocCedente";
+            mskTextBoxNumDocCedente.RightToLeft = RightToLeft.No;
+            mskTextBoxNumDocCedente.Size = new Size(154, 27);
+            mskTextBoxNumDocCedente.TabIndex = 11;
+            mskTextBoxNumDocCedente.TextAlign = HorizontalAlignment.Right;
+            mskTextBoxNumDocCedente.MaskInputRejected += mskTextBoxNumDocCedente_MaskInputRejected;
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(544, 71);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(173, 20);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "Número Doc Cedente ->";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
+            label11.AutoSize = true;
+            label11.Location = new Point(526, 68);
+            label11.Name = "label11";
+            label11.Size = new Size(173, 20);
+            label11.TabIndex = 9;
+            label11.Text = "Número Doc Cedente ->";
+            label11.Click += label11_Click;
             // 
             // mskTextBoxAgCedente
             // 
-            this.mskTextBoxAgCedente.Location = new System.Drawing.Point(182, 150);
-            this.mskTextBoxAgCedente.Mask = "00";
-            this.mskTextBoxAgCedente.Name = "mskTextBoxAgCedente";
-            this.mskTextBoxAgCedente.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mskTextBoxAgCedente.Size = new System.Drawing.Size(100, 27);
-            this.mskTextBoxAgCedente.TabIndex = 14;
-            this.mskTextBoxAgCedente.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            mskTextBoxAgCedente.Location = new Point(182, 150);
+            mskTextBoxAgCedente.Mask = "00";
+            mskTextBoxAgCedente.Name = "mskTextBoxAgCedente";
+            mskTextBoxAgCedente.RightToLeft = RightToLeft.No;
+            mskTextBoxAgCedente.Size = new Size(100, 27);
+            mskTextBoxAgCedente.TabIndex = 14;
+            mskTextBoxAgCedente.TextAlign = HorizontalAlignment.Right;
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(34, 158);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(142, 20);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "Agência Cedente ->";
+            label9.AutoSize = true;
+            label9.Location = new Point(23, 152);
+            label9.Name = "label9";
+            label9.Size = new Size(142, 20);
+            label9.TabIndex = 7;
+            label9.Text = "Agência Cedente ->";
             // 
             // mskTextBoxContaCedente
             // 
-            this.mskTextBoxContaCedente.Location = new System.Drawing.Point(182, 71);
-            this.mskTextBoxContaCedente.Mask = "0000000000";
-            this.mskTextBoxContaCedente.Name = "mskTextBoxContaCedente";
-            this.mskTextBoxContaCedente.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mskTextBoxContaCedente.Size = new System.Drawing.Size(100, 27);
-            this.mskTextBoxContaCedente.TabIndex = 10;
-            this.mskTextBoxContaCedente.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.mskTextBoxContaCedente.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTextBoxContaCedente_MaskInputRejected);
+            mskTextBoxContaCedente.Location = new Point(182, 71);
+            mskTextBoxContaCedente.Mask = "0000000000";
+            mskTextBoxContaCedente.Name = "mskTextBoxContaCedente";
+            mskTextBoxContaCedente.RightToLeft = RightToLeft.No;
+            mskTextBoxContaCedente.Size = new Size(100, 27);
+            mskTextBoxContaCedente.TabIndex = 10;
+            mskTextBoxContaCedente.TextAlign = HorizontalAlignment.Right;
+            mskTextBoxContaCedente.MaskInputRejected += mskTextBoxContaCedente_MaskInputRejected;
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(30, 79);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(149, 20);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "Conta do Cedente ->";
+            label8.AutoSize = true;
+            label8.Location = new Point(11, 74);
+            label8.Name = "label8";
+            label8.Size = new Size(149, 20);
+            label8.TabIndex = 5;
+            label8.Text = "Conta do Cedente ->";
             // 
             // mskTextBoxConvenio
             // 
-            this.mskTextBoxConvenio.Location = new System.Drawing.Point(723, 30);
-            this.mskTextBoxConvenio.Mask = "000000000000";
-            this.mskTextBoxConvenio.Name = "mskTextBoxConvenio";
-            this.mskTextBoxConvenio.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mskTextBoxConvenio.Size = new System.Drawing.Size(154, 27);
-            this.mskTextBoxConvenio.TabIndex = 9;
-            this.mskTextBoxConvenio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.mskTextBoxConvenio.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTextBoxConvenio_MaskInputRejected);
+            mskTextBoxConvenio.Location = new Point(723, 30);
+            mskTextBoxConvenio.Mask = "000000000000";
+            mskTextBoxConvenio.Name = "mskTextBoxConvenio";
+            mskTextBoxConvenio.RightToLeft = RightToLeft.No;
+            mskTextBoxConvenio.Size = new Size(154, 27);
+            mskTextBoxConvenio.TabIndex = 9;
+            mskTextBoxConvenio.TextAlign = HorizontalAlignment.Right;
+            mskTextBoxConvenio.MaskInputRejected += mskTextBoxConvenio_MaskInputRejected;
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(514, 33);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(203, 20);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "Identificação do Convênio ->";
+            label7.AutoSize = true;
+            label7.Location = new Point(494, 34);
+            label7.Name = "label7";
+            label7.Size = new Size(203, 20);
+            label7.TabIndex = 3;
+            label7.Text = "Identificação do Convênio ->";
             // 
             // btnSair
             // 
-            this.btnSair.BackColor = System.Drawing.Color.Red;
-            this.btnSair.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSair.Location = new System.Drawing.Point(830, 656);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(137, 49);
-            this.btnSair.TabIndex = 22;
-            this.btnSair.Text = "Sair";
-            this.btnSair.UseVisualStyleBackColor = false;
-            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            btnSair.BackColor = Color.Red;
+            btnSair.FlatStyle = FlatStyle.Popup;
+            btnSair.ForeColor = SystemColors.ControlLightLight;
+            btnSair.Location = new Point(830, 640);
+            btnSair.Name = "btnSair";
+            btnSair.Size = new Size(137, 49);
+            btnSair.TabIndex = 22;
+            btnSair.Text = "Sair";
+            btnSair.UseVisualStyleBackColor = false;
+            btnSair.Click += btnSair_Click;
             // 
             // comboConvenios
             // 
-            this.comboConvenios.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboConvenios.FormattingEnabled = true;
-            this.comboConvenios.Location = new System.Drawing.Point(315, 62);
-            this.comboConvenios.Name = "comboConvenios";
-            this.comboConvenios.Size = new System.Drawing.Size(488, 28);
-            this.comboConvenios.TabIndex = 18;
-            this.comboConvenios.SelectedIndexChanged += new System.EventHandler(this.comboConvenios_SelectedIndexChanged);
+            comboConvenios.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            comboConvenios.FormattingEnabled = true;
+            comboConvenios.Location = new Point(315, 62);
+            comboConvenios.Name = "comboConvenios";
+            comboConvenios.Size = new Size(488, 28);
+            comboConvenios.TabIndex = 18;
+            comboConvenios.SelectedIndexChanged += comboConvenios_SelectedIndexChanged;
             // 
             // labelConvenios
             // 
-            this.labelConvenios.AutoSize = true;
-            this.labelConvenios.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelConvenios.Location = new System.Drawing.Point(88, 62);
-            this.labelConvenios.Name = "labelConvenios";
-            this.labelConvenios.Size = new System.Drawing.Size(181, 20);
-            this.labelConvenios.TabIndex = 19;
-            this.labelConvenios.Text = "Convênios cadastrados ->";
+            labelConvenios.AutoSize = true;
+            labelConvenios.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            labelConvenios.Location = new Point(88, 62);
+            labelConvenios.Name = "labelConvenios";
+            labelConvenios.Size = new Size(181, 20);
+            labelConvenios.TabIndex = 19;
+            labelConvenios.Text = "Convênios cadastrados ->";
             // 
             // bnBuscarDados
             // 
-            this.bnBuscarDados.Location = new System.Drawing.Point(828, 49);
-            this.bnBuscarDados.Name = "bnBuscarDados";
-            this.bnBuscarDados.Size = new System.Drawing.Size(137, 49);
-            this.bnBuscarDados.TabIndex = 20;
-            this.bnBuscarDados.Text = "Buscar Dados";
-            this.bnBuscarDados.UseVisualStyleBackColor = true;
-            this.bnBuscarDados.Click += new System.EventHandler(this.bnBuscarDados_Click);
+            bnBuscarDados.FlatStyle = FlatStyle.Popup;
+            bnBuscarDados.Location = new Point(828, 49);
+            bnBuscarDados.Name = "bnBuscarDados";
+            bnBuscarDados.Size = new Size(137, 49);
+            bnBuscarDados.TabIndex = 20;
+            bnBuscarDados.Text = "Buscar Dados";
+            bnBuscarDados.UseVisualStyleBackColor = true;
+            bnBuscarDados.Click += bnBuscarDados_Click;
             // 
             // Soap
             // 
-            this.Soap.BackColor = System.Drawing.Color.LightGreen;
-            this.Soap.Location = new System.Drawing.Point(254, 656);
-            this.Soap.Name = "Soap";
-            this.Soap.Size = new System.Drawing.Size(137, 49);
-            this.Soap.TabIndex = 21;
-            this.Soap.Text = "Criar lote via Soap";
-            this.Soap.UseVisualStyleBackColor = false;
-            this.Soap.Click += new System.EventHandler(this.Soap_Click);
+            Soap.BackColor = Color.LightGreen;
+            Soap.FlatStyle = FlatStyle.Popup;
+            Soap.Location = new Point(254, 640);
+            Soap.Name = "Soap";
+            Soap.Size = new Size(137, 49);
+            Soap.TabIndex = 21;
+            Soap.Text = "Criar lote via Soap";
+            Soap.UseVisualStyleBackColor = false;
+            Soap.Click += Soap_Click;
             // 
             // btnConfigServerWs
             // 
-            this.btnConfigServerWs.Location = new System.Drawing.Point(418, 656);
-            this.btnConfigServerWs.Name = "btnConfigServerWs";
-            this.btnConfigServerWs.Size = new System.Drawing.Size(137, 49);
-            this.btnConfigServerWs.TabIndex = 23;
-            this.btnConfigServerWs.Text = "Configurações Servidor WS";
-            this.btnConfigServerWs.UseVisualStyleBackColor = true;
-            this.btnConfigServerWs.Click += new System.EventHandler(this.btnConfigServerWs_Click);
+            btnConfigServerWs.FlatStyle = FlatStyle.Popup;
+            btnConfigServerWs.Location = new Point(418, 640);
+            btnConfigServerWs.Name = "btnConfigServerWs";
+            btnConfigServerWs.Size = new Size(137, 49);
+            btnConfigServerWs.TabIndex = 23;
+            btnConfigServerWs.Text = "Configurações Servidor WS";
+            btnConfigServerWs.UseVisualStyleBackColor = true;
+            btnConfigServerWs.Click += btnConfigServerWs_Click;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1086, 749);
-            this.Controls.Add(this.btnConfigServerWs);
-            this.Controls.Add(this.Soap);
-            this.Controls.Add(this.bnBuscarDados);
-            this.Controls.Add(this.labelConvenios);
-            this.Controls.Add(this.comboConvenios);
-            this.Controls.Add(this.btnSair);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnGerarArquivo);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
-            this.Text = "Gerador de Remessa Cliente ";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
+            ClientSize = new Size(1100, 748);
+            Controls.Add(btnConfigServerWs);
+            Controls.Add(Soap);
+            Controls.Add(bnBuscarDados);
+            Controls.Add(labelConvenios);
+            Controls.Add(comboConvenios);
+            Controls.Add(btnSair);
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox1);
+            Controls.Add(btnGerarArquivo);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Name = "Form1";
+            Text = "Gerador de Remessa Cliente ";
+            Load += Form1_Load;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
