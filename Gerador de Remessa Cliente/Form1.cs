@@ -391,5 +391,12 @@ namespace Gerador_de_Remessa_Cliente
             FormConfigServidorWS formConfigServidorWS = new FormConfigServidorWS();
             formConfigServidorWS.ShowDialog();
         }
+
+        private void btnTesteTelaBord_Click(object sender, EventArgs e)
+        {
+            FormBorderoDetalhe formBorderoDetalhe = new FormBorderoDetalhe();
+            formBorderoDetalhe.ShowDialog();
+
+        }
     }
 }
