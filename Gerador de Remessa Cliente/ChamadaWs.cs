@@ -12,6 +12,7 @@ using System.Globalization;
 using Gerador_de_Remessa_Cliente.Model;
 using System.Numerics;
 using Gerador_de_Remessa_Cliente.Repository;
+using System.Drawing;
 
 namespace Gerador_de_Remessa_Cliente
 {
@@ -154,6 +155,17 @@ namespace Gerador_de_Remessa_Cliente
             string numeroLote = "0";
             string numeroContrato = "0";
             string valorTotalCalculado = "0";
+            string numeroLancamento;
+            string emissao;
+            string vencimento;
+            string seuNumero;
+            double valor;
+            string docPagador;
+            int codCobrador;
+
+            
+            BorderoDetalhe borderoDetalhe = new BorderoDetalhe();
+            List<BorderoDetalhe> borderos = new List<BorderoDetalhe>();
 
             //XmlDocument soapEnvelopeXml = CreateSoapEnvelope();            
             //XmlDocument soapEnvelopeXml = CreateSoapEnvelope();            
@@ -219,8 +231,9 @@ namespace Gerador_de_Remessa_Cliente
                     {
                         valorTotalCalculado = (elemList3[i].InnerXml);
 
-                    }
-
+                    }                   
+                    
+                    
                     //valorTotalCalculado
 
                     Bordero bordero = new Bordero(Int32.Parse(numeroLote), Int32.Parse(numeroContrato));
@@ -238,10 +251,20 @@ namespace Gerador_de_Remessa_Cliente
 
             if(sucesso == 1)
             {
+                String path2 = @"C:\TotalBanco\Crediblaster\GeraRem\Geraremsoap.dll";
+                using (StreamWriter sw = File.CreateText(path2))
+                {
+                    sw.WriteLine(diretorio);
+                }
                 //DialogResult dialogo3 = MessageBox.Show("Capa de lote cadastrada com sucesso", "Sucesso!", MessageBoxButtons.OK);
-                mensagem = "Lote de borderô enviado com sucesso. Número do lote: " + numeroLote + ". Valor total: " + valorTotalCalculado;                
+                mensagem = "Lote de borderô enviado com sucesso. Número do lote: " + numeroLote + ". Valor total: " + valorTotalCalculado;
+                FormBorderoDetalhe formBorderoDetalhe = new FormBorderoDetalhe();                
+                //C:\TotalBanco\Crediblaster\GeraCompe\GeraCompesoap.dll                
+                
+                formBorderoDetalhe.ShowDialog();
 
-            } else
+            }
+            else
             {
                 mensagem = "Ocorreu um erro ao acessar o servidor remoto. Verifique os logs";
             }
@@ -545,7 +568,8 @@ namespace Gerador_de_Remessa_Cliente
             envelopeSoapBorderoCapaLote.Append("<siglaModalidade>CBSJ</siglaModalidade>");
             envelopeSoapBorderoCapaLote.Append("<codigoCobrador>653</codigoCobrador>");
             envelopeSoapBorderoCapaLote.Append("<siglaLinhaOperacao>COB</siglaLinhaOperacao>");
-            envelopeSoapBorderoCapaLote.Append("<dataProcessamentoEfetivo>" + dataProcessamentoFormatado + "-03:00</dataProcessamentoEfetivo>");
+            envelopeSoapBorderoCapaLote.Append("<dataProcessamentoEfetivo>" + dataProcessamentoFormatado + "-03:00</dataProcessamentoEfetivo>");            
+            envelopeSoapBorderoCapaLote.Append("<siglaModulo>CD</siglaModulo>");
             envelopeSoapBorderoCapaLote.Append("<loteComplementar>false</loteComplementar>");
             envelopeSoapBorderoCapaLote.Append("<tipoTitulo>");
             envelopeSoapBorderoCapaLote.Append("<codigoUsuarioAtualizador>TB</codigoUsuarioAtualizador>");
