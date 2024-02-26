@@ -157,6 +157,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(1161, 612);
             Controls.Add(btnOk);
             Controls.Add(label1);
