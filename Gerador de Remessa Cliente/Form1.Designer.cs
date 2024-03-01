@@ -70,6 +70,7 @@
             Soap = new Button();
             btnConfigServerWs = new Button();
             btnTesteTelaBord = new Button();
+<<<<<<< HEAD
             groupBox3 = new GroupBox();
             label12 = new Label();
             label6 = new Label();
@@ -77,6 +78,8 @@
             txtBxSaldoDisponivel = new TextBox();
             txtBoxSaldoBloqJud = new TextBox();
             txtBoxSaldoBloq = new TextBox();
+=======
+>>>>>>> 08f6633fea46c002b740d62a388b6d698d443675
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -125,7 +128,11 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+<<<<<<< HEAD
             label3.Location = new Point(698, 165);
+=======
+            label3.Location = new Point(611, 124);
+>>>>>>> 08f6633fea46c002b740d62a388b6d698d443675
             label3.Name = "label3";
             label3.Size = new Size(240, 25);
             label3.TabIndex = 6;
@@ -160,8 +167,12 @@
             // mskTextBoxQtdArquivos
             // 
             mskTextBoxQtdArquivos.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+<<<<<<< HEAD
             mskTextBoxQtdArquivos.Location = new Point(947, 161);
             mskTextBoxQtdArquivos.Margin = new Padding(3, 4, 3, 4);
+=======
+            mskTextBoxQtdArquivos.Location = new Point(829, 121);
+>>>>>>> 08f6633fea46c002b740d62a388b6d698d443675
             mskTextBoxQtdArquivos.Mask = "00000";
             mskTextBoxQtdArquivos.Name = "mskTextBoxQtdArquivos";
             mskTextBoxQtdArquivos.RightToLeft = RightToLeft.No;
@@ -173,8 +184,12 @@
             // mskTextBoxDataInclusao
             // 
             mskTextBoxDataInclusao.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+<<<<<<< HEAD
             mskTextBoxDataInclusao.Location = new Point(947, 61);
             mskTextBoxDataInclusao.Margin = new Padding(3, 4, 3, 4);
+=======
+            mskTextBoxDataInclusao.Location = new Point(829, 46);
+>>>>>>> 08f6633fea46c002b740d62a388b6d698d443675
             mskTextBoxDataInclusao.Mask = "00/00/0000";
             mskTextBoxDataInclusao.Name = "mskTextBoxDataInclusao";
             mskTextBoxDataInclusao.RightToLeft = RightToLeft.No;
@@ -187,7 +202,11 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+<<<<<<< HEAD
             label4.Location = new Point(671, 64);
+=======
+            label4.Location = new Point(587, 48);
+>>>>>>> 08f6633fea46c002b740d62a388b6d698d443675
             label4.Name = "label4";
             label4.Size = new Size(267, 25);
             label4.TabIndex = 11;
@@ -196,8 +215,12 @@
             // mskTextBoxDataVencimento
             // 
             mskTextBoxDataVencimento.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+<<<<<<< HEAD
             mskTextBoxDataVencimento.Location = new Point(947, 112);
             mskTextBoxDataVencimento.Margin = new Padding(3, 4, 3, 4);
+=======
+            mskTextBoxDataVencimento.Location = new Point(829, 84);
+>>>>>>> 08f6633fea46c002b740d62a388b6d698d443675
             mskTextBoxDataVencimento.Mask = "00/00/0000";
             mskTextBoxDataVencimento.Name = "mskTextBoxDataVencimento";
             mskTextBoxDataVencimento.RightToLeft = RightToLeft.No;
@@ -210,7 +233,11 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+<<<<<<< HEAD
             label5.Location = new Point(601, 117);
+=======
+            label5.Location = new Point(526, 88);
+>>>>>>> 08f6633fea46c002b740d62a388b6d698d443675
             label5.Name = "label5";
             label5.Size = new Size(340, 25);
             label5.TabIndex = 13;
@@ -237,8 +264,12 @@
             groupBox1.Location = new Point(103, 159);
             groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
+<<<<<<< HEAD
             groupBox1.Padding = new Padding(3, 4, 3, 4);
             groupBox1.Size = new Size(1201, 351);
+=======
+            groupBox1.Size = new Size(1051, 263);
+>>>>>>> 08f6633fea46c002b740d62a388b6d698d443675
             groupBox1.TabIndex = 14;
             groupBox1.TabStop = false;
             groupBox1.Text = "Parâmetros de entrada";
@@ -317,8 +348,12 @@
             groupBox2.Location = new Point(103, 560);
             groupBox2.Margin = new Padding(3, 4, 3, 4);
             groupBox2.Name = "groupBox2";
+<<<<<<< HEAD
             groupBox2.Padding = new Padding(3, 4, 3, 4);
             groupBox2.Size = new Size(1201, 253);
+=======
+            groupBox2.Size = new Size(1051, 190);
+>>>>>>> 08f6633fea46c002b740d62a388b6d698d443675
             groupBox2.TabIndex = 15;
             groupBox2.TabStop = false;
             groupBox2.Text = "Dados do Cedente";
@@ -347,7 +382,11 @@
             // labelCarteira
             // 
             labelCarteira.AutoSize = true;
+<<<<<<< HEAD
             labelCarteira.Location = new Point(825, 151);
+=======
+            labelCarteira.Location = new Point(722, 113);
+>>>>>>> 08f6633fea46c002b740d62a388b6d698d443675
             labelCarteira.Name = "labelCarteira";
             labelCarteira.Size = new Size(105, 25);
             labelCarteira.TabIndex = 15;
@@ -355,8 +394,12 @@
             // 
             // mskTextBoxCarteira
             // 
+<<<<<<< HEAD
             mskTextBoxCarteira.Location = new Point(938, 151);
             mskTextBoxCarteira.Margin = new Padding(3, 4, 3, 4);
+=======
+            mskTextBoxCarteira.Location = new Point(821, 113);
+>>>>>>> 08f6633fea46c002b740d62a388b6d698d443675
             mskTextBoxCarteira.Mask = "000";
             mskTextBoxCarteira.Name = "mskTextBoxCarteira";
             mskTextBoxCarteira.Size = new Size(114, 32);
@@ -387,8 +430,12 @@
             // 
             // mskTextBoxNumDocCedente
             // 
+<<<<<<< HEAD
             mskTextBoxNumDocCedente.Location = new Point(938, 91);
             mskTextBoxNumDocCedente.Margin = new Padding(3, 4, 3, 4);
+=======
+            mskTextBoxNumDocCedente.Location = new Point(821, 68);
+>>>>>>> 08f6633fea46c002b740d62a388b6d698d443675
             mskTextBoxNumDocCedente.Mask = "00000000000000";
             mskTextBoxNumDocCedente.Name = "mskTextBoxNumDocCedente";
             mskTextBoxNumDocCedente.RightToLeft = RightToLeft.No;
@@ -400,7 +447,11 @@
             // label11
             // 
             label11.AutoSize = true;
+<<<<<<< HEAD
             label11.Location = new Point(713, 95);
+=======
+            label11.Location = new Point(624, 71);
+>>>>>>> 08f6633fea46c002b740d62a388b6d698d443675
             label11.Name = "label11";
             label11.Size = new Size(220, 25);
             label11.TabIndex = 9;
@@ -450,8 +501,12 @@
             // 
             // mskTextBoxConvenio
             // 
+<<<<<<< HEAD
             mskTextBoxConvenio.Location = new Point(938, 44);
             mskTextBoxConvenio.Margin = new Padding(3, 4, 3, 4);
+=======
+            mskTextBoxConvenio.Location = new Point(821, 33);
+>>>>>>> 08f6633fea46c002b740d62a388b6d698d443675
             mskTextBoxConvenio.Mask = "000000000000";
             mskTextBoxConvenio.Name = "mskTextBoxConvenio";
             mskTextBoxConvenio.RightToLeft = RightToLeft.No;
@@ -463,7 +518,11 @@
             // label7
             // 
             label7.AutoSize = true;
+<<<<<<< HEAD
             label7.Location = new Point(677, 49);
+=======
+            label7.Location = new Point(592, 37);
+>>>>>>> 08f6633fea46c002b740d62a388b6d698d443675
             label7.Name = "label7";
             label7.Size = new Size(258, 25);
             label7.TabIndex = 3;
@@ -544,16 +603,23 @@
             // btnTesteTelaBord
             // 
             btnTesteTelaBord.Enabled = false;
+<<<<<<< HEAD
             btnTesteTelaBord.Location = new Point(696, 872);
             btnTesteTelaBord.Margin = new Padding(3, 4, 3, 4);
             btnTesteTelaBord.Name = "btnTesteTelaBord";
             btnTesteTelaBord.Size = new Size(86, 47);
+=======
+            btnTesteTelaBord.Location = new Point(609, 654);
+            btnTesteTelaBord.Name = "btnTesteTelaBord";
+            btnTesteTelaBord.Size = new Size(75, 35);
+>>>>>>> 08f6633fea46c002b740d62a388b6d698d443675
             btnTesteTelaBord.TabIndex = 24;
             btnTesteTelaBord.Text = "Teste tela Bord";
             btnTesteTelaBord.UseVisualStyleBackColor = true;
             btnTesteTelaBord.Visible = false;
             btnTesteTelaBord.Click += btnTesteTelaBord_Click;
             // 
+<<<<<<< HEAD
             // groupBox3
             // 
             groupBox3.Controls.Add(label12);
@@ -631,13 +697,19 @@
             txtBoxSaldoBloq.TabIndex = 0;
             txtBoxSaldoBloq.TextChanged += txtBoxSaldoBloq_TextChanged;
             // 
+=======
+>>>>>>> 08f6633fea46c002b740d62a388b6d698d443675
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
+<<<<<<< HEAD
             ClientSize = new Size(1874, 997);
             Controls.Add(groupBox3);
+=======
+            ClientSize = new Size(1162, 748);
+>>>>>>> 08f6633fea46c002b740d62a388b6d698d443675
             Controls.Add(btnTesteTelaBord);
             Controls.Add(btnConfigServerWs);
             Controls.Add(Soap);
@@ -705,6 +777,7 @@
         private Label labelCodCliente;
         private Button btnConfigServerWs;
         private Button btnTesteTelaBord;
+<<<<<<< HEAD
         private GroupBox groupBox3;
         private TextBox txtBoxSaldoBloq;
         private TextBox txtBxSaldoDisponivel;
@@ -712,5 +785,7 @@
         private Label label12;
         private Label label6;
         private Label LabelSdBloq;
+=======
+>>>>>>> 08f6633fea46c002b740d62a388b6d698d443675
     }
 }
