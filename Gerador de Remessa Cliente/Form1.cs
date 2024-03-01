@@ -418,7 +418,7 @@ namespace Gerador_de_Remessa_Cliente
             formBorderoDetalhe.ShowDialog();
 
         }
-<<<<<<< HEAD
+
 
         private void txtBoxSaldoBloq_TextChanged(object sender, EventArgs e)
         {
@@ -434,7 +434,7 @@ namespace Gerador_de_Remessa_Cliente
         {
 
         }
-=======
->>>>>>> 08f6633fea46c002b740d62a388b6d698d443675
+
+
     }
 }
