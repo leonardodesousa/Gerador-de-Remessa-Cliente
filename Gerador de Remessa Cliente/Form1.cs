@@ -11,6 +11,8 @@ namespace Gerador_de_Remessa_Cliente
             InitializeComponent();
             var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
             this.Text = String.Format("Gerador de Remessa Cliente (Versão {0})", version);
+            ConexaoBD conexao = new ConexaoBD();
+            conexao.testaConexao();
 
             LeitorArquivoParametros leitor = new LeitorArquivoParametros();
 
