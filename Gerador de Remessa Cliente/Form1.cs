@@ -1,3 +1,7 @@
+using Gerador_de_Remessa_Cliente.Framework;
+using Gerador_de_Remessa_Cliente.Model;
+using Gerador_de_Remessa_Cliente.Repository;
+
 namespace Gerador_de_Remessa_Cliente
 {
     public partial class Form1 : Form
@@ -282,6 +286,8 @@ namespace Gerador_de_Remessa_Cliente
                 String conveniado = comboConvenios.Text.ToString().Substring(0, 12);
                 LeitorArquivoParametros leitor = new LeitorArquivoParametros();
 
+                BuscaDadosBd buscaDados = new BuscaDadosBd();
+
                 List<string> lista = new List<string>();
                 lista = leitor.BuscaParametroConveniado(conveniado);
                 //mskTextBoxSequencialArq.Text = lista[0].Trim().ToString().PadLeft(5,'0');
@@ -298,6 +304,18 @@ namespace Gerador_de_Remessa_Cliente
                 mskBancoCobrador.Text = lista[11].ToString();
                 mskTextBoxCarteira.Text = lista[12].ToString();
                 textBoxCodCliente.Text = lista[13].ToString();
+
+                ConexaoBD conexao = new ConexaoBD();
+
+                //conexao.testaConexao();
+
+                Conta conta = new Conta();
+                conta = buscaDados.buscaConta(mskTextBoxContaCedente.Text, 36);
+
+                txtBoxSaldoBloq.Text = conta.saldoBloqueado.ToString();
+                txtBoxSaldoBloqJud.Text = conta.saldoBloqueadoJudAdm.ToString("C");
+                txtBxSaldoDisponivel.Text = conta.saldoDisponivel.ToString("C");
+
 
                 comboLeiaute.SelectedIndex = -1;
 
@@ -396,6 +414,21 @@ namespace Gerador_de_Remessa_Cliente
         {
             FormBorderoDetalhe formBorderoDetalhe = new FormBorderoDetalhe();
             formBorderoDetalhe.ShowDialog();
+
+        }
+
+        private void txtBoxSaldoBloq_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBoxSaldoBloqJud_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBxSaldoDisponivel_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
