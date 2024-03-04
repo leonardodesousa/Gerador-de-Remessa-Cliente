@@ -312,13 +312,10 @@ namespace Gerador_de_Remessa_Cliente
                 //conexao.testaConexao();
 
                 Conta conta = new Conta();
-                conta = buscaDados.buscaConta(mskTextBoxContaCedente.Text, 36);
-
+                conta = buscaDados.buscaConta(mskTextBoxContaCedente.Text, 36);                
                 txtBoxSaldoBloq.Text = conta.saldoBloqueado.ToString();
                 txtBoxSaldoBloqJud.Text = conta.saldoBloqueadoJudAdm.ToString("C");
                 txtBxSaldoDisponivel.Text = conta.saldoDisponivel.ToString("C");
-
-
                 comboLeiaute.SelectedIndex = -1;
 
             }

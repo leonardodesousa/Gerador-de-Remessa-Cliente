@@ -31,17 +31,23 @@ namespace Gerador_de_Remessa_Cliente.Repository
             Conta conta = new Conta();
                         
 
-            var query = " SELECT cadc.CD_CC,                                               " +
-                        "        cadc.NM_ABV_TLC,                                          " +
-                        "        cadc.CD_CLI,                                              " +
-                        "        sd_dsp_d1,                                                " +
-                        "        sd_blq_24d1 + sd_blq_48d1 + sd_blq_ncd1 as saldoBloqueado," +
-                        "        sd_blq_jdd1 + sd_blq_add1 as saldoBloqu                   " +
-                        "  from " + disponOwner + ".t401sdct sdct                          " +
-                        " inner join " + disponOwner + ".t401cadc cadc                     " +
-                        "    on cadc.cd_cc = sdct.cd_cta                                   " +
-                        "   and sdct.cd_und = cadc.cd_und                                  " +
-                        " where  sdct.cd_und = " + unidade +"                              " +
+            var query = " SELECT cadc.CD_CC,                                                                                                      " +
+                        "        cadc.NM_ABV_TLC,                                                                                                 " +
+                        "        cadc.CD_CLI,                                                                                                     " +
+                        "        coalesce((select vl_sdo                                                                                          " +
+                        "        from " + disponOwner + ".t401mvto                                                                                " +
+                        "       where cd_cc =" + numeroConta + "                                                                                  " +
+                        "       and nr_seq =                                                                                                      " +
+                        "           (select max(nr_seq) from " + disponOwner + ".t401mvto where cd_cc = "+ numeroConta +")                        " +
+                        "       and dt_lan = (select dt_pro_atu from "+ disponOwner +".t401agen where cd_und = "+ unidade + ")),sd_dsp_d1),       " +
+                        "       sd_blq_24d1 + sd_blq_48d1 + sd_blq_ncd1 as saldoBloqueado,                                                        " + 
+                        "        sd_blq_24d1 + sd_blq_48d1 + sd_blq_ncd1 as saldoBloqueado,                                                       " +
+                        "        sd_blq_jdd1 + sd_blq_add1 as saldoBloqu                                                                          " +
+                        "  from " + disponOwner + ".t401sdct sdct                                                                                 " +
+                        " inner join " + disponOwner + ".t401cadc cadc                                                                            " +
+                        "    on cadc.cd_cc = sdct.cd_cta                                                                                          " +
+                        "   and sdct.cd_und = cadc.cd_und                                                                                         " +
+                        " where  sdct.cd_und = " + unidade + "                                                                                    " +
                         "   and sdct.cd_cta = " + numeroConta;                      
 
             if (dataBase.ToLower() == "oracle")

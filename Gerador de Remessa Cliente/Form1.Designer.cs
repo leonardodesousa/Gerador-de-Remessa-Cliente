@@ -559,6 +559,7 @@
             // 
             // txtBxSaldoDisponivel
             // 
+            txtBxSaldoDisponivel.ForeColor = SystemColors.WindowText;
             txtBxSaldoDisponivel.Location = new Point(156, 111);
             txtBxSaldoDisponivel.MaxLength = 20;
             txtBxSaldoDisponivel.Name = "txtBxSaldoDisponivel";
