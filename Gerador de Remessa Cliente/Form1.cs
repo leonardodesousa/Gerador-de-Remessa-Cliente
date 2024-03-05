@@ -1,6 +1,7 @@
 using Gerador_de_Remessa_Cliente.Framework;
 using Gerador_de_Remessa_Cliente.Model;
 using Gerador_de_Remessa_Cliente.Repository;
+using System.Windows.Forms;
 
 namespace Gerador_de_Remessa_Cliente
 {
@@ -312,10 +313,35 @@ namespace Gerador_de_Remessa_Cliente
                 //conexao.testaConexao();
 
                 Conta conta = new Conta();
-                conta = buscaDados.buscaConta(mskTextBoxContaCedente.Text, 36);                
+                conta = buscaDados.buscaConta(mskTextBoxContaCedente.Text, 36);
                 txtBoxSaldoBloq.Text = conta.saldoBloqueado.ToString();
                 txtBoxSaldoBloqJud.Text = conta.saldoBloqueadoJudAdm.ToString("C");
                 txtBxSaldoDisponivel.Text = conta.saldoDisponivel.ToString("C");
+
+                List<ExtratoConta> extratoContas = new List<ExtratoConta>();
+
+                extratoContas = buscaDados.buscaExtrato(mskTextBoxContaCedente.Text, 36);
+
+                dataGridViewExtrato.Rows.Clear();
+
+
+                //System.Windows.Forms.MessageBox.Show("Tamanho do array: " + extratoContas.Count);
+
+                //System.Windows.Forms.MessageBox.Show("data lançamento da posição 1: " + extratoContas[1].dataLancamento);
+
+
+
+                for (int i = 0; i < extratoContas.Count; i++)
+                {
+                    dataGridViewExtrato.Rows.Add();
+                    dataGridViewExtrato.Rows[i].Cells[0].Value = extratoContas[i].dataLancamento.ToString("dd/MM/yyyy");
+                    dataGridViewExtrato.Rows[i].Cells[1].Value = extratoContas[i].valorLancado.ToString("C");
+                    dataGridViewExtrato.Rows[i].Cells[2].Value = extratoContas[i].valorSaldo.ToString("C");
+                    dataGridViewExtrato.Rows[i].Cells[3].Value = extratoContas[i].descricaoHistorico;
+                }
+
+
+
                 comboLeiaute.SelectedIndex = -1;
 
             }
@@ -432,6 +458,9 @@ namespace Gerador_de_Remessa_Cliente
 
         }
 
+        private void dataGridViewExtrato_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
     }
 }

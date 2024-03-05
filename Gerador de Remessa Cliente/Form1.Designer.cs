@@ -76,9 +76,17 @@
             txtBxSaldoDisponivel = new TextBox();
             txtBoxSaldoBloqJud = new TextBox();
             txtBoxSaldoBloq = new TextBox();
+            dataGridViewExtrato = new DataGridView();
+            groupBox4 = new GroupBox();
+            dtLanColumn = new DataGridViewTextBoxColumn();
+            vlrLancadoColumn = new DataGridViewTextBoxColumn();
+            vlrSaldoColumn = new DataGridViewTextBoxColumn();
+            historicoColumn = new DataGridViewTextBoxColumn();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewExtrato).BeginInit();
+            groupBox4.SuspendLayout();
             SuspendLayout();
             // 
             // btnGerarArquivo
@@ -523,7 +531,7 @@
             groupBox3.Controls.Add(txtBxSaldoDisponivel);
             groupBox3.Controls.Add(txtBoxSaldoBloqJud);
             groupBox3.Controls.Add(txtBoxSaldoBloq);
-            groupBox3.Location = new Point(1121, 149);
+            groupBox3.Location = new Point(1121, 133);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(299, 196);
             groupBox3.TabIndex = 25;
@@ -588,12 +596,71 @@
             txtBoxSaldoBloq.TabIndex = 0;
             txtBoxSaldoBloq.TextChanged += txtBoxSaldoBloq_TextChanged;
             // 
+            // dataGridViewExtrato
+            // 
+            dataGridViewExtrato.AllowUserToAddRows = false;
+            dataGridViewExtrato.AllowUserToDeleteRows = false;
+            dataGridViewExtrato.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewExtrato.Columns.AddRange(new DataGridViewColumn[] { dtLanColumn, vlrLancadoColumn, vlrSaldoColumn, historicoColumn });
+            dataGridViewExtrato.Location = new Point(18, 22);
+            dataGridViewExtrato.Name = "dataGridViewExtrato";
+            dataGridViewExtrato.ReadOnly = true;
+            dataGridViewExtrato.RowTemplate.Height = 25;
+            dataGridViewExtrato.Size = new Size(601, 261);
+            dataGridViewExtrato.TabIndex = 26;
+            dataGridViewExtrato.CellContentClick += dataGridViewExtrato_CellContentClick;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(dataGridViewExtrato);
+            groupBox4.Location = new Point(1121, 345);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(650, 306);
+            groupBox4.TabIndex = 27;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Extrato últimos 7 dias";
+            // 
+            // dtLanColumn
+            // 
+            dtLanColumn.HeaderText = "Data Lançamento";
+            dtLanColumn.MaxInputLength = 20;
+            dtLanColumn.Name = "dtLanColumn";
+            dtLanColumn.ReadOnly = true;
+            dtLanColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
+            // vlrLancadoColumn
+            // 
+            vlrLancadoColumn.HeaderText = "Valor Lançado";
+            vlrLancadoColumn.MaxInputLength = 20;
+            vlrLancadoColumn.Name = "vlrLancadoColumn";
+            vlrLancadoColumn.ReadOnly = true;
+            vlrLancadoColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
+            // vlrSaldoColumn
+            // 
+            vlrSaldoColumn.HeaderText = "Saldo";
+            vlrSaldoColumn.MaxInputLength = 20;
+            vlrSaldoColumn.Name = "vlrSaldoColumn";
+            vlrSaldoColumn.ReadOnly = true;
+            vlrSaldoColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
+            vlrSaldoColumn.Width = 150;
+            // 
+            // historicoColumn
+            // 
+            historicoColumn.HeaderText = "Histórico";
+            historicoColumn.MaxInputLength = 100;
+            historicoColumn.Name = "historicoColumn";
+            historicoColumn.ReadOnly = true;
+            historicoColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
+            historicoColumn.Width = 200;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(1454, 709);
+            ClientSize = new Size(1839, 709);
+            Controls.Add(groupBox4);
             Controls.Add(groupBox3);
             Controls.Add(btnConfigServerWs);
             Controls.Add(Soap);
@@ -614,6 +681,8 @@
             groupBox2.PerformLayout();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewExtrato).EndInit();
+            groupBox4.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -667,7 +736,11 @@
         private Label label12;
         private Label label6;
         private Label LabelSdBloq;
-
-
+        private DataGridView dataGridViewExtrato;
+        private GroupBox groupBox4;
+        private DataGridViewTextBoxColumn dtLanColumn;
+        private DataGridViewTextBoxColumn vlrLancadoColumn;
+        private DataGridViewTextBoxColumn vlrSaldoColumn;
+        private DataGridViewTextBoxColumn historicoColumn;
     }
 }
