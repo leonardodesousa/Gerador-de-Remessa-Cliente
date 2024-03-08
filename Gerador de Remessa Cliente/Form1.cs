@@ -462,5 +462,84 @@ namespace Gerador_de_Remessa_Cliente
         {
 
         }
+
+        private void textBoxValorLancado_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLancarValor_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(textBoxValorLancado.Text.Trim().ToString()) || String.IsNullOrEmpty(textBoxHistorico.Text.Trim().ToString()) ||
+                String.IsNullOrEmpty(textBoxValorLancado.Text.Trim().ToString()))
+            {
+                DialogResult dialogResult = MessageBox.Show("Verifique se TODOS os campos foram preenchidos!",
+                   "Campos obrigatórios não preenchidos!", MessageBoxButtons.OK);
+
+            } else
+            {
+                bool persistiu;
+
+                string numeroConta = mskTextBoxContaCedente.Text.ToString();
+                int historico = Convert.ToInt32(textBoxHistorico.Text);
+                double valorLancado = Convert.ToDouble(textBoxValorLancado.Text);
+                string numeroDoc = textBoxNumDoc.Text.ToString();
+
+                PersisteDadosBd persisteDadosBd = new PersisteDadosBd();
+                persistiu = persisteDadosBd.insereMovimentoConta(36, numeroConta, historico, valorLancado, numeroDoc);
+
+                if (persistiu == true)
+                {
+                    DialogResult dialogResult = MessageBox.Show("Lançamento realizado com sucesso!",
+                       "Informação", MessageBoxButtons.OK);
+
+                    BuscaDadosBd buscaDados = new BuscaDadosBd();
+                    ConexaoBD conexao = new ConexaoBD();
+
+                    //conexao.testaConexao();
+
+                    Conta conta = new Conta();
+                    conta = buscaDados.buscaConta(mskTextBoxContaCedente.Text, 36);
+                    txtBoxSaldoBloq.Text = conta.saldoBloqueado.ToString();
+                    txtBoxSaldoBloqJud.Text = conta.saldoBloqueadoJudAdm.ToString("C");
+                    txtBxSaldoDisponivel.Text = conta.saldoDisponivel.ToString("C");
+
+                    List<ExtratoConta> extratoContas = new List<ExtratoConta>();
+
+                    extratoContas = buscaDados.buscaExtrato(mskTextBoxContaCedente.Text, 36);
+
+                    dataGridViewExtrato.Rows.Clear();
+
+
+                    //System.Windows.Forms.MessageBox.Show("Tamanho do array: " + extratoContas.Count);
+
+                    //System.Windows.Forms.MessageBox.Show("data lançamento da posição 1: " + extratoContas[1].dataLancamento);
+
+
+
+                    for (int i = 0; i < extratoContas.Count; i++)
+                    {
+                        dataGridViewExtrato.Rows.Add();
+                        dataGridViewExtrato.Rows[i].Cells[0].Value = extratoContas[i].dataLancamento.ToString("dd/MM/yyyy");
+                        dataGridViewExtrato.Rows[i].Cells[1].Value = extratoContas[i].valorLancado.ToString("C");
+                        dataGridViewExtrato.Rows[i].Cells[2].Value = extratoContas[i].valorSaldo.ToString("C");
+                        dataGridViewExtrato.Rows[i].Cells[3].Value = extratoContas[i].descricaoHistorico;
+                    }
+
+
+                }
+                else
+                {
+                    DialogResult dialogResult = MessageBox.Show("Informação",
+                       "Ocorreu um erro ao realizar o lançamento", MessageBoxButtons.OK);
+
+                }
+
+            }
+           
+            
+
+
+        }
     }
 }

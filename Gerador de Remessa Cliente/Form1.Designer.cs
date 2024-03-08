@@ -77,16 +77,25 @@
             txtBoxSaldoBloqJud = new TextBox();
             txtBoxSaldoBloq = new TextBox();
             dataGridViewExtrato = new DataGridView();
-            groupBox4 = new GroupBox();
             dtLanColumn = new DataGridViewTextBoxColumn();
             vlrLancadoColumn = new DataGridViewTextBoxColumn();
             vlrSaldoColumn = new DataGridViewTextBoxColumn();
             historicoColumn = new DataGridViewTextBoxColumn();
+            groupBox4 = new GroupBox();
+            groupBox5 = new GroupBox();
+            btnLancarValor = new Button();
+            textBoxValorLancado = new TextBox();
+            label13 = new Label();
+            label14 = new Label();
+            label15 = new Label();
+            textBoxNumDoc = new TextBox();
+            textBoxHistorico = new TextBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewExtrato).BeginInit();
             groupBox4.SuspendLayout();
+            groupBox5.SuspendLayout();
             SuspendLayout();
             // 
             // btnGerarArquivo
@@ -610,16 +619,6 @@
             dataGridViewExtrato.TabIndex = 26;
             dataGridViewExtrato.CellContentClick += dataGridViewExtrato_CellContentClick;
             // 
-            // groupBox4
-            // 
-            groupBox4.Controls.Add(dataGridViewExtrato);
-            groupBox4.Location = new Point(1121, 345);
-            groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(650, 306);
-            groupBox4.TabIndex = 27;
-            groupBox4.TabStop = false;
-            groupBox4.Text = "Extrato últimos 7 dias";
-            // 
             // dtLanColumn
             // 
             dtLanColumn.HeaderText = "Data Lançamento";
@@ -654,12 +653,104 @@
             historicoColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
             historicoColumn.Width = 200;
             // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(dataGridViewExtrato);
+            groupBox4.Location = new Point(1121, 345);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(650, 306);
+            groupBox4.TabIndex = 27;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Extrato últimos 7 dias";
+            // 
+            // groupBox5
+            // 
+            groupBox5.Controls.Add(btnLancarValor);
+            groupBox5.Controls.Add(textBoxValorLancado);
+            groupBox5.Controls.Add(label13);
+            groupBox5.Controls.Add(label14);
+            groupBox5.Controls.Add(label15);
+            groupBox5.Controls.Add(textBoxNumDoc);
+            groupBox5.Controls.Add(textBoxHistorico);
+            groupBox5.Location = new Point(1441, 133);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(330, 196);
+            groupBox5.TabIndex = 28;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "Lançar valor em conta";
+            // 
+            // btnLancarValor
+            // 
+            btnLancarValor.BackColor = Color.LightGreen;
+            btnLancarValor.FlatStyle = FlatStyle.Popup;
+            btnLancarValor.Location = new Point(203, 160);
+            btnLancarValor.Name = "btnLancarValor";
+            btnLancarValor.Size = new Size(80, 30);
+            btnLancarValor.TabIndex = 26;
+            btnLancarValor.Text = "Lançar";
+            btnLancarValor.UseVisualStyleBackColor = false;
+            btnLancarValor.Click += btnLancarValor_Click;
+            // 
+            // textBoxValorLancado
+            // 
+            textBoxValorLancado.Location = new Point(156, 43);
+            textBoxValorLancado.MaxLength = 20;
+            textBoxValorLancado.Name = "textBoxValorLancado";
+            textBoxValorLancado.Size = new Size(127, 23);
+            textBoxValorLancado.TabIndex = 23;
+            textBoxValorLancado.TextChanged += textBoxValorLancado_TextChanged;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(18, 116);
+            label13.Name = "label13";
+            label13.Size = new Size(103, 15);
+            label13.TabIndex = 5;
+            label13.Text = "Num. Documento";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(18, 80);
+            label14.Name = "label14";
+            label14.Size = new Size(55, 15);
+            label14.TabIndex = 4;
+            label14.Text = "Histórico";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(18, 43);
+            label15.Name = "label15";
+            label15.Size = new Size(119, 15);
+            label15.TabIndex = 3;
+            label15.Text = "Valor do Lançamento";
+            // 
+            // textBoxNumDoc
+            // 
+            textBoxNumDoc.ForeColor = SystemColors.WindowText;
+            textBoxNumDoc.Location = new Point(156, 111);
+            textBoxNumDoc.MaxLength = 20;
+            textBoxNumDoc.Name = "textBoxNumDoc";
+            textBoxNumDoc.Size = new Size(127, 23);
+            textBoxNumDoc.TabIndex = 25;
+            // 
+            // textBoxHistorico
+            // 
+            textBoxHistorico.Location = new Point(156, 76);
+            textBoxHistorico.MaxLength = 4;
+            textBoxHistorico.Name = "textBoxHistorico";
+            textBoxHistorico.Size = new Size(127, 23);
+            textBoxHistorico.TabIndex = 24;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             ClientSize = new Size(1839, 709);
+            Controls.Add(groupBox5);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);
             Controls.Add(btnConfigServerWs);
@@ -683,6 +774,8 @@
             groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewExtrato).EndInit();
             groupBox4.ResumeLayout(false);
+            groupBox5.ResumeLayout(false);
+            groupBox5.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -742,5 +835,13 @@
         private DataGridViewTextBoxColumn vlrLancadoColumn;
         private DataGridViewTextBoxColumn vlrSaldoColumn;
         private DataGridViewTextBoxColumn historicoColumn;
+        private GroupBox groupBox5;
+        private Label label13;
+        private Label label14;
+        private Label label15;
+        private TextBox textBoxNumDoc;
+        private TextBox textBoxHistorico;
+        private TextBox textBoxValorLancado;
+        private Button btnLancarValor;
     }
 }
