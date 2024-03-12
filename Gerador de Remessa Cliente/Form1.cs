@@ -476,7 +476,8 @@ namespace Gerador_de_Remessa_Cliente
                 DialogResult dialogResult = MessageBox.Show("Verifique se TODOS os campos foram preenchidos!",
                    "Campos obrigatórios não preenchidos!", MessageBoxButtons.OK);
 
-            } else
+            }
+            else
             {
                 bool persistiu;
 
@@ -500,7 +501,7 @@ namespace Gerador_de_Remessa_Cliente
 
                     Conta conta = new Conta();
                     conta = buscaDados.buscaConta(mskTextBoxContaCedente.Text, 36);
-                    txtBoxSaldoBloq.Text = conta.saldoBloqueado.ToString();
+                    txtBoxSaldoBloq.Text = conta.saldoBloqueado.ToString("C");
                     txtBoxSaldoBloqJud.Text = conta.saldoBloqueadoJudAdm.ToString("C");
                     txtBxSaldoDisponivel.Text = conta.saldoDisponivel.ToString("C");
 
@@ -509,6 +510,7 @@ namespace Gerador_de_Remessa_Cliente
                     extratoContas = buscaDados.buscaExtrato(mskTextBoxContaCedente.Text, 36);
 
                     dataGridViewExtrato.Rows.Clear();
+                    textBoxValorLancado.Clear();
 
 
                     //System.Windows.Forms.MessageBox.Show("Tamanho do array: " + extratoContas.Count);
@@ -536,10 +538,18 @@ namespace Gerador_de_Remessa_Cliente
                 }
 
             }
-           
-            
 
 
+
+
+        }
+
+
+        private void linkLabelHistorico_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FormListaHistoricos historicos = new FormListaHistoricos();
+
+            historicos.ShowDialog();
         }
     }
 }

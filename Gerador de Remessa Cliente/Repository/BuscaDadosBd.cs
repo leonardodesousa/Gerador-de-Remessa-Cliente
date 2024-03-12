@@ -183,5 +183,74 @@ namespace Gerador_de_Remessa_Cliente.Repository
             }
             return extratoContas;
         }
+
+        public List<Historico> buscaHistoricos()
+        {
+            //String dataBase = "oracle";
+
+            List<string> parametrosBD = new List<string>();
+            DbParametros db = new DbParametros();
+            parametrosBD = db.buscaParametrosConexaoOracle();
+
+            List<string> login = new List<string>();
+            UserBancoDeDados user = new UserBancoDeDados();
+            login = user.getLoginBd();
+
+            string dataBase = parametrosBD[0];
+            string host = parametrosBD[1];
+            string port = parametrosBD[2];
+            string serverName = parametrosBD[3];
+            string disponOwner = parametrosBD[4];
+            string userId = login[0];
+            string password = login[1];
+
+            Historico historico = new Historico();
+            List<Historico> historicos = new List<Historico>();
+
+
+            var query = "SELECT cd_hst , de_hst from " + disponOwner + ".t401hist order by cd_hst desc  ";                
+                        
+
+            if (dataBase.ToLower() == "oracle")
+            {
+                ConexaoBD conBD = new ConexaoBD();
+                string oradb = conBD.conecta(dataBase, host, port, serverName, userId, password);
+
+                OracleConnection conn = new OracleConnection(oradb);
+                OracleCommand cmd = new OracleCommand(query.ToString(), conn);
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.Text;
+                DataTable dt = new DataTable();
+
+                //System.Windows.Forms.MessageBox.Show("Vou executar a query"); // AQUI!!!!!!!!!!!!!
+
+                try
+                {
+                    conn.Open();
+                }
+                catch (OracleException e)
+                {
+                    MessageBox.Show("Impossível conectar ao Banco: " + e);
+                }
+                try
+                {
+                    OracleDataReader dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        historico = new Historico();
+                        historico.codigoHistorico = dr.GetInt32(0);
+                        historico.descricaoHistorico = dr.GetString(1);
+
+                        historicos.Add(historico);                        
+                    }
+                }
+                catch (OracleException e)
+                {
+                    MessageBox.Show("Ocorreu um erro ao consultar o banco de dados: " + e);
+                }
+                conn.Close();
+            }
+            return historicos;
+        }
     }
 }

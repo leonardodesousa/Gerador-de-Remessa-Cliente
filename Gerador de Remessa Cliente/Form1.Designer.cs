@@ -83,10 +83,10 @@
             historicoColumn = new DataGridViewTextBoxColumn();
             groupBox4 = new GroupBox();
             groupBox5 = new GroupBox();
+            linkLabelHistorico = new LinkLabel();
             btnLancarValor = new Button();
             textBoxValorLancado = new TextBox();
             label13 = new Label();
-            label14 = new Label();
             label15 = new Label();
             textBoxNumDoc = new TextBox();
             textBoxHistorico = new TextBox();
@@ -470,7 +470,7 @@
             btnSair.BackColor = Color.Red;
             btnSair.FlatStyle = FlatStyle.Popup;
             btnSair.ForeColor = SystemColors.ControlLightLight;
-            btnSair.Location = new Point(824, 602);
+            btnSair.Location = new Point(939, 602);
             btnSair.Name = "btnSair";
             btnSair.Size = new Size(137, 49);
             btnSair.TabIndex = 22;
@@ -665,10 +665,10 @@
             // 
             // groupBox5
             // 
+            groupBox5.Controls.Add(linkLabelHistorico);
             groupBox5.Controls.Add(btnLancarValor);
             groupBox5.Controls.Add(textBoxValorLancado);
             groupBox5.Controls.Add(label13);
-            groupBox5.Controls.Add(label14);
             groupBox5.Controls.Add(label15);
             groupBox5.Controls.Add(textBoxNumDoc);
             groupBox5.Controls.Add(textBoxHistorico);
@@ -678,6 +678,17 @@
             groupBox5.TabIndex = 28;
             groupBox5.TabStop = false;
             groupBox5.Text = "Lançar valor em conta";
+            // 
+            // linkLabelHistorico
+            // 
+            linkLabelHistorico.AutoSize = true;
+            linkLabelHistorico.Location = new Point(18, 80);
+            linkLabelHistorico.Name = "linkLabelHistorico";
+            linkLabelHistorico.Size = new Size(55, 15);
+            linkLabelHistorico.TabIndex = 27;
+            linkLabelHistorico.TabStop = true;
+            linkLabelHistorico.Text = "Histórico";
+            linkLabelHistorico.LinkClicked += linkLabelHistorico_LinkClicked;
             // 
             // btnLancarValor
             // 
@@ -708,15 +719,6 @@
             label13.Size = new Size(103, 15);
             label13.TabIndex = 5;
             label13.Text = "Num. Documento";
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Location = new Point(18, 80);
-            label14.Name = "label14";
-            label14.Size = new Size(55, 15);
-            label14.TabIndex = 4;
-            label14.Text = "Histórico";
             // 
             // label15
             // 
@@ -837,11 +839,11 @@
         private DataGridViewTextBoxColumn historicoColumn;
         private GroupBox groupBox5;
         private Label label13;
-        private Label label14;
         private Label label15;
         private TextBox textBoxNumDoc;
         private TextBox textBoxHistorico;
         private TextBox textBoxValorLancado;
         private Button btnLancarValor;
+        private LinkLabel linkLabelHistorico;
     }
 }
