@@ -31,6 +31,7 @@
             dataGridView1 = new DataGridView();
             Column1CodHist = new DataGridViewTextBoxColumn();
             Column2DescricaoHist = new DataGridViewTextBoxColumn();
+            Column3Natureza = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -39,12 +40,12 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AllowUserToOrderColumns = true;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1CodHist, Column2DescricaoHist });
-            dataGridView1.Location = new Point(133, 50);
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1CodHist, Column2DescricaoHist, Column3Natureza });
+            dataGridView1.Location = new Point(72, 50);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(515, 461);
+            dataGridView1.Size = new Size(661, 461);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -66,6 +67,15 @@
             Column2DescricaoHist.ReadOnly = true;
             Column2DescricaoHist.Width = 350;
             // 
+            // Column3Natureza
+            // 
+            Column3Natureza.HeaderText = "Natureza";
+            Column3Natureza.MaxInputLength = 25;
+            Column3Natureza.MinimumWidth = 50;
+            Column3Natureza.Name = "Column3Natureza";
+            Column3Natureza.ReadOnly = true;
+            Column3Natureza.Width = 140;
+            // 
             // FormListaHistoricos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -83,5 +93,6 @@
         private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn Column1CodHist;
         private DataGridViewTextBoxColumn Column2DescricaoHist;
+        private DataGridViewTextBoxColumn Column3Natureza;
     }
 }

@@ -30,6 +30,7 @@ namespace Gerador_de_Remessa_Cliente
                 dataGridView1.Rows.Add();
                 dataGridView1.Rows[i].Cells[0].Value = historicos[i].codigoHistorico;
                 dataGridView1.Rows[i].Cells[1].Value = historicos[i].descricaoHistorico;
+                dataGridView1.Rows[i].Cells[2].Value = historicos[i].natureza;
             }
         }
 

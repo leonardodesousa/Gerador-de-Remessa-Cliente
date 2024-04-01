@@ -10,11 +10,13 @@ namespace Gerador_de_Remessa_Cliente.Model
     {
         public int codigoHistorico { get; set; }
         public string descricaoHistorico { get; set; }
+        public string natureza {  get; set; }
 
-        public Historico( int codigoHistorico, string descricaoHistorico)
+        public Historico( int codigoHistorico, string descricaoHistorico, string natureza)
         {
             this.codigoHistorico = codigoHistorico;
             this.descricaoHistorico = descricaoHistorico;
+            this.natureza = natureza;
         }
 
         public Historico() { }

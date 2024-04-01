@@ -208,7 +208,13 @@ namespace Gerador_de_Remessa_Cliente.Repository
             List<Historico> historicos = new List<Historico>();
 
 
-            var query = "SELECT cd_hst , de_hst from " + disponOwner + ".t401hist order by cd_hst desc  ";                
+            var query = "SELECT cd_hst, " +
+                        "       de_hst, " +
+                        "       case" +
+                        "         when id_nat = 'C' then 'CRÉDITO'                " +
+                        "         when id_nat = 'D' then 'DÉBITO'                 " +
+                        "       end case                                          " +
+                        " from " + disponOwner + ".t401hist order by cd_hst desc  ";                
                         
 
             if (dataBase.ToLower() == "oracle")
@@ -240,6 +246,7 @@ namespace Gerador_de_Remessa_Cliente.Repository
                         historico = new Historico();
                         historico.codigoHistorico = dr.GetInt32(0);
                         historico.descricaoHistorico = dr.GetString(1);
+                        historico.natureza = dr.GetString(2);
 
                         historicos.Add(historico);                        
                     }
