@@ -90,6 +90,8 @@
             label15 = new Label();
             textBoxNumDoc = new TextBox();
             textBoxHistorico = new TextBox();
+            btnConfigModalidade = new Button();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -746,12 +748,24 @@
             textBoxHistorico.Size = new Size(127, 23);
             textBoxHistorico.TabIndex = 24;
             // 
+            // btnConfigModalidade
+            // 
+            btnConfigModalidade.FlatStyle = FlatStyle.Popup;
+            btnConfigModalidade.Location = new Point(572, 602);
+            btnConfigModalidade.Name = "btnConfigModalidade";
+            btnConfigModalidade.Size = new Size(137, 49);
+            btnConfigModalidade.TabIndex = 29;
+            btnConfigModalidade.Text = "Configurações Modalidade Cobrança";
+            btnConfigModalidade.UseVisualStyleBackColor = true;
+            btnConfigModalidade.Click += btnConfigModalidade_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             ClientSize = new Size(1839, 709);
+            Controls.Add(btnConfigModalidade);
             Controls.Add(groupBox5);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);
@@ -845,5 +859,7 @@
         private TextBox textBoxValorLancado;
         private Button btnLancarValor;
         private LinkLabel linkLabelHistorico;
+        private Button btnConfigModalidade;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

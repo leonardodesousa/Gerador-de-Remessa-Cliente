@@ -551,5 +551,11 @@ namespace Gerador_de_Remessa_Cliente
 
             historicos.ShowDialog();
         }
+
+        private void btnConfigModalidade_Click(object sender, EventArgs e)
+        {
+            FormConfigModalidade formConfigModalidade = new FormConfigModalidade();
+            formConfigModalidade.ShowDialog();
+        }
     }
 }

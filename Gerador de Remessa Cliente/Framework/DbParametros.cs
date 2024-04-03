@@ -52,6 +52,11 @@ namespace Gerador_de_Remessa_Cliente.Framework
                         {
                             disponOwner = ln.Substring(13, ln.Length - 13);
                             ListaParametros.Add(disponOwner.Trim());
+                        }
+                        if (ln.Length > 17 && ln.Substring(0, 17).ToUpper() == "CREDIMASTER_OWNER")
+                        {
+                            disponOwner = ln.Substring(18, ln.Length - 18);
+                            ListaParametros.Add(disponOwner.Trim());
 
                         }
                     }
@@ -124,6 +129,12 @@ namespace Gerador_de_Remessa_Cliente.Framework
                         if (ln.Length > 12 && ln.Substring(0, 12).ToUpper() == "DISPON_OWNER")
                         {
                             disponOwner = ln.Substring(13, ln.Length - 13);
+                            ListaParametros.Add(disponOwner.Trim());
+
+                        }
+                        if (ln.Length > 17 && ln.Substring(0, 17).ToUpper() == "CREDIMASTER_OWNER")
+                        {
+                            disponOwner = ln.Substring(18, ln.Length - 18);
                             ListaParametros.Add(disponOwner.Trim());
 
                         }
