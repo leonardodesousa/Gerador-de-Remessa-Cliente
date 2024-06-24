@@ -102,30 +102,35 @@ namespace Gerador_de_Remessa_Cliente.Repository
             Encargo encargo = new Encargo();
 
 
-            var query = " SELECT CASE                                          " +
-                        "          WHEN ID_DD_A30 = 'C' then 'CORRIDOS'        " +
-                        "          WHEN ID_DD_A30 = 'U' then 'UTEIS'           " +
-                        "        END identificadorDiasAte30Dias,               " +
-                        "        TX_PRM_A30 taxaPermanenciaAte30Dias,          " +
-                        "        CASE                                          " +
-                        "          WHEN ID_FMA_A30 = 'C' then 'CAPITALIZADO'   " +
-                        "          WHEN ID_FMA_A30 = 'L' then 'LINEAR'         " +
-                        "          WHEN ID_FMA_A30 = 'O' then 'OVER'           " +
-                        "       END identificadorFormaAte30Dias,               " +
-                        "       CASE                                           " +
-                        "         WHEN ID_DD_M30 = 'C' then 'CORRIDOS'         " +
-                        "         WHEN ID_DD_M30 = 'U' then 'UTEIS'            " +
-                        "       END identificadorDiasMais30Dias,               " +
-                        "       TX_PRM_M30 taxaPermanenciaMais30Dias,          " +                        
-                        "       CASE                                           " +
-                        "         WHEN ID_FMA_M30 = 'C' then 'CAPITALIZADO'    " +
-                        "         WHEN ID_FMA_M30 = 'L' then 'LINEAR           " +
-                        "         WHEN ID_FMA_M30 = 'O' then 'OVER'            " +
-                        "       END identificadorformaMais30Dias,              " +
-                        "       COALESCE(PC_MLT,0) percentualMulta,            " +
-                        "       qt_dd_mlt quantidadeDiasMulta                  " +
-                        "  FROM "+ credimasterOwner + ".t402entx               " +
-                        " WHERE SG_ECG = " + siglaEncargo                        ;
+            var query = " SELECT CASE                                                   " +
+                        "          WHEN ID_DD_A30 = 'C' then 'CORRIDOS'                 " +
+                        "          WHEN ID_DD_A30 = 'U' then 'UTEIS'                    " +
+                        "        END identificadorDiasAte30Dias,                        " +
+                        "        TX_PRM_A30 taxaPermanenciaAte30Dias,                   " +
+                        "        CASE                                                   " +
+                        "          WHEN ID_FMA_A30 = 'C' then 'CAPITALIZADO'            " +
+                        "          WHEN ID_FMA_A30 = 'L' then 'LINEAR'                  " +
+                        "          WHEN ID_FMA_A30 = 'O' then 'OVER'                    " +
+                        "       END identificadorFormaAte30Dias,                        " +
+                        "       CASE                                                    " +
+                        "         WHEN ID_DD_M30 = 'C' then 'CORRIDOS'                  " +
+                        "         WHEN ID_DD_M30 = 'U' then 'UTEIS'                     " +
+                        "       END identificadorDiasMais30Dias,                        " +
+                        "       TX_PRM_M30 taxaPermanenciaMais30Dias,                   " +                        
+                        "       CASE                                                    " +
+                        "         WHEN ID_FMA_M30 = 'C' then 'CAPITALIZADO'             " +
+                        "         WHEN ID_FMA_M30 = 'L' then 'LINEAR'                   " +
+                        "         WHEN ID_FMA_M30 = 'O' then 'OVER'                     " +
+                        "       END identificadorformaMais30Dias,                       " +
+                        "       COALESCE(PC_MLT,0) percentualMulta,                     " +
+                        "       qt_dd_mlt quantidadeDiasMulta,                          " +
+                        "       CASE                                                    " +
+                        "         WHEN ID_CLC_MLT = 'D' then 'DEVEDOR'                  " +
+                        "         WHEN ID_CLC_MLT = 'M' then 'DEVEDOR_MAIS_MORA'        " +
+                        "         WHEN ID_CLC_MLT = 'A' then 'DEVEDOR_MENOS_ABATIMENTO' " +
+                        "       END baseCalculoMulta                                    " +
+                        "  FROM "+ credimasterOwner + ".t402entx                        " +
+                        " WHERE SG_ECG = '" + siglaEncargo + "' "                         ;
 
             if (dataBase.ToLower() == "oracle")
             {
@@ -138,7 +143,7 @@ namespace Gerador_de_Remessa_Cliente.Repository
                 cmd.CommandType = CommandType.Text;
                 DataTable dt = new DataTable();
 
-                //System.Windows.Forms.MessageBox.Show("Host recebe " + host); // AQUI!!!!!!!!!!!!!
+                //System.Windows.Forms.MessageBox.Show(query); // AQUI!!!!!!!!!!!!!
 
                 try
                 {
@@ -160,7 +165,110 @@ namespace Gerador_de_Remessa_Cliente.Repository
                         encargo.taxaPermanenciaMais30Dias = dr.GetFloat(4);
                         encargo.identificadorformaMais30Dias = dr.GetString(5);
                         encargo.percentualMulta = dr.GetFloat(6);
-                        encargo.quantidadeDiasMulta = dr.GetInt32(7);                        
+                        encargo.quantidadeDiasMulta = dr.GetInt32(7);
+                        encargo.baseCalculoMulta = dr.GetString(8);
+
+                    }
+                }
+                catch (OracleException e)
+                {
+                    MessageBox.Show("Ocorreu um erro ao consultar o banco de dados: " + e);
+                }
+                conn.Close();
+            }
+            return encargo;
+        }
+
+        public Encargo buscaEncargosPorModalidade(string siglaModalidade)
+        {
+            //String dataBase = "oracle";
+
+            List<string> parametrosBD = new List<string>();
+            DbParametros db = new DbParametros();
+            parametrosBD = db.buscaParametrosConexaoOracle();
+
+            List<string> login = new List<string>();
+            UserBancoDeDados user = new UserBancoDeDados();
+            login = user.getLoginBd();
+
+            string dataBase = parametrosBD[0];
+            string host = parametrosBD[1];
+            string port = parametrosBD[2];
+            string serverName = parametrosBD[3];
+            string disponOwner = parametrosBD[4];
+            string credimasterOwner = parametrosBD[5];
+            string userId = login[0];
+            string password = login[1];
+
+            Encargo encargo = new Encargo();
+
+
+            var query = " SELECT CASE                                                                            " +
+                        "          WHEN ID_DD_A30 = 'C' then 'CORRIDOS'                                          " +
+                        "          WHEN ID_DD_A30 = 'U' then 'UTEIS'                                             " +
+                        "        END identificadorDiasAte30Dias,                                                 " +
+                        "        TX_PRM_A30 taxaPermanenciaAte30Dias,                                            " +
+                        "        CASE                                                                            " +
+                        "          WHEN ID_FMA_A30 = 'C' then 'CAPITALIZADO'                                     " +
+                        "          WHEN ID_FMA_A30 = 'L' then 'LINEAR'                                           " +
+                        "          WHEN ID_FMA_A30 = 'O' then 'OVER'                                             " +
+                        "       END identificadorFormaAte30Dias,                                                 " +
+                        "       CASE                                                                             " +
+                        "         WHEN ID_DD_M30 = 'C' then 'CORRIDOS'                                           " +
+                        "         WHEN ID_DD_M30 = 'U' then 'UTEIS'                                              " +
+                        "       END identificadorDiasMais30Dias,                                                 " +
+                        "       TX_PRM_M30 taxaPermanenciaMais30Dias,                                            " +
+                        "       CASE                                                                             " +
+                        "         WHEN ID_FMA_M30 = 'C' then 'CAPITALIZADO'                                      " +
+                        "         WHEN ID_FMA_M30 = 'L' then 'LINEAR'                                            " +
+                        "         WHEN ID_FMA_M30 = 'O' then 'OVER'                                              " +
+                        "       END identificadorformaMais30Dias,                                                " +
+                        "       COALESCE(PC_MLT,0) percentualMulta,                                              " +
+                        "       qt_dd_mlt quantidadeDiasMulta,                                                   " +
+                        "       CASE                                                                             " +
+                        "         WHEN ID_CLC_MLT = 'D' then 'DEVEDOR'                                           " +
+                        "         WHEN ID_CLC_MLT = 'M' then 'DEVEDOR_MAIS_MORA'                                 " +
+                        "         WHEN ID_CLC_MLT = 'A' then 'DEVEDOR_MENOS_ABATIMENTO'                          " +
+                        "       END baseCalculoMulta                                                             " +
+                        "  FROM " + credimasterOwner + ".t402entx entx                                           " +
+                        "  LEFT JOIN " + credimasterOwner + ".t402moda moda on moda.sg_ecg = entx.sg_ecg         " +
+                        " WHERE moda.sg_mod = '" + siglaModalidade + "'                                          " ;
+
+            if (dataBase.ToLower() == "oracle")
+            {
+                ConexaoBD conBD = new ConexaoBD();
+                string oradb = conBD.conecta(dataBase, host, port, serverName, userId, password);
+
+                OracleConnection conn = new OracleConnection(oradb);
+                OracleCommand cmd = new OracleCommand(query.ToString(), conn);
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.Text;
+                DataTable dt = new DataTable();
+
+                //System.Windows.Forms.MessageBox.Show(query); // AQUI!!!!!!!!!!!!!
+
+                try
+                {
+                    conn.Open();
+                }
+                catch (OracleException e)
+                {
+                    MessageBox.Show("Impossível conectar ao Banco: " + e);
+                }
+                try
+                {
+                    OracleDataReader dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        encargo.identificadorDiasAte30Dias = dr.GetString(0);
+                        encargo.taxaPermanenciaAte30Dias = dr.GetFloat(1);
+                        encargo.identificadorFormaAte30Dias = dr.GetString(2);
+                        encargo.identificadorDiasMais30Dias = dr.GetString(3);
+                        encargo.taxaPermanenciaMais30Dias = dr.GetFloat(4);
+                        encargo.identificadorformaMais30Dias = dr.GetString(5);
+                        encargo.percentualMulta = dr.GetFloat(6);
+                        encargo.quantidadeDiasMulta = dr.GetInt32(7);
+                        encargo.baseCalculoMulta = dr.GetString(8);
 
                     }
                 }

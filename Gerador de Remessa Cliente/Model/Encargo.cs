@@ -16,13 +16,14 @@ namespace Gerador_de_Remessa_Cliente.Model
         public string identificadorformaMais30Dias { get; set; }
         public float percentualMulta { get; set; }
         public int quantidadeDiasMulta { get; set; }
+        public string baseCalculoMulta { get; set; }
 
         public Encargo()
         {
 
         }
 
-        public Encargo(string identificadorDiasAte30Dias, float taxaPermanenciaAte30Dias, string identificadorFormaAte30Dias, string identificadorDiasMais30Dias, float taxaPermanenciaMais30Dias, string identificadorformaMais30Dias, float percentualMulta, int quantidadeDiasMulta)
+        public Encargo(string identificadorDiasAte30Dias, float taxaPermanenciaAte30Dias, string identificadorFormaAte30Dias, string identificadorDiasMais30Dias, float taxaPermanenciaMais30Dias, string identificadorformaMais30Dias, float percentualMulta, int quantidadeDiasMulta, string baseCalculoMulta)
         {
             this.identificadorDiasAte30Dias = identificadorDiasAte30Dias;
             this.taxaPermanenciaAte30Dias = taxaPermanenciaAte30Dias;
@@ -32,6 +33,7 @@ namespace Gerador_de_Remessa_Cliente.Model
             this.identificadorformaMais30Dias = identificadorformaMais30Dias;
             this.percentualMulta = percentualMulta;
             this.quantidadeDiasMulta = quantidadeDiasMulta;
+            this.baseCalculoMulta = baseCalculoMulta;
         }
     }
 }
