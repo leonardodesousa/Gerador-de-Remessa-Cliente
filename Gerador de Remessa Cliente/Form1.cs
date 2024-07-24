@@ -511,13 +511,8 @@ namespace Gerador_de_Remessa_Cliente
 
                     dataGridViewExtrato.Rows.Clear();
                     textBoxValorLancado.Clear();
-
-
                     //System.Windows.Forms.MessageBox.Show("Tamanho do array: " + extratoContas.Count);
-
                     //System.Windows.Forms.MessageBox.Show("data lançamento da posição 1: " + extratoContas[1].dataLancamento);
-
-
 
                     for (int i = 0; i < extratoContas.Count; i++)
                     {
@@ -527,8 +522,6 @@ namespace Gerador_de_Remessa_Cliente
                         dataGridViewExtrato.Rows[i].Cells[2].Value = extratoContas[i].valorSaldo.ToString("C");
                         dataGridViewExtrato.Rows[i].Cells[3].Value = extratoContas[i].descricaoHistorico;
                     }
-
-
                 }
                 else
                 {
@@ -536,11 +529,7 @@ namespace Gerador_de_Remessa_Cliente
                        "Ocorreu um erro ao realizar o lançamento", MessageBoxButtons.OK);
 
                 }
-
             }
-
-
-
 
         }
 
@@ -555,7 +544,7 @@ namespace Gerador_de_Remessa_Cliente
         private void btnConfigModalidade_Click(object sender, EventArgs e)
         {
             FormConfigModalidade formConfigModalidade = new FormConfigModalidade();
-            formConfigModalidade.ShowDialog();
+            formConfigModalidade.ShowDialog();                      
         }
     }
 }

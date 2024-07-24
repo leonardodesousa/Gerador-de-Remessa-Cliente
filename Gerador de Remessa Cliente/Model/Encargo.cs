@@ -16,14 +16,21 @@ namespace Gerador_de_Remessa_Cliente.Model
         public string identificadorformaMais30Dias { get; set; }
         public float percentualMulta { get; set; }
         public int quantidadeDiasMulta { get; set; }
-        public string baseCalculoMulta { get; set; }
+        public string baseCalculoMulta { get; set; }        
+        public float valorTaxaSpread { get; set; }
+        public string identificadorBaseSpread { get; set; }
+        public string identificadorFormatoSpread { get; set; }
+        public string identificadorCriterioOperacao { get; set; }
+        public float taxaLimiteMora { get; set; }
+        public string identificadorTipoLimite {  get; set; }
+
 
         public Encargo()
         {
 
         }
 
-        public Encargo(string identificadorDiasAte30Dias, float taxaPermanenciaAte30Dias, string identificadorFormaAte30Dias, string identificadorDiasMais30Dias, float taxaPermanenciaMais30Dias, string identificadorformaMais30Dias, float percentualMulta, int quantidadeDiasMulta, string baseCalculoMulta)
+        public Encargo(string identificadorDiasAte30Dias, float taxaPermanenciaAte30Dias, string identificadorFormaAte30Dias, string identificadorDiasMais30Dias, float taxaPermanenciaMais30Dias, string identificadorformaMais30Dias, float percentualMulta, int quantidadeDiasMulta, string baseCalculoMulta, float valorTaxaSpread, string identificadorBaseSpread, string identificadorFormatoSpread, float taxaLimiteMora, string identificadorTipoLimite, string identificadorCriterioOperacao)
         {
             this.identificadorDiasAte30Dias = identificadorDiasAte30Dias;
             this.taxaPermanenciaAte30Dias = taxaPermanenciaAte30Dias;
@@ -34,6 +41,12 @@ namespace Gerador_de_Remessa_Cliente.Model
             this.percentualMulta = percentualMulta;
             this.quantidadeDiasMulta = quantidadeDiasMulta;
             this.baseCalculoMulta = baseCalculoMulta;
+            this.valorTaxaSpread = valorTaxaSpread;
+            this.identificadorBaseSpread = identificadorBaseSpread;
+            this.identificadorFormatoSpread = identificadorFormatoSpread;
+            this.taxaLimiteMora = taxaLimiteMora;
+            this.identificadorTipoLimite = identificadorTipoLimite;
+            this.identificadorCriterioOperacao = identificadorCriterioOperacao;
         }
     }
 }

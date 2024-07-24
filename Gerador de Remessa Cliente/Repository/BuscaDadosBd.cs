@@ -102,35 +102,64 @@ namespace Gerador_de_Remessa_Cliente.Repository
             Encargo encargo = new Encargo();
 
 
-            var query = " SELECT CASE                                                   " +
-                        "          WHEN ID_DD_A30 = 'C' then 'CORRIDOS'                 " +
-                        "          WHEN ID_DD_A30 = 'U' then 'UTEIS'                    " +
-                        "        END identificadorDiasAte30Dias,                        " +
-                        "        TX_PRM_A30 taxaPermanenciaAte30Dias,                   " +
-                        "        CASE                                                   " +
-                        "          WHEN ID_FMA_A30 = 'C' then 'CAPITALIZADO'            " +
-                        "          WHEN ID_FMA_A30 = 'L' then 'LINEAR'                  " +
-                        "          WHEN ID_FMA_A30 = 'O' then 'OVER'                    " +
-                        "       END identificadorFormaAte30Dias,                        " +
-                        "       CASE                                                    " +
-                        "         WHEN ID_DD_M30 = 'C' then 'CORRIDOS'                  " +
-                        "         WHEN ID_DD_M30 = 'U' then 'UTEIS'                     " +
-                        "       END identificadorDiasMais30Dias,                        " +
-                        "       TX_PRM_M30 taxaPermanenciaMais30Dias,                   " +                        
-                        "       CASE                                                    " +
-                        "         WHEN ID_FMA_M30 = 'C' then 'CAPITALIZADO'             " +
-                        "         WHEN ID_FMA_M30 = 'L' then 'LINEAR'                   " +
-                        "         WHEN ID_FMA_M30 = 'O' then 'OVER'                     " +
-                        "       END identificadorformaMais30Dias,                       " +
-                        "       COALESCE(PC_MLT,0) percentualMulta,                     " +
-                        "       qt_dd_mlt quantidadeDiasMulta,                          " +
-                        "       CASE                                                    " +
-                        "         WHEN ID_CLC_MLT = 'D' then 'DEVEDOR'                  " +
-                        "         WHEN ID_CLC_MLT = 'M' then 'DEVEDOR_MAIS_MORA'        " +
-                        "         WHEN ID_CLC_MLT = 'A' then 'DEVEDOR_MENOS_ABATIMENTO' " +
-                        "       END baseCalculoMulta                                    " +
-                        "  FROM "+ credimasterOwner + ".t402entx                        " +
-                        " WHERE SG_ECG = '" + siglaEncargo + "' "                         ;
+            var query = " SELECT CASE                                                                      " +
+                        "          WHEN ID_DD_A30 = 'C' then 'CORRIDOS'                                    " +
+                        "          WHEN ID_DD_A30 = 'U' then 'UTEIS'                                       " +
+                        "        END identificadorDiasAte30Dias,                                           " +
+                        "        TX_PRM_A30 taxaPermanenciaAte30Dias,                                      " +
+                        "        CASE                                                                      " +
+                        "          WHEN ID_FMA_A30 = 'C' then 'CAPITALIZADO'                               " +
+                        "          WHEN ID_FMA_A30 = 'L' then 'LINEAR'                                     " +
+                        "          WHEN ID_FMA_A30 = 'O' then 'OVER'                                       " +
+                        "       END identificadorFormaAte30Dias,                                           " +
+                        "       CASE                                                                       " +
+                        "         WHEN ID_DD_M30 = 'C' then 'CORRIDOS'                                     " +
+                        "         WHEN ID_DD_M30 = 'U' then 'UTEIS'                                        " +
+                        "       END identificadorDiasMais30Dias,                                           " +
+                        "       TX_PRM_M30 taxaPermanenciaMais30Dias,                                      " +                        
+                        "       CASE                                                                       " +
+                        "         WHEN ID_FMA_M30 = 'C' then 'CAPITALIZADO'                                " +
+                        "         WHEN ID_FMA_M30 = 'L' then 'LINEAR'                                      " +
+                        "         WHEN ID_FMA_M30 = 'O' then 'OVER'                                        " +
+                        "       END identificadorformaMais30Dias,                                          " +
+                        "       COALESCE(PC_MLT,0) percentualMulta,                                        " +
+                        "       qt_dd_mlt quantidadeDiasMulta,                                             " +
+                        "       CASE                                                                       " +
+                        "         WHEN ID_CLC_MLT = 'D' then 'DEVEDOR'                                     " +
+                        "         WHEN ID_CLC_MLT = 'M' then 'DEVEDOR_MAIS_MORA'                           " +
+                        "         WHEN ID_CLC_MLT = 'A' then 'DEVEDOR_MENOS_ABATIMENTO'                    " +
+                        "       END baseCalculoMulta                                                       " +
+                        "      entx.TX_SPR_OPE valorTaxaSpread,                                            " +
+                        "      CASE                                                                        " +
+                        "        WHEN entx.ID_BAS_SPR = 'D' then 'DEVEDOR'                                 " +
+                        "        WHEN entx.ID_BAS_SPR = 'O' then 'DEVEDOR_OPERACAO'                        " +
+                        "        WHEN entx.ID_BAS_SPR = 'C' then 'DEVEDOR_CORRECAO'                        " +
+                        "        WHEN entx.ID_BAS_SPR = 'S' then 'DEVEDOR_TAXAS'                           " +
+                        "      END identificadorBaseSpread,                                                " +
+                        "      CASE                                                                        " +
+                        "        WHEN entx.ID_FMA_SPR = 'L' then 'LINEAR'                                  " +
+                        "        WHEN entx.ID_FMA_SPR = 'C' then 'CONFIGURACAO'                            " +
+                        "      END identificadorFormatoSpread,                                             " +
+                        "      CASE                                                                        " +
+                        "        WHEN entx.ID_CRT_OPE = 'N' then 'NAO_UTILIZA'                             " +
+                        "        WHEN entx.ID_CRT_OPE = 'S' then 'SEGUNDO_CRITERIO'                        " +
+                        "        WHEN entx.ID_CRT_OPE = 'U' then 'CRITERIO_UNICO'                          " +
+                        "      END identificadorCriterioOperacao,                                          " +
+                        "      CASE                                                                        " +
+                        "        WHEN entx.ID_CLC_MLT = 'D' then 'DEVEDOR'                                 " +
+                        "        WHEN entx.ID_CLC_MLT = 'M' then 'DEVEDOR_MAIS_MORA'                       " +
+                        "        WHEN entx.ID_CLC_MLT = 'A' then 'DEVEDOR_MENOS_ABATIMENTO'                " +
+                        "      END baseCalculoMulta,                                                       " +
+                        "      entx.TX_LIM_MOR taxaLimiteMora,                                             " +
+                        "      CASE                                                                        " +
+                        "        WHEN entx.ID_TIP_LIM = 'V' then 'VALOR'                                   " +
+                        "        WHEN entx.ID_TIP_LIM = 'P' then 'PERCENTUAL'                              " +
+                        "        WHEN entx.ID_TIP_LIM = 'O' then 'OPER_SPREAD'                             " +
+                        "        WHEN entx.ID_TIP_LIM = 'S' then 'SEM_LIMITE'                              " +
+                        "      END identificadorTipoLimite                                                 " +
+                        "  FROM " + credimasterOwner + ".t402entx                                          " +
+                        "  LEFT JOIN" + credimasterOwner + ".t402moda moda on moda.sg_ecg = entx.sg_ecg    " +
+                        " WHERE entx.SG_ECG = '" + siglaEncargo + "' "                                            ;
 
             if (dataBase.ToLower() == "oracle")
             {
@@ -167,7 +196,13 @@ namespace Gerador_de_Remessa_Cliente.Repository
                         encargo.percentualMulta = dr.GetFloat(6);
                         encargo.quantidadeDiasMulta = dr.GetInt32(7);
                         encargo.baseCalculoMulta = dr.GetString(8);
-
+                        encargo.valorTaxaSpread = dr.GetFloat(9);
+                        encargo.identificadorBaseSpread = dr.GetString(10);
+                        encargo.identificadorFormatoSpread = dr.GetString(11);
+                        encargo.identificadorCriterioOperacao = dr.GetString(12);
+                        encargo.baseCalculoMulta = dr.GetString(13);
+                        encargo.taxaLimiteMora = dr.GetFloat(14);
+                        encargo.identificadorTipoLimite = dr.GetString(15);
                     }
                 }
                 catch (OracleException e)
@@ -203,36 +238,64 @@ namespace Gerador_de_Remessa_Cliente.Repository
             Encargo encargo = new Encargo();
 
 
-            var query = " SELECT CASE                                                                            " +
-                        "          WHEN ID_DD_A30 = 'C' then 'CORRIDOS'                                          " +
-                        "          WHEN ID_DD_A30 = 'U' then 'UTEIS'                                             " +
-                        "        END identificadorDiasAte30Dias,                                                 " +
-                        "        TX_PRM_A30 taxaPermanenciaAte30Dias,                                            " +
-                        "        CASE                                                                            " +
-                        "          WHEN ID_FMA_A30 = 'C' then 'CAPITALIZADO'                                     " +
-                        "          WHEN ID_FMA_A30 = 'L' then 'LINEAR'                                           " +
-                        "          WHEN ID_FMA_A30 = 'O' then 'OVER'                                             " +
-                        "       END identificadorFormaAte30Dias,                                                 " +
-                        "       CASE                                                                             " +
-                        "         WHEN ID_DD_M30 = 'C' then 'CORRIDOS'                                           " +
-                        "         WHEN ID_DD_M30 = 'U' then 'UTEIS'                                              " +
-                        "       END identificadorDiasMais30Dias,                                                 " +
-                        "       TX_PRM_M30 taxaPermanenciaMais30Dias,                                            " +
-                        "       CASE                                                                             " +
-                        "         WHEN ID_FMA_M30 = 'C' then 'CAPITALIZADO'                                      " +
-                        "         WHEN ID_FMA_M30 = 'L' then 'LINEAR'                                            " +
-                        "         WHEN ID_FMA_M30 = 'O' then 'OVER'                                              " +
-                        "       END identificadorformaMais30Dias,                                                " +
-                        "       COALESCE(PC_MLT,0) percentualMulta,                                              " +
-                        "       qt_dd_mlt quantidadeDiasMulta,                                                   " +
-                        "       CASE                                                                             " +
-                        "         WHEN ID_CLC_MLT = 'D' then 'DEVEDOR'                                           " +
-                        "         WHEN ID_CLC_MLT = 'M' then 'DEVEDOR_MAIS_MORA'                                 " +
-                        "         WHEN ID_CLC_MLT = 'A' then 'DEVEDOR_MENOS_ABATIMENTO'                          " +
-                        "       END baseCalculoMulta                                                             " +
-                        "  FROM " + credimasterOwner + ".t402entx entx                                           " +
-                        "  LEFT JOIN " + credimasterOwner + ".t402moda moda on moda.sg_ecg = entx.sg_ecg         " +
-                        " WHERE moda.sg_mod = '" + siglaModalidade + "'                                          " ;
+            var query = " SELECT CASE                                                                      " +
+                        "          WHEN ID_DD_A30 = 'C' then 'CORRIDOS'                                    " +
+                        "          WHEN ID_DD_A30 = 'U' then 'UTEIS'                                       " +
+                        "        END identificadorDiasAte30Dias,                                           " +
+                        "        TX_PRM_A30 taxaPermanenciaAte30Dias,                                      " +
+                        "        CASE                                                                      " +
+                        "          WHEN ID_FMA_A30 = 'C' then 'CAPITALIZADO'                               " +
+                        "          WHEN ID_FMA_A30 = 'L' then 'LINEAR'                                     " +
+                        "          WHEN ID_FMA_A30 = 'O' then 'OVER'                                       " +
+                        "       END identificadorFormaAte30Dias,                                           " +
+                        "       CASE                                                                       " +
+                        "         WHEN ID_DD_M30 = 'C' then 'CORRIDOS'                                     " +
+                        "         WHEN ID_DD_M30 = 'U' then 'UTEIS'                                        " +
+                        "       END identificadorDiasMais30Dias,                                           " +
+                        "       TX_PRM_M30 taxaPermanenciaMais30Dias,                                      " +
+                        "       CASE                                                                       " +
+                        "         WHEN ID_FMA_M30 = 'C' then 'CAPITALIZADO'                                " +
+                        "         WHEN ID_FMA_M30 = 'L' then 'LINEAR'                                      " +
+                        "         WHEN ID_FMA_M30 = 'O' then 'OVER'                                        " +
+                        "       END identificadorformaMais30Dias,                                          " +
+                        "       COALESCE(PC_MLT,0) percentualMulta,                                        " +
+                        "       qt_dd_mlt quantidadeDiasMulta,                                             " +
+                        "       CASE                                                                       " +
+                        "         WHEN ID_CLC_MLT = 'D' then 'DEVEDOR'                                     " +
+                        "         WHEN ID_CLC_MLT = 'M' then 'DEVEDOR_MAIS_MORA'                           " +
+                        "         WHEN ID_CLC_MLT = 'A' then 'DEVEDOR_MENOS_ABATIMENTO'                    " +
+                        "       END baseCalculoMulta,                                                      " +
+                        "      entx.TX_SPR_OPE valorTaxaSpread,                                            " +
+                        "      CASE                                                                        " +
+                        "        WHEN entx.ID_BAS_SPR = 'D' then 'DEVEDOR'                                 " +
+                        "        WHEN entx.ID_BAS_SPR = 'O' then 'DEVEDOR_OPERACAO'                        " +
+                        "        WHEN entx.ID_BAS_SPR = 'C' then 'DEVEDOR_CORRECAO'                        " +
+                        "        WHEN entx.ID_BAS_SPR = 'S' then 'DEVEDOR_TAXAS'                           " +
+                        "      END identificadorBaseSpread,                                                " +
+                        "      CASE                                                                        " +
+                        "        WHEN entx.ID_FMA_SPR = 'L' then 'LINEAR'                                  " +
+                        "        WHEN entx.ID_FMA_SPR = 'C' then 'CONFIGURACAO'                            " +
+                        "      END identificadorFormatoSpread,                                             " +
+                        "      CASE                                                                        " +
+                        "        WHEN entx.ID_CRT_OPE = 'N' then 'NAO_UTILIZA'                             " +
+                        "        WHEN entx.ID_CRT_OPE = 'S' then 'SEGUNDO_CRITERIO'                        " +
+                        "        WHEN entx.ID_CRT_OPE = 'U' then 'CRITERIO_UNICO'                          " +
+                        "      END identificadorCriterioOperacao,                                          " +
+                        "      CASE                                                                        " +
+                        "        WHEN entx.ID_CLC_MLT = 'D' then 'DEVEDOR'                                 " +
+                        "        WHEN entx.ID_CLC_MLT = 'M' then 'DEVEDOR_MAIS_MORA'                       " +
+                        "        WHEN entx.ID_CLC_MLT = 'A' then 'DEVEDOR_MENOS_ABATIMENTO'                " +
+                        "      END baseCalculoMulta,                                                       " +
+                        "      entx.TX_LIM_MOR taxaLimiteMora,                                             " +
+                        "      CASE                                                                        " +
+                        "        WHEN entx.ID_TIP_LIM = 'V' then 'VALOR'                                   " +
+                        "        WHEN entx.ID_TIP_LIM = 'P' then 'PERCENTUAL'                              " +
+                        "        WHEN entx.ID_TIP_LIM = 'O' then 'OPER_SPREAD'                             " +
+                        "        WHEN entx.ID_TIP_LIM = 'S' then 'SEM_LIMITE'                              " +
+                        "      END identificadorTipoLimite                                                 " +
+                        "  FROM " + credimasterOwner + ".t402entx entx                                     " +
+                        "  LEFT JOIN " + credimasterOwner + ".t402moda moda on moda.sg_ecg = entx.sg_ecg   " +
+                        " WHERE moda.sg_mod = '" + siglaModalidade + "' ";
 
             if (dataBase.ToLower() == "oracle")
             {
@@ -269,6 +332,13 @@ namespace Gerador_de_Remessa_Cliente.Repository
                         encargo.percentualMulta = dr.GetFloat(6);
                         encargo.quantidadeDiasMulta = dr.GetInt32(7);
                         encargo.baseCalculoMulta = dr.GetString(8);
+                        encargo.valorTaxaSpread = dr.GetFloat(9);
+                        encargo.identificadorBaseSpread = dr.GetString(10);
+                        encargo.identificadorFormatoSpread = dr.GetString(11);
+                        encargo.identificadorCriterioOperacao = dr.GetString(12);
+                        encargo.baseCalculoMulta = dr.GetString(13);
+                        encargo.taxaLimiteMora = dr.GetFloat(14);
+                        encargo.identificadorTipoLimite = dr.GetString(15);
 
                     }
                 }
@@ -305,12 +375,12 @@ namespace Gerador_de_Remessa_Cliente.Repository
             List<Modalidade> listaModalidades = new List<Modalidade>();
 
             var query = " select SG_MOD,                          " +
-                "                DS_MOD,                          " +                
-                "                COALESCE(SG_ECG, 'SEM_ENCARGO')  " +                
-                "           from "+ credimasterOwner + ".t402moda " +
+                "                DS_MOD,                          " +
+                "                COALESCE(SG_ECG, 'SEM_ENCARGO')  " +
+                "           from " + credimasterOwner + ".t402moda " +
                 "          where SG_mdl = 'CD'                    " +
-                "            and sg_lin_ope in ('COB', 'CAU')     " +
-                "            and ID_TP_PES = 'J'                  " ;
+                "            and sg_lin_ope in ('COB', 'CAU')     ";
+                //"            and ID_TP_PES = 'J'                  " ;
 
             //System.Windows.Forms.MessageBox.Show(query); 
 

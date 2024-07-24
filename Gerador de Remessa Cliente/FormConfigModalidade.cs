@@ -1,4 +1,5 @@
-﻿using Gerador_de_Remessa_Cliente.Model;
+﻿using Gerador_de_Remessa_Cliente.Framework;
+using Gerador_de_Remessa_Cliente.Model;
 using Gerador_de_Remessa_Cliente.Repository;
 using System;
 using System.Collections.Generic;
@@ -15,12 +16,26 @@ namespace Gerador_de_Remessa_Cliente
 {
     public partial class FormConfigModalidade : Form
     {
+
         string siglaEncargo;
         Encargo encargo = new Encargo();
         public FormConfigModalidade()
         {
-            BuscaDadosBd buscaDadosBd = new BuscaDadosBd();
             InitializeComponent();
+            LeitorArquivoParametros leitor = new LeitorArquivoParametros();
+
+            List<String> comboCvns = new List<String>();
+            comboCvns = leitor.buscaConvenios();
+
+            for (int i = 0; i < comboCvns.Count; i++)
+            {
+                comboConvenios.Items.Add(comboCvns[i]);
+            }
+            ConexaoBD conexao = new ConexaoBD();
+            conexao.testaConexao();
+
+            BuscaDadosBd buscaDadosBd = new BuscaDadosBd();
+            //InitializeComponent();
             List<Modalidade> comboModalidades = new List<Modalidade>();
             List<TipoTitulo> comboTipoTitulos = new List<TipoTitulo>();
 
@@ -121,6 +136,11 @@ namespace Gerador_de_Remessa_Cliente
         }
 
         private void txtBoxIdDiasAte30Dias_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboConvenios_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

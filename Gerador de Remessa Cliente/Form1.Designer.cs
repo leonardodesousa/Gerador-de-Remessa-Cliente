@@ -351,7 +351,7 @@
             // labelCarteira
             // 
             labelCarteira.AutoSize = true;
-            labelCarteira.Location = new Point(671, 109);
+            labelCarteira.Location = new Point(657, 112);
             labelCarteira.Name = "labelCarteira";
             labelCarteira.Size = new Size(105, 25);
             labelCarteira.TabIndex = 15;
@@ -370,7 +370,7 @@
             // labelBcoCobrador
             // 
             labelBcoCobrador.AutoSize = true;
-            labelBcoCobrador.Location = new Point(104, 113);
+            labelBcoCobrador.Location = new Point(89, 112);
             labelBcoCobrador.Name = "labelBcoCobrador";
             labelBcoCobrador.Size = new Size(90, 25);
             labelBcoCobrador.TabIndex = 13;
