@@ -92,7 +92,8 @@ namespace Gerador_de_Remessa_Cliente.Framework
 
                 sb.Append("Data Source=(DESCRIPTION=");
                 sb.Append("(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=" + host + ")(PORT=" + port + ")))");
-                sb.Append("(CONNECT_DATA=(SID=" + serverName + ")));");
+                //sb.Append("(CONNECT_DATA=(SID=" + serverName + ")));");
+                sb.Append("(CONNECT_DATA=(SERVICE_NAME=" + serverName + ")));");
                 sb.Append("User Id=" + userId + ";Password=" + password + ";");
                 conexao = sb.ToString();
                 return conexao;
