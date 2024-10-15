@@ -320,7 +320,8 @@ namespace Gerador_de_Remessa_Cliente
 
                 List<ExtratoConta> extratoContas = new List<ExtratoConta>();
 
-                extratoContas = buscaDados.buscaExtrato(mskTextBoxContaCedente.Text, 36);
+
+                extratoContas = buscaDados.buscaExtrato(mskTextBoxContaCedente.Text, Convert.ToInt32(mskTextBoxAgCedente.Text));
 
                 dataGridViewExtrato.Rows.Clear();
 
@@ -485,9 +486,10 @@ namespace Gerador_de_Remessa_Cliente
                 int historico = Convert.ToInt32(textBoxHistorico.Text);
                 double valorLancado = Convert.ToDouble(textBoxValorLancado.Text);
                 string numeroDoc = textBoxNumDoc.Text.ToString();
+                int agencia = Convert.ToInt32(mskTextBoxAgCedente.Text);
 
                 PersisteDadosBd persisteDadosBd = new PersisteDadosBd();
-                persistiu = persisteDadosBd.insereMovimentoConta(36, numeroConta, historico, valorLancado, numeroDoc);
+                persistiu = persisteDadosBd.insereMovimentoConta(agencia, numeroConta, historico, valorLancado, numeroDoc);
 
                 if (persistiu == true)
                 {
@@ -500,14 +502,14 @@ namespace Gerador_de_Remessa_Cliente
                     //conexao.testaConexao();
 
                     Conta conta = new Conta();
-                    conta = buscaDados.buscaConta(mskTextBoxContaCedente.Text, 36);
+                    conta = buscaDados.buscaConta(mskTextBoxContaCedente.Text, Convert.ToInt32(mskTextBoxAgCedente.Text));
                     txtBoxSaldoBloq.Text = conta.saldoBloqueado.ToString("C");
                     txtBoxSaldoBloqJud.Text = conta.saldoBloqueadoJudAdm.ToString("C");
                     txtBxSaldoDisponivel.Text = conta.saldoDisponivel.ToString("C");
 
                     List<ExtratoConta> extratoContas = new List<ExtratoConta>();
 
-                    extratoContas = buscaDados.buscaExtrato(mskTextBoxContaCedente.Text, 36);
+                    extratoContas = buscaDados.buscaExtrato(mskTextBoxContaCedente.Text, Convert.ToInt32(mskTextBoxAgCedente.Text));
 
                     dataGridViewExtrato.Rows.Clear();
                     textBoxValorLancado.Clear();
@@ -544,7 +546,12 @@ namespace Gerador_de_Remessa_Cliente
         private void btnConfigModalidade_Click(object sender, EventArgs e)
         {
             FormConfigModalidade formConfigModalidade = new FormConfigModalidade();
-            formConfigModalidade.ShowDialog();                      
+            formConfigModalidade.ShowDialog();
+        }
+
+        private void mskTextBoxAgCedente_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
     }
 }
