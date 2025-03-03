@@ -8,7 +8,7 @@ namespace Gerador_de_Remessa_Cliente.Repository
 {
     internal class BuscaDadosBd
     {
-        public List<TipoTitulo> buscarTitpoTitulo()
+        public List<TipoTitulo> listarTitpoTitulo()
         {
             //String dataBase = "oracle";
 
@@ -77,6 +77,79 @@ namespace Gerador_de_Remessa_Cliente.Repository
                 conn.Close();
             }
             return titulos;
+        }
+
+        public TipoTitulo buscarTitpoTitulo(string siglaTipoTitulo)
+        {
+            //String dataBase = "oracle";
+            TipoTitulo tipoTitulo = new TipoTitulo();
+
+            List<string> parametrosBD = new List<string>();
+            DbParametros db = new DbParametros();
+            parametrosBD = db.buscaParametrosConexaoOracle();
+
+            List<string> login = new List<string>();
+            UserBancoDeDados user = new UserBancoDeDados();
+            login = user.getLoginBd();
+
+            string dataBase = parametrosBD[0];
+            string host = parametrosBD[1];
+            string port = parametrosBD[2];
+            string serverName = parametrosBD[3];
+            string disponOwner = parametrosBD[4];
+            string credimasterOwner = parametrosBD[5];
+            string userId = login[0];
+            string password = login[1];
+
+
+            List<TipoTitulo> titulos = new List<TipoTitulo>();
+
+            var query = " SELECT SG_TP_TIT, DS_TIT                                          " +
+                "           FROM " + credimasterOwner + ".T402TPTI                          " +
+                "          WHERE ID_TP_CHQ = 'N'                                            " +
+                "            AND ID_LIQ_TIT = 'C'                                           " +
+                "            AND SG_TP_TIT = '" + siglaTipoTitulo + "'"                       ;
+
+
+            if (dataBase.ToLower() == "oracle")
+            {
+                ConexaoBD conBD = new ConexaoBD();
+                string oradb = conBD.conecta(dataBase, host, port, serverName, userId, password);
+
+                OracleConnection conn = new OracleConnection(oradb);
+                OracleCommand cmd = new OracleCommand(query.ToString(), conn);
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.Text;
+                DataTable dt = new DataTable();
+
+                //System.Windows.Forms.MessageBox.Show("Host recebe " + host); // AQUI!!!!!!!!!!!!!
+
+                try
+                {
+                    conn.Open();
+                }
+                catch (OracleException e)
+                {
+                    MessageBox.Show("Impossível conectar ao Banco: " + e);
+                }
+                try
+                {
+                    OracleDataReader dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        
+                        tipoTitulo.siglaTitpoTitulo = dr.GetString(0);
+                        tipoTitulo.descricaoTitulo = dr.GetString(1);
+                     
+                    }
+                }
+                catch (OracleException e)
+                {
+                    MessageBox.Show("Ocorreu um erro ao consultar o banco de dados: " + e);
+                }
+                conn.Close();
+            }
+            return tipoTitulo;
         }
         public Encargo buscaEncargos(string siglaEncargo)
         {
@@ -464,7 +537,7 @@ namespace Gerador_de_Remessa_Cliente.Repository
                         "                           where cd_cc = "+ numeroConta +")                              " +
                         "                             and dt_lan = (select dt_pro_atu                             " +
                         "                                             from "+ disponOwner +".t401agen             " +
-                        "                                            where cd_und = "+ unidade + ")),sd_dsp_d1),  " +
+                        "                                            where cd_und = cadc.cd_und)),sd_dsp_d1),  " +
                         "        sd_blq_24d1 + sd_blq_48d1 + sd_blq_ncd1 as saldoBloqueado,                       " + 
                         "        sd_blq_24d1 + sd_blq_48d1 + sd_blq_ncd1 as saldoBloqueado,                       " +
                         "        sd_blq_jdd1 + sd_blq_add1 as saldoBloqu                                          " +
@@ -472,7 +545,7 @@ namespace Gerador_de_Remessa_Cliente.Repository
                         " inner join " + disponOwner + ".t401cadc cadc                                            " +
                         "    on cadc.cd_cc = sdct.cd_cta                                                          " +
                         "   and sdct.cd_und = cadc.cd_und                                                         " +
-                        " where  sdct.cd_und = " + unidade + "                                                    " +
+                     // " where  sdct.cd_und = " + unidade + "                                                    " +
                         "   and sdct.cd_cta = " + numeroConta;                      
 
             if (dataBase.ToLower() == "oracle")
@@ -485,8 +558,8 @@ namespace Gerador_de_Remessa_Cliente.Repository
                 cmd.Connection = conn;
                 cmd.CommandType = CommandType.Text;
                 DataTable dt = new DataTable();
-                
-                //System.Windows.Forms.MessageBox.Show("Host recebe " + host); // AQUI!!!!!!!!!!!!!
+
+                //System.Windows.Forms.MessageBox.Show("Saldo Dispon: " + dr.GetDouble(3));
 
                 try
                 {
@@ -501,6 +574,7 @@ namespace Gerador_de_Remessa_Cliente.Repository
                     OracleDataReader dr = cmd.ExecuteReader();
                     while (dr.Read())
                     {
+                        
                         conta.numeroConta = dr.GetString(0);
                         conta.nome = dr.GetString(1);
                         conta.codigoCliente = dr.GetInt64(2);
@@ -515,6 +589,8 @@ namespace Gerador_de_Remessa_Cliente.Repository
                 }
                 conn.Close();
             }
+            //System.Windows.Forms.MessageBox.Show("Saldo Dispon: " + conta.numeroConta);
+            //Console.WriteLine(query);
             return conta;
         }
 

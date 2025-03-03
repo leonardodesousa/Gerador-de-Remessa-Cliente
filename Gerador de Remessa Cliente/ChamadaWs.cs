@@ -280,7 +280,7 @@ namespace Gerador_de_Remessa_Cliente
         }
 
         public void PersistirBordero(XmlDocument soapEnvelopeXml, string webService, DateTime dataEmissao, String codigoCedente, int quantidadeTitulos, 
-            double valorTotalDoLote, int seuNumeroInicial, DateTime dataVencimento, List<String> titulosXml, string dataProcessamentoFormatado)
+            double valorTotalDoLote, int seuNumeroInicial, DateTime dataVencimento, List<String> titulosXml, string dataProcessamentoFormatado, int agencia)
         {
             ServidorAcesso servidorAcesso = new ServidorAcesso();
 
@@ -387,7 +387,7 @@ namespace Gerador_de_Remessa_Cliente
 
             //this.CreateSoapEnvelopeCalcularBordero(dataEmissao, codigoCedente, quantidadeTitulos, valorTotalDoLote, numeroLote, numeroContrato);
             CreateSoapEnvelopeCalcularBordero(dataEmissao, codigoCedente, quantidadeTitulos, valorTotalDoLote
-                , Int32.Parse(numeroLote), Int32.Parse(numeroContrato), seuNumeroInicial, dataVencimento, titulosXml, dataProcessamentoFormatado);
+                , Int32.Parse(numeroLote), Int32.Parse(numeroContrato), seuNumeroInicial, dataVencimento, titulosXml, dataProcessamentoFormatado, agencia);
 
         }
 
@@ -429,7 +429,7 @@ namespace Gerador_de_Remessa_Cliente
         }
 
         public XmlDocument CreateSoapEnvelopeBorderoCapaLote(DateTime dataEmissao, String codigoCedente, int quantidadeTitulos
-            , /*double valorTotalDoLote,*/ int seuNumeroIncial, DateTime dataVencimento)
+            , /*double valorTotalDoLote,*/ int seuNumeroIncial, DateTime dataVencimento, int agencia)
         {
             List <String> listaTitulosXml = new List<string>();
             StringBuilder titulosXml = new StringBuilder();
@@ -454,7 +454,7 @@ namespace Gerador_de_Remessa_Cliente
             MontaXml montaXml = new MontaXml();
 
             XmlDocument buscarTitularAgenciaXml = new XmlDocument();
-            buscarTitularAgenciaXml = montaXml.buscarTituarAgencia(36, 36);
+            buscarTitularAgenciaXml = montaXml.buscarTituarAgencia(agencia, agencia);
 
             String diretorioBuscarTitularAgenciaRequest = BuscarTitularAgenciaWs(buscarTitularAgenciaXml);
 
@@ -463,6 +463,13 @@ namespace Gerador_de_Remessa_Cliente
             doc.Load(diretorioBuscarTitularAgenciaRequest);
             //String dataProcessamento;
             DateTime dataProcessamento = dataEmissao;
+
+            List<String> tipoTituloParametro = new List<String>();
+            LeitorArquivoParametros leitorArquivoParametros = new LeitorArquivoParametros();
+            tipoTituloParametro = leitorArquivoParametros.BuscaConfiguracaoModalidade();
+            TipoTitulo tipoTitulo = new TipoTitulo();
+            BuscaDadosBd buscaDadosBd = new BuscaDadosBd();            
+            tipoTitulo = buscaDadosBd.buscarTitpoTitulo(tipoTituloParametro[1]);
 
             XmlNodeList elemList = doc.GetElementsByTagName("dataProximoProcessamento");
             for (int i = 0; i < elemList.Count; i++)
@@ -490,8 +497,10 @@ namespace Gerador_de_Remessa_Cliente
                 titulosXml.Append("<tipoTitulo>");
                 titulosXml.Append("<codigoUsuarioAtualizador>TB</codigoUsuarioAtualizador>");
                 titulosXml.Append("<dataHoraAtualizacao>2007-05-18T11:10:29-03:00</dataHoraAtualizacao>");
-                titulosXml.Append("<siglaTipoTitulo>DUP</siglaTipoTitulo>");
-                titulosXml.Append("<descricaoTitulo>CAUCAO - DUPLICATAS</descricaoTitulo>");
+                titulosXml.Append("<siglaTipoTitulo>DUP</siglaTipoTitulo>");                
+                //titulosXml.Append("<siglaTipoTitulo>" + tipoTitulo.siglaTitpoTitulo + "</siglaTipoTitulo>");
+                titulosXml.Append("<descricaoTitulo>CAUCAO - DUPLICATAS</descricaoTitulo>");                
+                //titulosXml.Append("<descricaoTitulo>" + tipoTitulo.descricaoTitulo + "</descricaoTitulo>");
                 titulosXml.Append("</tipoTitulo>");
                 titulosXml.Append("<seuNumero>" + seuNumeroIncial.ToString().PadLeft(12, '0') + "</seuNumero>");   ///
                 titulosXml.Append("<codigoCliente>" + codigoCedenteConvertido + "</codigoCliente>");
@@ -560,8 +569,8 @@ namespace Gerador_de_Remessa_Cliente
             envelopeSoapBorderoCapaLote.Append("<soap:Body>");
             envelopeSoapBorderoCapaLote.Append("<ns2:incluirBorderoCapaLote xmlns:ns2=\"operacao.credito.tfs.totvs.com\">");
             envelopeSoapBorderoCapaLote.Append("<movimentoContrato>");
-            envelopeSoapBorderoCapaLote.Append("<codigoEmpresa>36</codigoEmpresa>");
-            envelopeSoapBorderoCapaLote.Append("<codigoUnidade>36</codigoUnidade>");
+            envelopeSoapBorderoCapaLote.Append("<codigoEmpresa>"+agencia+"</codigoEmpresa>");
+            envelopeSoapBorderoCapaLote.Append("<codigoUnidade>"+agencia+"</codigoUnidade>");
             envelopeSoapBorderoCapaLote.Append("<dataMovimento>" + dataEmissaoFormatada + "-03:00</dataMovimento>");
             envelopeSoapBorderoCapaLote.Append("<situacaoContrato>FECHADO</situacaoContrato>");
             envelopeSoapBorderoCapaLote.Append("<codigoCliente>" + codigoCedenteConvertido + "</codigoCliente>");
@@ -574,8 +583,10 @@ namespace Gerador_de_Remessa_Cliente
             envelopeSoapBorderoCapaLote.Append("<tipoTitulo>");
             envelopeSoapBorderoCapaLote.Append("<codigoUsuarioAtualizador>TB</codigoUsuarioAtualizador>");
             envelopeSoapBorderoCapaLote.Append("<dataHoraAtualizacao>2007-05-18T11:10:29-03:00</dataHoraAtualizacao>");
-            envelopeSoapBorderoCapaLote.Append("<siglaTipoTitulo>DUP</siglaTipoTitulo>");
-            envelopeSoapBorderoCapaLote.Append("<descricaoTitulo>CAUCAO - DUPLICATAS</descricaoTitulo>");
+            //envelopeSoapBorderoCapaLote.Append("<siglaTipoTitulo>DUP</siglaTipoTitulo>");
+            envelopeSoapBorderoCapaLote.Append("<siglaTipoTitulo>" + tipoTitulo.siglaTitpoTitulo + "</siglaTipoTitulo>");
+            //envelopeSoapBorderoCapaLote.Append("<descricaoTitulo>CAUCAO - DUPLICATAS</descricaoTitulo>");
+            envelopeSoapBorderoCapaLote.Append("<descricaoTitulo>" + tipoTitulo.descricaoTitulo + "</descricaoTitulo>");
             envelopeSoapBorderoCapaLote.Append("</tipoTitulo>");
             envelopeSoapBorderoCapaLote.Append("<dataOperacao>" + dataEmissaoFormatada + "-03:00</dataOperacao>");
             envelopeSoapBorderoCapaLote.Append("<quantidadeTitulos>" +quantidadeTitulos+ "</quantidadeTitulos>");
@@ -614,8 +625,10 @@ namespace Gerador_de_Remessa_Cliente
             envelopeSoapBorderoCapaLote.Append("<tipoTitulo>");
             envelopeSoapBorderoCapaLote.Append("<codigoUsuarioAtualizador>TB</codigoUsuarioAtualizador>");
             envelopeSoapBorderoCapaLote.Append("<dataHoraAtualizacao>2007-05-18T11:10:29-03:00</dataHoraAtualizacao>");
-            envelopeSoapBorderoCapaLote.Append("<siglaTipoTitulo>DUP</siglaTipoTitulo>");
-            envelopeSoapBorderoCapaLote.Append("<descricaoTitulo>CAUCAO - DUPLICATAS</descricaoTitulo>");           
+            //envelopeSoapBorderoCapaLote.Append("<siglaTipoTitulo>DUP</siglaTipoTitulo>");
+            envelopeSoapBorderoCapaLote.Append("<siglaTipoTitulo>" + tipoTitulo.siglaTitpoTitulo + "</siglaTipoTitulo>");
+            //envelopeSoapBorderoCapaLote.Append("<descricaoTitulo>CAUCAO - DUPLICATAS</descricaoTitulo>");
+            envelopeSoapBorderoCapaLote.Append("<descricaoTitulo>" + tipoTitulo.descricaoTitulo + "</descricaoTitulo>");
             envelopeSoapBorderoCapaLote.Append("</tipoTitulo>");            
             envelopeSoapBorderoCapaLote.Append("<codigoCliente>"  + codigoCedenteConvertido + "</codigoCliente>");
             envelopeSoapBorderoCapaLote.Append("<dataEmissaoTitulo>" + dataEmissaoFormatada + "-03:00</dataEmissaoTitulo>");
@@ -639,7 +652,7 @@ namespace Gerador_de_Remessa_Cliente
             }
 
             //PersistirBordero(soapEnvelopeDocument, "incluirBorderoCapaLote");
-            PersistirBordero(soapEnvelopeDocument, "incluirBorderoCapalote", dataEmissao, codigoCedente, quantidadeTitulos, valorTotalDoLote, seuNumeroIncial, dataVencimento, listaTitulosXml, dataProcessamentoFormatado) ;
+            PersistirBordero(soapEnvelopeDocument, "incluirBorderoCapalote", dataEmissao, codigoCedente, quantidadeTitulos, valorTotalDoLote, seuNumeroIncial, dataVencimento, listaTitulosXml, dataProcessamentoFormatado, agencia) ;
 
             //CreateSoapEnvelopeCalcularBordero(dataEmissao,codigoCedente,quantidadeTitulos,valorTotalDoLote,)
 
@@ -650,7 +663,7 @@ namespace Gerador_de_Remessa_Cliente
 
 
         public XmlDocument CreateSoapEnvelopeCalcularBordero(DateTime dataEmissao, String codigoCedente, int quantidadeTitulos, double valorTotalDoLote
-            , int numeroLote, int numeroContrato, int seuNumeroInicial, DateTime dataVencimento, List <String> listaTitulosXml, string dataProcessamentoFormatado)
+            , int numeroLote, int numeroContrato, int seuNumeroInicial, DateTime dataVencimento, List <String> listaTitulosXml, string dataProcessamentoFormatado, int agencia)
         {
             
 
@@ -668,8 +681,13 @@ namespace Gerador_de_Remessa_Cliente
 
             string dataEmissaoFormatada = DateTime.Parse(dataEmissao.ToString()).ToString("yyyy-MM-dd");
             string dataVencimentoFormatada = DateTime.Parse(dataVencimento.ToString()).ToString("yyyy-MM-dd");
-            
 
+            List<String> tipoTituloParametro = new List<String>();
+            LeitorArquivoParametros leitorArquivoParametros = new LeitorArquivoParametros();
+            tipoTituloParametro = leitorArquivoParametros.BuscaConfiguracaoModalidade();
+            TipoTitulo tipoTitulo = new TipoTitulo();
+            BuscaDadosBd buscaDadosBd = new BuscaDadosBd();
+            tipoTitulo = buscaDadosBd.buscarTitpoTitulo(tipoTituloParametro[1]);
 
 
 
@@ -683,8 +701,8 @@ namespace Gerador_de_Remessa_Cliente
             envelopeSoapCalcularBordero.Append("<movimentoContrato>");
             envelopeSoapCalcularBordero.Append("<codigoUsuarioAtualizador>GERADOR COB</codigoUsuarioAtualizador>");
             envelopeSoapCalcularBordero.Append("<dataHoraAtualizacao>" + DateTime.Now.ToString("yyyy-MM-dd") + "T" + DateTime.Now.ToString("HH:mm:ss") + "-03:00</dataHoraAtualizacao>");
-            envelopeSoapCalcularBordero.Append("<codigoEmpresa>36</codigoEmpresa>");
-            envelopeSoapCalcularBordero.Append("<codigoUnidade>36</codigoUnidade>");
+            envelopeSoapCalcularBordero.Append("<codigoEmpresa>"+agencia+"</codigoEmpresa>");
+            envelopeSoapCalcularBordero.Append("<codigoUnidade>"+agencia+"</codigoUnidade>");
             envelopeSoapCalcularBordero.Append("<dataMovimento>" + dataEmissaoFormatada + "-03:00</dataMovimento>");
             envelopeSoapCalcularBordero.Append("<numeroLote>" + numeroLote + "</numeroLote>");
             envelopeSoapCalcularBordero.Append("<numeroContrato>" + numeroContrato + "</numeroContrato>");
@@ -702,7 +720,9 @@ namespace Gerador_de_Remessa_Cliente
             envelopeSoapCalcularBordero.Append("<codigoUsuarioAtualizador>TB</codigoUsuarioAtualizador>");
             envelopeSoapCalcularBordero.Append("<dataHoraAtualizacao>2007-05-18T11:10:29-03:00</dataHoraAtualizacao>");
             envelopeSoapCalcularBordero.Append("<siglaTipoTitulo>DUP</siglaTipoTitulo>");
+            //envelopeSoapCalcularBordero.Append("<siglaTipoTitulo>" + tipoTitulo.siglaTitpoTitulo + "</siglaTipoTitulo>");
             envelopeSoapCalcularBordero.Append("<descricaoTitulo>CAUCAO - DUPLICATAS</descricaoTitulo>");
+            //envelopeSoapCalcularBordero.Append("<descricaoTitulo>" + tipoTitulo.descricaoTitulo + "</descricaoTitulo>");
             envelopeSoapCalcularBordero.Append("</tipoTitulo>");
             envelopeSoapCalcularBordero.Append("<dataOperacao>"+ dataEmissaoFormatada + "-03:00</dataOperacao>");
             envelopeSoapCalcularBordero.Append("<dataHoraInclusaoOperacao>" + DateTime.Now.ToString("yyyy-MM-dd") + "T" + DateTime.Now.ToString("HH:mm:ss") + "-03:00</dataHoraInclusaoOperacao>");

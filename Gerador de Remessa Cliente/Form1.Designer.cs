@@ -118,7 +118,7 @@
             label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(3, 51);
             label1.Name = "label1";
-            label1.Size = new Size(154, 20);
+            label1.Size = new Size(198, 25);
             label1.TabIndex = 2;
             label1.Text = "Seu Número inicial ->";
             // 
@@ -128,7 +128,7 @@
             label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(-2, 81);
             label2.Name = "label2";
-            label2.Size = new Size(160, 20);
+            label2.Size = new Size(203, 25);
             label2.TabIndex = 4;
             label2.Text = "Boletos por arquivo ->";
             // 
@@ -144,7 +144,7 @@
             label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             label3.Location = new Point(621, 125);
             label3.Name = "label3";
-            label3.Size = new Size(188, 20);
+            label3.Size = new Size(240, 25);
             label3.TabIndex = 6;
             label3.Text = "Quantidade de arquivos ->";
             label3.Click += label3_Click;
@@ -156,7 +156,7 @@
             mskTextBoxSeuNumero.Mask = "0000000000";
             mskTextBoxSeuNumero.Name = "mskTextBoxSeuNumero";
             mskTextBoxSeuNumero.RightToLeft = RightToLeft.No;
-            mskTextBoxSeuNumero.Size = new Size(137, 27);
+            mskTextBoxSeuNumero.Size = new Size(137, 32);
             mskTextBoxSeuNumero.TabIndex = 1;
             mskTextBoxSeuNumero.TextAlign = HorizontalAlignment.Right;
             mskTextBoxSeuNumero.MaskInputRejected += mskTextBoxSeuNumero_MaskInputRejected;
@@ -168,7 +168,7 @@
             mskTextBoxLinhasArquivo.Mask = "00000";
             mskTextBoxLinhasArquivo.Name = "mskTextBoxLinhasArquivo";
             mskTextBoxLinhasArquivo.RightToLeft = RightToLeft.No;
-            mskTextBoxLinhasArquivo.Size = new Size(137, 27);
+            mskTextBoxLinhasArquivo.Size = new Size(137, 32);
             mskTextBoxLinhasArquivo.TabIndex = 3;
             mskTextBoxLinhasArquivo.TextAlign = HorizontalAlignment.Right;
             // 
@@ -179,7 +179,7 @@
             mskTextBoxQtdArquivos.Mask = "00000";
             mskTextBoxQtdArquivos.Name = "mskTextBoxQtdArquivos";
             mskTextBoxQtdArquivos.RightToLeft = RightToLeft.No;
-            mskTextBoxQtdArquivos.Size = new Size(113, 27);
+            mskTextBoxQtdArquivos.Size = new Size(113, 32);
             mskTextBoxQtdArquivos.TabIndex = 6;
             mskTextBoxQtdArquivos.TextAlign = HorizontalAlignment.Right;
             mskTextBoxQtdArquivos.ValidatingType = typeof(int);
@@ -191,7 +191,7 @@
             mskTextBoxDataInclusao.Mask = "00/00/0000";
             mskTextBoxDataInclusao.Name = "mskTextBoxDataInclusao";
             mskTextBoxDataInclusao.RightToLeft = RightToLeft.No;
-            mskTextBoxDataInclusao.Size = new Size(113, 27);
+            mskTextBoxDataInclusao.Size = new Size(113, 32);
             mskTextBoxDataInclusao.TabIndex = 2;
             mskTextBoxDataInclusao.TextAlign = HorizontalAlignment.Right;
             mskTextBoxDataInclusao.ValidatingType = typeof(DateTime);
@@ -202,7 +202,7 @@
             label4.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             label4.Location = new Point(594, 51);
             label4.Name = "label4";
-            label4.Size = new Size(214, 20);
+            label4.Size = new Size(267, 25);
             label4.TabIndex = 11;
             label4.Text = "Data de emissão (ddmmaa) ->";
             // 
@@ -213,7 +213,7 @@
             mskTextBoxDataVencimento.Mask = "00/00/0000";
             mskTextBoxDataVencimento.Name = "mskTextBoxDataVencimento";
             mskTextBoxDataVencimento.RightToLeft = RightToLeft.No;
-            mskTextBoxDataVencimento.Size = new Size(113, 27);
+            mskTextBoxDataVencimento.Size = new Size(113, 32);
             mskTextBoxDataVencimento.TabIndex = 4;
             mskTextBoxDataVencimento.TextAlign = HorizontalAlignment.Right;
             mskTextBoxDataVencimento.ValidatingType = typeof(DateTime);
@@ -224,7 +224,7 @@
             label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             label5.Location = new Point(521, 90);
             label5.Name = "label5";
-            label5.Size = new Size(271, 20);
+            label5.Size = new Size(340, 25);
             label5.TabIndex = 13;
             label5.Text = "Data Vencimento Boletos (ddmmaa) ->";
             // 
@@ -259,7 +259,7 @@
             checkBoxEnviaSeuNum.ForeColor = Color.Red;
             checkBoxEnviaSeuNum.Location = new Point(352, 51);
             checkBoxEnviaSeuNum.Name = "checkBoxEnviaSeuNum";
-            checkBoxEnviaSeuNum.Size = new Size(186, 24);
+            checkBoxEnviaSeuNum.Size = new Size(236, 29);
             checkBoxEnviaSeuNum.TabIndex = 19;
             checkBoxEnviaSeuNum.Text = "Não enviar Seu Número";
             checkBoxEnviaSeuNum.UseVisualStyleBackColor = true;
@@ -271,7 +271,7 @@
             Leaute.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             Leaute.Location = new Point(84, 122);
             Leaute.Name = "Leaute";
-            Leaute.Size = new Size(73, 20);
+            Leaute.Size = new Size(94, 25);
             Leaute.TabIndex = 18;
             Leaute.Text = "Layout ->";
             // 
@@ -282,7 +282,7 @@
             comboLeiaute.Items.AddRange(new object[] { "Bradesco", "Itaú", "TotalBanco" });
             comboLeiaute.Location = new Point(210, 117);
             comboLeiaute.Name = "comboLeiaute";
-            comboLeiaute.Size = new Size(137, 28);
+            comboLeiaute.Size = new Size(137, 33);
             comboLeiaute.Sorted = true;
             comboLeiaute.TabIndex = 17;
             // 
@@ -290,7 +290,7 @@
             // 
             textBoxDiretorioDestino.Location = new Point(269, 172);
             textBoxDiretorioDestino.Name = "textBoxDiretorioDestino";
-            textBoxDiretorioDestino.Size = new Size(549, 27);
+            textBoxDiretorioDestino.Size = new Size(549, 32);
             textBoxDiretorioDestino.TabIndex = 7;
             textBoxDiretorioDestino.TextChanged += textBoxDiretorioDestino_TextChanged;
             // 
@@ -300,7 +300,7 @@
             label10.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             label10.Location = new Point(25, 177);
             label10.Name = "label10";
-            label10.Size = new Size(196, 20);
+            label10.Size = new Size(249, 25);
             label10.TabIndex = 16;
             label10.Text = "Diretório destino arquivo ->";
             // 
@@ -334,7 +334,7 @@
             labelCodCliente.AutoSize = true;
             labelCodCliente.Location = new Point(11, 32);
             labelCodCliente.Name = "labelCodCliente";
-            labelCodCliente.Size = new Size(150, 20);
+            labelCodCliente.Size = new Size(190, 25);
             labelCodCliente.TabIndex = 16;
             labelCodCliente.Text = "Código do Cliente ->";
             // 
@@ -343,7 +343,7 @@
             textBoxCodCliente.Location = new Point(200, 29);
             textBoxCodCliente.MaxLength = 8;
             textBoxCodCliente.Name = "textBoxCodCliente";
-            textBoxCodCliente.Size = new Size(137, 27);
+            textBoxCodCliente.Size = new Size(137, 32);
             textBoxCodCliente.TabIndex = 13;
             textBoxCodCliente.TextAlign = HorizontalAlignment.Right;
             textBoxCodCliente.TextChanged += textBoxCodCliente_TextChanged;
@@ -353,7 +353,7 @@
             labelCarteira.AutoSize = true;
             labelCarteira.Location = new Point(657, 112);
             labelCarteira.Name = "labelCarteira";
-            labelCarteira.Size = new Size(81, 20);
+            labelCarteira.Size = new Size(105, 25);
             labelCarteira.TabIndex = 15;
             labelCarteira.Text = "Carteira ->";
             // 
@@ -362,7 +362,7 @@
             mskTextBoxCarteira.Location = new Point(782, 105);
             mskTextBoxCarteira.Mask = "000";
             mskTextBoxCarteira.Name = "mskTextBoxCarteira";
-            mskTextBoxCarteira.Size = new Size(100, 27);
+            mskTextBoxCarteira.Size = new Size(100, 32);
             mskTextBoxCarteira.TabIndex = 13;
             mskTextBoxCarteira.TextAlign = HorizontalAlignment.Right;
             mskTextBoxCarteira.ValidatingType = typeof(int);
@@ -372,7 +372,7 @@
             labelBcoCobrador.AutoSize = true;
             labelBcoCobrador.Location = new Point(89, 112);
             labelBcoCobrador.Name = "labelBcoCobrador";
-            labelBcoCobrador.Size = new Size(70, 20);
+            labelBcoCobrador.Size = new Size(90, 25);
             labelBcoCobrador.TabIndex = 13;
             labelBcoCobrador.Text = "Banco ->";
             // 
@@ -381,7 +381,7 @@
             mskBancoCobrador.Location = new Point(200, 109);
             mskBancoCobrador.Mask = "000";
             mskBancoCobrador.Name = "mskBancoCobrador";
-            mskBancoCobrador.Size = new Size(100, 27);
+            mskBancoCobrador.Size = new Size(100, 32);
             mskBancoCobrador.TabIndex = 12;
             mskBancoCobrador.TextAlign = HorizontalAlignment.Right;
             mskBancoCobrador.ValidatingType = typeof(int);
@@ -393,7 +393,7 @@
             mskTextBoxNumDocCedente.Mask = "00000000000000";
             mskTextBoxNumDocCedente.Name = "mskTextBoxNumDocCedente";
             mskTextBoxNumDocCedente.RightToLeft = RightToLeft.No;
-            mskTextBoxNumDocCedente.Size = new Size(154, 27);
+            mskTextBoxNumDocCedente.Size = new Size(154, 32);
             mskTextBoxNumDocCedente.TabIndex = 11;
             mskTextBoxNumDocCedente.TextAlign = HorizontalAlignment.Right;
             mskTextBoxNumDocCedente.MaskInputRejected += mskTextBoxNumDocCedente_MaskInputRejected;
@@ -403,7 +403,7 @@
             label11.AutoSize = true;
             label11.Location = new Point(556, 69);
             label11.Name = "label11";
-            label11.Size = new Size(173, 20);
+            label11.Size = new Size(220, 25);
             label11.TabIndex = 9;
             label11.Text = "Número Doc Cedente ->";
             label11.Click += label11_Click;
@@ -414,7 +414,7 @@
             mskTextBoxAgCedente.Mask = "00";
             mskTextBoxAgCedente.Name = "mskTextBoxAgCedente";
             mskTextBoxAgCedente.RightToLeft = RightToLeft.No;
-            mskTextBoxAgCedente.Size = new Size(100, 27);
+            mskTextBoxAgCedente.Size = new Size(100, 32);
             mskTextBoxAgCedente.TabIndex = 14;
             mskTextBoxAgCedente.TextAlign = HorizontalAlignment.Right;
             mskTextBoxAgCedente.MaskInputRejected += mskTextBoxAgCedente_MaskInputRejected;
@@ -424,7 +424,7 @@
             label9.AutoSize = true;
             label9.Location = new Point(15, 158);
             label9.Name = "label9";
-            label9.Size = new Size(142, 20);
+            label9.Size = new Size(181, 25);
             label9.TabIndex = 7;
             label9.Text = "Agência Cedente ->";
             // 
@@ -434,7 +434,7 @@
             mskTextBoxContaCedente.Mask = "0000000000";
             mskTextBoxContaCedente.Name = "mskTextBoxContaCedente";
             mskTextBoxContaCedente.RightToLeft = RightToLeft.No;
-            mskTextBoxContaCedente.Size = new Size(137, 27);
+            mskTextBoxContaCedente.Size = new Size(137, 32);
             mskTextBoxContaCedente.TabIndex = 10;
             mskTextBoxContaCedente.TextAlign = HorizontalAlignment.Right;
             mskTextBoxContaCedente.MaskInputRejected += mskTextBoxContaCedente_MaskInputRejected;
@@ -444,7 +444,7 @@
             label8.AutoSize = true;
             label8.Location = new Point(11, 74);
             label8.Name = "label8";
-            label8.Size = new Size(149, 20);
+            label8.Size = new Size(190, 25);
             label8.TabIndex = 5;
             label8.Text = "Conta do Cedente ->";
             // 
@@ -454,7 +454,7 @@
             mskTextBoxConvenio.Mask = "000000000000";
             mskTextBoxConvenio.Name = "mskTextBoxConvenio";
             mskTextBoxConvenio.RightToLeft = RightToLeft.No;
-            mskTextBoxConvenio.Size = new Size(154, 27);
+            mskTextBoxConvenio.Size = new Size(154, 32);
             mskTextBoxConvenio.TabIndex = 9;
             mskTextBoxConvenio.TextAlign = HorizontalAlignment.Right;
             mskTextBoxConvenio.MaskInputRejected += mskTextBoxConvenio_MaskInputRejected;
@@ -464,7 +464,7 @@
             label7.AutoSize = true;
             label7.Location = new Point(518, 28);
             label7.Name = "label7";
-            label7.Size = new Size(203, 20);
+            label7.Size = new Size(258, 25);
             label7.TabIndex = 3;
             label7.Text = "Identificação do Convênio ->";
             // 
@@ -487,7 +487,7 @@
             comboConvenios.FormattingEnabled = true;
             comboConvenios.Location = new Point(288, 55);
             comboConvenios.Name = "comboConvenios";
-            comboConvenios.Size = new Size(622, 28);
+            comboConvenios.Size = new Size(622, 33);
             comboConvenios.TabIndex = 18;
             comboConvenios.SelectedIndexChanged += comboConvenios_SelectedIndexChanged;
             // 
@@ -497,7 +497,7 @@
             labelConvenios.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             labelConvenios.Location = new Point(49, 58);
             labelConvenios.Name = "labelConvenios";
-            labelConvenios.Size = new Size(181, 20);
+            labelConvenios.Size = new Size(232, 25);
             labelConvenios.TabIndex = 19;
             labelConvenios.Text = "Convênios cadastrados ->";
             // 
@@ -555,7 +555,7 @@
             label12.AutoSize = true;
             label12.Location = new Point(18, 116);
             label12.Name = "label12";
-            label12.Size = new Size(94, 15);
+            label12.Size = new Size(121, 20);
             label12.TabIndex = 5;
             label12.Text = "Saldo Disponível";
             // 
@@ -564,7 +564,7 @@
             label6.AutoSize = true;
             label6.Location = new Point(18, 80);
             label6.Name = "label6";
-            label6.Size = new Size(119, 15);
+            label6.Size = new Size(151, 20);
             label6.TabIndex = 4;
             label6.Text = "Saldo Bloq. Jud/ADM";
             // 
@@ -573,7 +573,7 @@
             LabelSdBloq.AutoSize = true;
             LabelSdBloq.Location = new Point(18, 43);
             LabelSdBloq.Name = "LabelSdBloq";
-            LabelSdBloq.Size = new Size(96, 15);
+            LabelSdBloq.Size = new Size(124, 20);
             LabelSdBloq.TabIndex = 3;
             LabelSdBloq.Text = "Saldo Bloqueado";
             // 
@@ -584,7 +584,7 @@
             txtBxSaldoDisponivel.MaxLength = 20;
             txtBxSaldoDisponivel.Name = "txtBxSaldoDisponivel";
             txtBxSaldoDisponivel.ReadOnly = true;
-            txtBxSaldoDisponivel.Size = new Size(127, 23);
+            txtBxSaldoDisponivel.Size = new Size(127, 27);
             txtBxSaldoDisponivel.TabIndex = 2;
             txtBxSaldoDisponivel.TextChanged += txtBxSaldoDisponivel_TextChanged;
             // 
@@ -594,7 +594,7 @@
             txtBoxSaldoBloqJud.MaxLength = 20;
             txtBoxSaldoBloqJud.Name = "txtBoxSaldoBloqJud";
             txtBoxSaldoBloqJud.ReadOnly = true;
-            txtBoxSaldoBloqJud.Size = new Size(127, 23);
+            txtBoxSaldoBloqJud.Size = new Size(127, 27);
             txtBoxSaldoBloqJud.TabIndex = 1;
             txtBoxSaldoBloqJud.TextChanged += txtBoxSaldoBloqJud_TextChanged;
             // 
@@ -604,7 +604,7 @@
             txtBoxSaldoBloq.MaxLength = 20;
             txtBoxSaldoBloq.Name = "txtBoxSaldoBloq";
             txtBoxSaldoBloq.ReadOnly = true;
-            txtBoxSaldoBloq.Size = new Size(127, 23);
+            txtBoxSaldoBloq.Size = new Size(127, 27);
             txtBoxSaldoBloq.TabIndex = 0;
             txtBoxSaldoBloq.TextChanged += txtBoxSaldoBloq_TextChanged;
             // 
@@ -694,7 +694,7 @@
             linkLabelHistorico.AutoSize = true;
             linkLabelHistorico.Location = new Point(18, 80);
             linkLabelHistorico.Name = "linkLabelHistorico";
-            linkLabelHistorico.Size = new Size(55, 15);
+            linkLabelHistorico.Size = new Size(69, 20);
             linkLabelHistorico.TabIndex = 27;
             linkLabelHistorico.TabStop = true;
             linkLabelHistorico.Text = "Histórico";
@@ -717,7 +717,7 @@
             textBoxValorLancado.Location = new Point(183, 43);
             textBoxValorLancado.MaxLength = 20;
             textBoxValorLancado.Name = "textBoxValorLancado";
-            textBoxValorLancado.Size = new Size(127, 23);
+            textBoxValorLancado.Size = new Size(127, 27);
             textBoxValorLancado.TabIndex = 23;
             textBoxValorLancado.TextChanged += textBoxValorLancado_TextChanged;
             // 
@@ -726,7 +726,7 @@
             label13.AutoSize = true;
             label13.Location = new Point(18, 116);
             label13.Name = "label13";
-            label13.Size = new Size(103, 15);
+            label13.Size = new Size(126, 20);
             label13.TabIndex = 5;
             label13.Text = "Num. Documento";
             // 
@@ -735,7 +735,7 @@
             label15.AutoSize = true;
             label15.Location = new Point(18, 43);
             label15.Name = "label15";
-            label15.Size = new Size(119, 15);
+            label15.Size = new Size(150, 20);
             label15.TabIndex = 3;
             label15.Text = "Valor do Lançamento";
             // 
@@ -745,7 +745,7 @@
             textBoxNumDoc.Location = new Point(183, 112);
             textBoxNumDoc.MaxLength = 20;
             textBoxNumDoc.Name = "textBoxNumDoc";
-            textBoxNumDoc.Size = new Size(127, 23);
+            textBoxNumDoc.Size = new Size(127, 27);
             textBoxNumDoc.TabIndex = 25;
             // 
             // textBoxHistorico
@@ -753,7 +753,7 @@
             textBoxHistorico.Location = new Point(183, 76);
             textBoxHistorico.MaxLength = 4;
             textBoxHistorico.Name = "textBoxHistorico";
-            textBoxHistorico.Size = new Size(127, 23);
+            textBoxHistorico.Size = new Size(127, 27);
             textBoxHistorico.TabIndex = 24;
             // 
             // btnConfigModalidade

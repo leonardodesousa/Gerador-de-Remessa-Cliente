@@ -1,6 +1,7 @@
 ﻿using Gerador_de_Remessa_Cliente.Framework;
 using Gerador_de_Remessa_Cliente.Model;
 using Gerador_de_Remessa_Cliente.Repository;
+using Gerador_de_Remessa_Cliente.Util;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,7 +40,7 @@ namespace Gerador_de_Remessa_Cliente
             List<Modalidade> comboModalidades = new List<Modalidade>();
             List<TipoTitulo> comboTipoTitulos = new List<TipoTitulo>();
 
-            comboTipoTitulos = buscaDadosBd.buscarTitpoTitulo();
+            comboTipoTitulos = buscaDadosBd.listarTitpoTitulo();
             comboModalidades = buscaDadosBd.buscaModalidadeCobranca();
 
             for (int i = 0; i < comboModalidades.Count; i++)
@@ -109,9 +110,18 @@ namespace Gerador_de_Remessa_Cliente
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            Utilitarios utilitarios = new Utilitarios();            
+            string tipoTitulo = utilitarios.GetUntilOrEmpty(comboTipoTitulo.Text.ToString());
+            Configuracao configuracao = new Configuracao();
+            bool funcionou = configuracao.SalvaConfiguracaoModalidade(comboModalidade.Text.ToString(), tipoTitulo);
+            List<String> ListaParametros = new List<string>();
+            LeitorArquivoParametros leitorArquivoParametros = new LeitorArquivoParametros();
+            
+            if (funcionou == true)
+            {
+                ListaParametros = leitorArquivoParametros.BuscaConfiguracaoModalidade();
 
-
-
+            }
 
         }
 

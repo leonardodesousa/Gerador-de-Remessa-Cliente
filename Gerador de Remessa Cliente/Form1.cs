@@ -317,6 +317,7 @@ namespace Gerador_de_Remessa_Cliente
                 txtBoxSaldoBloq.Text = conta.saldoBloqueado.ToString();
                 txtBoxSaldoBloqJud.Text = conta.saldoBloqueadoJudAdm.ToString("C");
                 txtBxSaldoDisponivel.Text = conta.saldoDisponivel.ToString("C");
+                //System.Windows.Forms.MessageBox.Show("Saldo Disp: " + conta.saldoDisponivel.ToString("C"));
 
                 List<ExtratoConta> extratoContas = new List<ExtratoConta>();
 
@@ -378,7 +379,8 @@ namespace Gerador_de_Remessa_Cliente
                 cws.CreateSoapEnvelopeBorderoCapaLote(DateTime.Parse(mskTextBoxDataInclusao.Text),
                     textBoxCodCliente.Text.ToString()
                     , Int32.Parse(mskTextBoxLinhasArquivo.Text.ToString())
-                    ,/*900.5,*/ Int32.Parse(mskTextBoxSeuNumero.Text.ToString()), DateTime.Parse(mskTextBoxDataVencimento.Text));
+                    ,/*900.5,*/ Int32.Parse(mskTextBoxSeuNumero.Text.ToString()), DateTime.Parse(mskTextBoxDataVencimento.Text)
+                    ,Int32.Parse(mskTextBoxAgCedente.Text));
                 MontaArquivo mv = new MontaArquivo();
                 mv.GravaArquivo(DateTime.Parse(mskTextBoxDataInclusao.Text),
                             Convert.ToInt64(mskTextBoxSeuNumero.Text),
@@ -506,6 +508,7 @@ namespace Gerador_de_Remessa_Cliente
                     txtBoxSaldoBloq.Text = conta.saldoBloqueado.ToString("C");
                     txtBoxSaldoBloqJud.Text = conta.saldoBloqueadoJudAdm.ToString("C");
                     txtBxSaldoDisponivel.Text = conta.saldoDisponivel.ToString("C");
+                    
 
                     List<ExtratoConta> extratoContas = new List<ExtratoConta>();
 

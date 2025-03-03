@@ -209,6 +209,51 @@ namespace Gerador_de_Remessa_Cliente
             return ListaParametros;
 
         }
+
+        public List<String> BuscaConfiguracaoModalidade()
+        {
+            System.Windows.Forms.MessageBox.Show("entrei no BuscaConfiguracaoModalidade()");
+
+            List<String> ListaParametros = new List<string>();
+            String modalidade;
+            String siglaTipoTitulo;
+
+            String path = @"C:\TotalBanco\Crediblaster\GeraRem\modalidade.dll";
+            //StreamWriter sw = new StreamWriter(path);
+            Console.WriteLine("Entrei no leitor de arquivos");
+            if (File.Exists(path))
+            {
+                //using (StreamReader file = new StreamReader(path, Encoding.GetEncoding(CultureInfo.GetCultureInfo("pt-BR").TextInfo.ANSICodePage)))
+                using (StreamReader file = new StreamReader(path))
+                {
+                    // implementar aqui método de busca dos parametros
+                    string ln;
+                    while ((ln = file.ReadLine()) != null)
+                    {
+                        if (ln.Length > 10 && ln.Substring(0, 10) == "modalidade")
+                        {
+                            //System.Windows.Forms.MessageBox.Show("NUMERO_ARQUIVO recebe " + ln.Substring(14, ln.Length - 14) +"espaço");
+                            modalidade = ln.Substring(11, ln.Length - 11);
+                            ListaParametros.Add(modalidade.Trim());
+                            //System.Windows.Forms.MessageBox.Show("modalidade recebe " + modalidade.Trim());
+                        }
+                        if (ln.Length > 15 && ln.Substring(0, 15) == "siglaTipoTitulo")
+                        {
+                            siglaTipoTitulo = ln.Substring(16, ln.Length - 16);
+                            ListaParametros.Add(siglaTipoTitulo.Trim());
+                            //System.Windows.Forms.MessageBox.Show("siglaTipoTitulo recebe " + siglaTipoTitulo.Trim());
+                        }
+                        while (ListaParametros.Count < 1)
+                        {
+                            ListaParametros.Add(" ");
+
+                        }
+                    }
+                }
+            }
+            return ListaParametros;
+
+        }
     }
 }
 
