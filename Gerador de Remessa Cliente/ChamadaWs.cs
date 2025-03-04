@@ -280,7 +280,7 @@ namespace Gerador_de_Remessa_Cliente
         }
 
         public void PersistirBordero(XmlDocument soapEnvelopeXml, string webService, DateTime dataEmissao, String codigoCedente, int quantidadeTitulos, 
-            double valorTotalDoLote, int seuNumeroInicial, DateTime dataVencimento, List<String> titulosXml, string dataProcessamentoFormatado, int agencia)
+            double valorTotalDoLote, int seuNumeroInicial, DateTime dataVencimento, List<String> titulosXml, string dataProcessamentoFormatado, int agencia, int empresa)
         {
             ServidorAcesso servidorAcesso = new ServidorAcesso();
 
@@ -387,7 +387,7 @@ namespace Gerador_de_Remessa_Cliente
 
             //this.CreateSoapEnvelopeCalcularBordero(dataEmissao, codigoCedente, quantidadeTitulos, valorTotalDoLote, numeroLote, numeroContrato);
             CreateSoapEnvelopeCalcularBordero(dataEmissao, codigoCedente, quantidadeTitulos, valorTotalDoLote
-                , Int32.Parse(numeroLote), Int32.Parse(numeroContrato), seuNumeroInicial, dataVencimento, titulosXml, dataProcessamentoFormatado, agencia);
+                , Int32.Parse(numeroLote), Int32.Parse(numeroContrato), seuNumeroInicial, dataVencimento, titulosXml, dataProcessamentoFormatado, agencia, empresa);
 
         }
 
@@ -429,7 +429,7 @@ namespace Gerador_de_Remessa_Cliente
         }
 
         public XmlDocument CreateSoapEnvelopeBorderoCapaLote(DateTime dataEmissao, String codigoCedente, int quantidadeTitulos
-            , /*double valorTotalDoLote,*/ int seuNumeroIncial, DateTime dataVencimento, int agencia)
+            , /*double valorTotalDoLote,*/ int seuNumeroIncial, DateTime dataVencimento, int agencia, int empresa)
         {
             List <String> listaTitulosXml = new List<string>();
             StringBuilder titulosXml = new StringBuilder();
@@ -569,7 +569,7 @@ namespace Gerador_de_Remessa_Cliente
             envelopeSoapBorderoCapaLote.Append("<soap:Body>");
             envelopeSoapBorderoCapaLote.Append("<ns2:incluirBorderoCapaLote xmlns:ns2=\"operacao.credito.tfs.totvs.com\">");
             envelopeSoapBorderoCapaLote.Append("<movimentoContrato>");
-            envelopeSoapBorderoCapaLote.Append("<codigoEmpresa>"+agencia+"</codigoEmpresa>");
+            envelopeSoapBorderoCapaLote.Append("<codigoEmpresa>"+empresa+"</codigoEmpresa>");
             envelopeSoapBorderoCapaLote.Append("<codigoUnidade>"+agencia+"</codigoUnidade>");
             envelopeSoapBorderoCapaLote.Append("<dataMovimento>" + dataEmissaoFormatada + "-03:00</dataMovimento>");
             envelopeSoapBorderoCapaLote.Append("<situacaoContrato>FECHADO</situacaoContrato>");
@@ -652,7 +652,7 @@ namespace Gerador_de_Remessa_Cliente
             }
 
             //PersistirBordero(soapEnvelopeDocument, "incluirBorderoCapaLote");
-            PersistirBordero(soapEnvelopeDocument, "incluirBorderoCapalote", dataEmissao, codigoCedente, quantidadeTitulos, valorTotalDoLote, seuNumeroIncial, dataVencimento, listaTitulosXml, dataProcessamentoFormatado, agencia) ;
+            PersistirBordero(soapEnvelopeDocument, "incluirBorderoCapalote", dataEmissao, codigoCedente, quantidadeTitulos, valorTotalDoLote, seuNumeroIncial, dataVencimento, listaTitulosXml, dataProcessamentoFormatado, agencia, empresa) ;
 
             //CreateSoapEnvelopeCalcularBordero(dataEmissao,codigoCedente,quantidadeTitulos,valorTotalDoLote,)
 
@@ -663,7 +663,7 @@ namespace Gerador_de_Remessa_Cliente
 
 
         public XmlDocument CreateSoapEnvelopeCalcularBordero(DateTime dataEmissao, String codigoCedente, int quantidadeTitulos, double valorTotalDoLote
-            , int numeroLote, int numeroContrato, int seuNumeroInicial, DateTime dataVencimento, List <String> listaTitulosXml, string dataProcessamentoFormatado, int agencia)
+            , int numeroLote, int numeroContrato, int seuNumeroInicial, DateTime dataVencimento, List <String> listaTitulosXml, string dataProcessamentoFormatado, int agencia, int empresa)
         {
             
 
@@ -701,7 +701,7 @@ namespace Gerador_de_Remessa_Cliente
             envelopeSoapCalcularBordero.Append("<movimentoContrato>");
             envelopeSoapCalcularBordero.Append("<codigoUsuarioAtualizador>GERADOR COB</codigoUsuarioAtualizador>");
             envelopeSoapCalcularBordero.Append("<dataHoraAtualizacao>" + DateTime.Now.ToString("yyyy-MM-dd") + "T" + DateTime.Now.ToString("HH:mm:ss") + "-03:00</dataHoraAtualizacao>");
-            envelopeSoapCalcularBordero.Append("<codigoEmpresa>"+agencia+"</codigoEmpresa>");
+            envelopeSoapCalcularBordero.Append("<codigoEmpresa>"+empresa+"</codigoEmpresa>");
             envelopeSoapCalcularBordero.Append("<codigoUnidade>"+agencia+"</codigoUnidade>");
             envelopeSoapCalcularBordero.Append("<dataMovimento>" + dataEmissaoFormatada + "-03:00</dataMovimento>");
             envelopeSoapCalcularBordero.Append("<numeroLote>" + numeroLote + "</numeroLote>");

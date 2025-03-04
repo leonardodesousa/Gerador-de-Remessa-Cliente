@@ -94,7 +94,8 @@ namespace Gerador_de_Remessa_Cliente
                         Convert.ToInt64(mskTextBoxNumDocCedente.Text.ToString()),
                         mskBancoCobrador.Text.ToString(),
                         mskTextBoxCarteira.Text.ToString(),
-                        textBoxCodCliente.Text.ToString());
+                        textBoxCodCliente.Text.ToString(),
+                        mskTextBoxEmpresa.Text.ToString());
 
                     String conveniado = comboConvenios.Text.ToString().Substring(0, 12);
                     LeitorArquivoParametros leitor = new LeitorArquivoParametros();
@@ -137,7 +138,8 @@ namespace Gerador_de_Remessa_Cliente
                         mskBancoCobrador.Text.ToString(),
                         mskTextBoxCarteira.Text.ToString(),
                         informaSeuNumero,
-                        textBoxCodCliente.Text.ToString());
+                        textBoxCodCliente.Text.ToString(),
+                        mskTextBoxEmpresa.Text.ToString());
 
                     String conveniado = comboConvenios.Text.ToString().Substring(0, 12);
                     LeitorArquivoParametros leitor = new LeitorArquivoParametros();
@@ -178,7 +180,8 @@ namespace Gerador_de_Remessa_Cliente
                         Convert.ToInt64(mskTextBoxNumDocCedente.Text.ToString()),
                         mskBancoCobrador.Text.ToString(),
                         mskTextBoxCarteira.Text.ToString(),
-                        textBoxCodCliente.Text.ToString());
+                        textBoxCodCliente.Text.ToString(),
+                        mskTextBoxEmpresa.Text.ToString());
 
                     String conveniado = comboConvenios.Text.ToString().Substring(0, 12);
                     LeitorArquivoParametros leitor = new LeitorArquivoParametros();
@@ -307,6 +310,7 @@ namespace Gerador_de_Remessa_Cliente
                 mskBancoCobrador.Text = lista[11].ToString();
                 mskTextBoxCarteira.Text = lista[12].ToString();
                 textBoxCodCliente.Text = lista[13].ToString();
+                mskTextBoxEmpresa.Text = lista[14].ToString();
 
                 ConexaoBD conexao = new ConexaoBD();
 
@@ -380,7 +384,8 @@ namespace Gerador_de_Remessa_Cliente
                     textBoxCodCliente.Text.ToString()
                     , Int32.Parse(mskTextBoxLinhasArquivo.Text.ToString())
                     ,/*900.5,*/ Int32.Parse(mskTextBoxSeuNumero.Text.ToString()), DateTime.Parse(mskTextBoxDataVencimento.Text)
-                    ,Int32.Parse(mskTextBoxAgCedente.Text));
+                    , Int32.Parse(mskTextBoxAgCedente.Text)
+                    , Int32.Parse(mskTextBoxEmpresa.Text));
                 MontaArquivo mv = new MontaArquivo();
                 mv.GravaArquivo(DateTime.Parse(mskTextBoxDataInclusao.Text),
                             Convert.ToInt64(mskTextBoxSeuNumero.Text),
@@ -394,7 +399,8 @@ namespace Gerador_de_Remessa_Cliente
                             Convert.ToInt64(mskTextBoxNumDocCedente.Text.ToString()),
                             mskBancoCobrador.Text.ToString(),
                             mskTextBoxCarteira.Text.ToString(),
-                            textBoxCodCliente.Text.ToString());
+                            textBoxCodCliente.Text.ToString(),
+                            mskTextBoxEmpresa.Text.ToString());
 
 
                 String conveniado = comboConvenios.Text.ToString().Substring(0, 12);
@@ -416,6 +422,7 @@ namespace Gerador_de_Remessa_Cliente
                 mskBancoCobrador.Text = lista[11].ToString();
                 mskTextBoxCarteira.Text = lista[12].ToString();
                 textBoxCodCliente.Text = lista[13].ToString();
+                mskTextBoxEmpresa.Text = lista[14].ToString();
 
                 comboLeiaute.SelectedIndex = -1;
 
@@ -508,7 +515,7 @@ namespace Gerador_de_Remessa_Cliente
                     txtBoxSaldoBloq.Text = conta.saldoBloqueado.ToString("C");
                     txtBoxSaldoBloqJud.Text = conta.saldoBloqueadoJudAdm.ToString("C");
                     txtBxSaldoDisponivel.Text = conta.saldoDisponivel.ToString("C");
-                    
+
 
                     List<ExtratoConta> extratoContas = new List<ExtratoConta>();
 
@@ -553,6 +560,17 @@ namespace Gerador_de_Remessa_Cliente
         }
 
         private void mskTextBoxAgCedente_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void btnCliente_Click(object sender, EventArgs e)
+        {
+            v formCliente = new v();
+            formCliente.ShowDialog();
+        }
+
+        private void mskTextBoxEmpresa_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
         }

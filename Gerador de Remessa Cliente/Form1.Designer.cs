@@ -49,6 +49,8 @@
             textBoxDiretorioDestino = new TextBox();
             label10 = new Label();
             groupBox2 = new GroupBox();
+            label14 = new Label();
+            mskTextBoxEmpresa = new MaskedTextBox();
             labelCodCliente = new Label();
             textBoxCodCliente = new TextBox();
             labelCarteira = new Label();
@@ -92,6 +94,7 @@
             textBoxHistorico = new TextBox();
             btnConfigModalidade = new Button();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            btnCliente = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -176,13 +179,12 @@
             // 
             mskTextBoxQtdArquivos.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             mskTextBoxQtdArquivos.Location = new Point(867, 119);
-            mskTextBoxQtdArquivos.Mask = "00000";
+            mskTextBoxQtdArquivos.Mask = "000";
             mskTextBoxQtdArquivos.Name = "mskTextBoxQtdArquivos";
             mskTextBoxQtdArquivos.RightToLeft = RightToLeft.No;
             mskTextBoxQtdArquivos.Size = new Size(113, 32);
             mskTextBoxQtdArquivos.TabIndex = 6;
             mskTextBoxQtdArquivos.TextAlign = HorizontalAlignment.Right;
-            mskTextBoxQtdArquivos.ValidatingType = typeof(int);
             // 
             // mskTextBoxDataInclusao
             // 
@@ -306,6 +308,8 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(label14);
+            groupBox2.Controls.Add(mskTextBoxEmpresa);
             groupBox2.Controls.Add(labelCodCliente);
             groupBox2.Controls.Add(textBoxCodCliente);
             groupBox2.Controls.Add(labelCarteira);
@@ -323,11 +327,31 @@
             groupBox2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox2.Location = new Point(49, 404);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1005, 188);
+            groupBox2.Size = new Size(1005, 197);
             groupBox2.TabIndex = 15;
             groupBox2.TabStop = false;
             groupBox2.Text = "Dados do Cedente";
             groupBox2.Enter += groupBox2_Enter;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(666, 158);
+            label14.Name = "label14";
+            label14.Size = new Size(110, 25);
+            label14.TabIndex = 18;
+            label14.Text = "Empresa ->";
+            // 
+            // mskTextBoxEmpresa
+            // 
+            mskTextBoxEmpresa.Location = new Point(782, 155);
+            mskTextBoxEmpresa.Mask = "00";
+            mskTextBoxEmpresa.Name = "mskTextBoxEmpresa";
+            mskTextBoxEmpresa.RightToLeft = RightToLeft.No;
+            mskTextBoxEmpresa.Size = new Size(100, 32);
+            mskTextBoxEmpresa.TabIndex = 17;
+            mskTextBoxEmpresa.TextAlign = HorizontalAlignment.Right;
+            mskTextBoxEmpresa.MaskInputRejected += mskTextBoxEmpresa_MaskInputRejected;
             // 
             // labelCodCliente
             // 
@@ -351,7 +375,7 @@
             // labelCarteira
             // 
             labelCarteira.AutoSize = true;
-            labelCarteira.Location = new Point(657, 112);
+            labelCarteira.Location = new Point(671, 112);
             labelCarteira.Name = "labelCarteira";
             labelCarteira.Size = new Size(105, 25);
             labelCarteira.TabIndex = 15;
@@ -476,7 +500,7 @@
             btnSair.Location = new Point(917, 616);
             btnSair.Name = "btnSair";
             btnSair.Size = new Size(137, 49);
-            btnSair.TabIndex = 22;
+            btnSair.TabIndex = 60;
             btnSair.Text = "Sair";
             btnSair.UseVisualStyleBackColor = false;
             btnSair.Click += btnSair_Click;
@@ -762,16 +786,28 @@
             btnConfigModalidade.Location = new Point(531, 616);
             btnConfigModalidade.Name = "btnConfigModalidade";
             btnConfigModalidade.Size = new Size(137, 49);
-            btnConfigModalidade.TabIndex = 29;
+            btnConfigModalidade.TabIndex = 24;
             btnConfigModalidade.Text = "Configurações Modalidade Cobrança";
             btnConfigModalidade.UseVisualStyleBackColor = true;
             btnConfigModalidade.Click += btnConfigModalidade_Click;
+            // 
+            // btnCliente
+            // 
+            btnCliente.FlatStyle = FlatStyle.Popup;
+            btnCliente.Location = new Point(688, 616);
+            btnCliente.Name = "btnCliente";
+            btnCliente.Size = new Size(137, 49);
+            btnCliente.TabIndex = 25;
+            btnCliente.Text = "Cliente";
+            btnCliente.UseVisualStyleBackColor = true;
+            btnCliente.Click += btnCliente_Click;
             // 
             // Form1
             // 
             AutoScaleMode = AutoScaleMode.Inherit;
             AutoScroll = true;
             ClientSize = new Size(1839, 709);
+            Controls.Add(btnCliente);
             Controls.Add(btnConfigModalidade);
             Controls.Add(groupBox5);
             Controls.Add(groupBox4);
@@ -868,5 +904,8 @@
         private DataGridViewTextBoxColumn vlrLancadoColumn;
         private DataGridViewTextBoxColumn vlrSaldoColumn;
         private DataGridViewTextBoxColumn historicoColumn;
+        private Button btnCliente;
+        private Label label14;
+        private MaskedTextBox mskTextBoxEmpresa;
     }
 }

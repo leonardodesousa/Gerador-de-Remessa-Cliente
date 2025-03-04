@@ -67,6 +67,7 @@ namespace Gerador_de_Remessa_Cliente
             String bancoCobrador;
             String carteira;
             String codCliente;
+            String empresa;
             //String path = @"C:\TotalBanco\Crediblaster\GeraRem\GeraRem.ini";
             String path = @"C:\TotalBanco\Crediblaster\GeraRem\Clientes\Convenios\" +conveniado+ ".ini";
         
@@ -151,15 +152,20 @@ namespace Gerador_de_Remessa_Cliente
                             ListaParametros.Add(carteira);
                         }
 
-                        if (ln.Length > 8 && ln.Substring(0, 11) == "COD_CLIENTE")
+                        if (ln.Length > 11 && ln.Substring(0, 11) == "COD_CLIENTE")
                         {
                             codCliente = ln.Substring(12, ln.Length - 12).Trim();
                             ListaParametros.Add(codCliente);
                         }
+                        if (ln.Length > 7 && ln.Substring(0, 7) == "EMPRESA")
+                        {
+                            empresa = ln.Substring(8, ln.Length - 8).Trim();
+                            ListaParametros.Add(empresa);
+                        }
 
                     }
                 }
-                while (ListaParametros.Count < 14)
+                while (ListaParametros.Count < 15)
                 {
                     ListaParametros.Add(" ");
                 }
